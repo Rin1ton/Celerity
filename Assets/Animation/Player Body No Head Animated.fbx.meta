@@ -1,0 +1,2849 @@
+fileFormatVersion: 2
+guid: c6a6ce8260017a54b94b6d0624c68dcc
+ModelImporter:
+  serializedVersion: 20101
+  internalIDToNameTable:
+  - first:
+      74: -7953862542976960872
+    second: Cube.007|Action
+  - first:
+      74: -333078331825739649
+    second: Player_Armature|Action
+  - first:
+      74: -2706411061551424485
+    second: Player_Armature|Get off Board
+  - first:
+      74: 6230744164203227587
+    second: Player_Armature|Get on Board
+  - first:
+      74: -6562593119082091982
+    second: Player_Armature|Idle.002
+  - first:
+      74: -852337507094072008
+    second: Player_Armature|LEGS Run Forward
+  - first:
+      74: 6384426042769553461
+    second: Player_Armature|LEGS running fall
+  - first:
+      74: -6234276403186658125
+    second: Player_Armature|LEGS running Jump
+  - first:
+      74: -882123929841484500
+    second: Player_Armature|LEGS Skating Fall
+  - first:
+      74: -1510535495735211232
+    second: Player_Armature|LEGS Skating Idle
+  - first:
+      74: -3283049424974998570
+    second: Player_Armature|LEGS Skating Jump
+  - first:
+      74: -235438142050134534
+    second: Player_Armature|LEGS Strafe Right
+  - first:
+      74: -7958554949560156990
+    second: Player_Armature|LEGS Wall Run Left
+  - first:
+      74: -8073714729552854749
+    second: Player_Armature|LEGS Wall Run Right.001
+  - first:
+      74: -5273256723997636254
+    second: Player_Armature|Running Idle
+  - first:
+      74: -3299686470356334023
+    second: Player_Armature|TORSO Dive
+  - first:
+      74: -3538494168051898206
+    second: Player_Armature|TORSO Punch Left
+  - first:
+      74: 5324521094757023224
+    second: Player_Armature|TORSO Punch right
+  - first:
+      74: -123378226525726062
+    second: Player_Armature|TORSO running
+  - first:
+      74: -34179711425947494
+    second: Player_Armature|TORSO Running Accept Grab
+  - first:
+      74: -1741758583092860517
+    second: Player_Armature|TORSO Running Fall
+  - first:
+      74: 5197485448835300016
+    second: Player_Armature|TORSO Running Grab
+  - first:
+      74: -6617298606687985407
+    second: Player_Armature|TORSO Running Jump
+  - first:
+      74: 7740929852713531488
+    second: Player_Armature|TORSO Running Land
+  - first:
+      74: -248588787309570188
+    second: Player_Armature|TORSO Running Use
+  - first:
+      74: -1196318713422029889
+    second: Player_Armature|TORSO Skating Accept Grab
+  - first:
+      74: -851641853819367942
+    second: Player_Armature|TORSO Skating Fall
+  - first:
+      74: 8420270092340154787
+    second: Player_Armature|TORSO Skating Grab
+  - first:
+      74: -7990451983487730331
+    second: Player_Armature|TORSO Skating Idle
+  - first:
+      74: 9151131715221790835
+    second: Player_Armature|TORSO Skating Jump
+  - first:
+      74: -8940642818632385434
+    second: Player_Armature|TORSO Skating Land
+  - first:
+      74: 3766283558204550080
+    second: Player_Armature|TORSO Skating Use
+  - first:
+      74: 4370713566388455984
+    second: Player_Armature|TORSO Super Jump
+  - first:
+      74: -2984113005793334296
+    second: Player_Armature|TORSO Thrust Continue
+  - first:
+      74: -4527134152470653644
+    second: Player_Armature|TORSO Thrust Start
+  - first:
+      74: -6171378143087032999
+    second: Player_Armature|TORSO Thrust Stop
+  - first:
+      74: -146304696964539739
+    second: Player_Armature|TORSO wallrunning Left
+  - first:
+      74: -2456922309308743493
+    second: Player_Armature|TORSO WallRunning Right
+  - first:
+      74: -73809444569391996
+    second: Player_Armature|Yeet
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 1
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Cube.007|Action
+      takeName: Cube.007|Action
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Board
+        weight: 1
+      - path: Board/Board_end
+        weight: 1
+      - path: Board/Cube.007
+        weight: 1
+      - path: Root
+        weight: 0
+      - path: Root/FootIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L/KneeIK_L_end
+        weight: 1
+      - path: Root/FootIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R/KneeIK_R_end
+        weight: 1
+      - path: Root/HandIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L/IndexIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L/MiddleIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L/PinkieIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L/RingIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L/ThumbIK_L_end
+        weight: 0
+      - path: Root/HandIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R/IndexIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R/MiddleIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R/PinkieIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R/RingIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R/ThumbIK_R_end
+        weight: 0
+      - path: Root/HipIK
+        weight: 1
+      - path: Root/HipIK/Hip
+        weight: 1
+      - path: Root/HipIK/Hip/Cube.015
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/Cylinder.025
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Cylinder.026
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Cylinder.028
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Cube.009
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Toes_L_end
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/Cylinder.019
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Cylinder.021
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Cylinder.024
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Cube.008
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Toes_R_end
+        weight: 1
+      - path: Root/Spine
+        weight: 0
+      - path: Root/Spine/Cube
+        weight: 0
+      - path: Root/Spine/ElbowIK_L
+        weight: 0
+      - path: Root/Spine/ElbowIK_L/ElbowIK_L_end
+        weight: 0
+      - path: Root/Spine/ElbowIK_R
+        weight: 0
+      - path: Root/Spine/ElbowIK_R/ElbowIK_R_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Cylinder.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002/Hand_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Cylinder.029
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Cylinder.030
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Cube.014
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Index_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Cylinder.023
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Cylinder.027
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Cube.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Middle_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Cylinder.006
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Cylinder.007
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Cube.010
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Pinkie_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Cylinder.020
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Cylinder.022
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Cube.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Ring_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Cylinder.008
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Cylinder.009
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Cube.011
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Thumb_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/Cylinder.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/LowerArm_L.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/Sphere.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Cylinder.011
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002/Hand_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Cylinder.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Cylinder.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Cube.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Index_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Cylinder.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Cylinder.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Cube.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Middle_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Cylinder.018
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Cylinder.017
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Cube.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Pinkie_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Cylinder.010
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Cylinder.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Cube.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Ring_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Cylinder.016
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Cylinder.015
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Cube.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Thumb_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/Cylinder.014
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/LowerArm_R.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/Sphere.001
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|Action
+      takeName: Player_Armature|Action
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|Get off Board
+      takeName: Player_Armature|Get off Board
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|Get on Board
+      takeName: Player_Armature|Get on Board
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|Idle.002
+      takeName: Player_Armature|Idle.002
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|LEGS Run Forward
+      takeName: Player_Armature|LEGS Run Forward
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Board
+        weight: 0
+      - path: Board/Board_end
+        weight: 0
+      - path: Board/Cube.007
+        weight: 0
+      - path: Root
+        weight: 1
+      - path: Root/FootIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L/KneeIK_L_end
+        weight: 1
+      - path: Root/FootIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R/KneeIK_R_end
+        weight: 1
+      - path: Root/HandIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L/IndexIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L/MiddleIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L/PinkieIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L/RingIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L/ThumbIK_L_end
+        weight: 0
+      - path: Root/HandIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R/IndexIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R/MiddleIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R/PinkieIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R/RingIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R/ThumbIK_R_end
+        weight: 0
+      - path: Root/HipIK
+        weight: 1
+      - path: Root/HipIK/Hip
+        weight: 1
+      - path: Root/HipIK/Hip/Cube.015
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/Cylinder.025
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Cylinder.026
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Cylinder.028
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Cube.009
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Toes_L_end
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/Cylinder.019
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Cylinder.021
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Cylinder.024
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Cube.008
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Toes_R_end
+        weight: 1
+      - path: Root/Spine
+        weight: 0
+      - path: Root/Spine/Cube
+        weight: 0
+      - path: Root/Spine/ElbowIK_L
+        weight: 0
+      - path: Root/Spine/ElbowIK_L/ElbowIK_L_end
+        weight: 0
+      - path: Root/Spine/ElbowIK_R
+        weight: 0
+      - path: Root/Spine/ElbowIK_R/ElbowIK_R_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Cylinder.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002/Hand_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Cylinder.029
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Cylinder.030
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Cube.014
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Index_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Cylinder.023
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Cylinder.027
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Cube.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Middle_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Cylinder.006
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Cylinder.007
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Cube.010
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Pinkie_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Cylinder.020
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Cylinder.022
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Cube.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Ring_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Cylinder.008
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Cylinder.009
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Cube.011
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Thumb_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/Cylinder.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/LowerArm_L.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/Sphere.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Cylinder.011
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002/Hand_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Cylinder.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Cylinder.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Cube.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Index_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Cylinder.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Cylinder.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Cube.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Middle_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Cylinder.018
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Cylinder.017
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Cube.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Pinkie_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Cylinder.010
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Cylinder.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Cube.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Ring_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Cylinder.016
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Cylinder.015
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Cube.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Thumb_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/Cylinder.014
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/LowerArm_R.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/Sphere.001
+        weight: 0
+      maskType: 1
+      maskSource: {fileID: 31900000, guid: 7a5e6692f7cde294e863215fe144fb8a, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|LEGS running fall
+      takeName: Player_Armature|LEGS running fall
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 7
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Board
+        weight: 0
+      - path: Board/Board_end
+        weight: 0
+      - path: Board/Cube.007
+        weight: 0
+      - path: Root
+        weight: 1
+      - path: Root/FootIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L/KneeIK_L_end
+        weight: 1
+      - path: Root/FootIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R/KneeIK_R_end
+        weight: 1
+      - path: Root/HandIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L/IndexIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L/MiddleIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L/PinkieIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L/RingIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L/ThumbIK_L_end
+        weight: 0
+      - path: Root/HandIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R/IndexIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R/MiddleIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R/PinkieIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R/RingIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R/ThumbIK_R_end
+        weight: 0
+      - path: Root/HipIK
+        weight: 1
+      - path: Root/HipIK/Hip
+        weight: 1
+      - path: Root/HipIK/Hip/Cube.015
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/Cylinder.025
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Cylinder.026
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Cylinder.028
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Cube.009
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Toes_L_end
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/Cylinder.019
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Cylinder.021
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Cylinder.024
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Cube.008
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Toes_R_end
+        weight: 1
+      - path: Root/Spine
+        weight: 0
+      - path: Root/Spine/Cube
+        weight: 0
+      - path: Root/Spine/ElbowIK_L
+        weight: 0
+      - path: Root/Spine/ElbowIK_L/ElbowIK_L_end
+        weight: 0
+      - path: Root/Spine/ElbowIK_R
+        weight: 0
+      - path: Root/Spine/ElbowIK_R/ElbowIK_R_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Cylinder.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002/Hand_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Cylinder.029
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Cylinder.030
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Cube.014
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Index_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Cylinder.023
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Cylinder.027
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Cube.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Middle_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Cylinder.006
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Cylinder.007
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Cube.010
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Pinkie_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Cylinder.020
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Cylinder.022
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Cube.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Ring_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Cylinder.008
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Cylinder.009
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Cube.011
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Thumb_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/Cylinder.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/LowerArm_L.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/Sphere.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Cylinder.011
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002/Hand_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Cylinder.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Cylinder.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Cube.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Index_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Cylinder.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Cylinder.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Cube.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Middle_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Cylinder.018
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Cylinder.017
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Cube.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Pinkie_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Cylinder.010
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Cylinder.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Cube.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Ring_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Cylinder.016
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Cylinder.015
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Cube.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Thumb_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/Cylinder.014
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/LowerArm_R.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/Sphere.001
+        weight: 0
+      maskType: 1
+      maskSource: {fileID: 31900000, guid: 7a5e6692f7cde294e863215fe144fb8a, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|LEGS running Jump
+      takeName: Player_Armature|LEGS running Jump
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 7
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Board
+        weight: 0
+      - path: Board/Board_end
+        weight: 0
+      - path: Board/Cube.007
+        weight: 0
+      - path: Root
+        weight: 1
+      - path: Root/FootIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L/KneeIK_L_end
+        weight: 1
+      - path: Root/FootIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R/KneeIK_R_end
+        weight: 1
+      - path: Root/HandIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L/IndexIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L/MiddleIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L/PinkieIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L/RingIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L/ThumbIK_L_end
+        weight: 0
+      - path: Root/HandIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R/IndexIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R/MiddleIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R/PinkieIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R/RingIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R/ThumbIK_R_end
+        weight: 0
+      - path: Root/HipIK
+        weight: 1
+      - path: Root/HipIK/Hip
+        weight: 1
+      - path: Root/HipIK/Hip/Cube.015
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/Cylinder.025
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Cylinder.026
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Cylinder.028
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Cube.009
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Toes_L_end
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/Cylinder.019
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Cylinder.021
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Cylinder.024
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Cube.008
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Toes_R_end
+        weight: 1
+      - path: Root/Spine
+        weight: 0
+      - path: Root/Spine/Cube
+        weight: 0
+      - path: Root/Spine/ElbowIK_L
+        weight: 0
+      - path: Root/Spine/ElbowIK_L/ElbowIK_L_end
+        weight: 0
+      - path: Root/Spine/ElbowIK_R
+        weight: 0
+      - path: Root/Spine/ElbowIK_R/ElbowIK_R_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Cylinder.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002/Hand_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Cylinder.029
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Cylinder.030
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Cube.014
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Index_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Cylinder.023
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Cylinder.027
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Cube.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Middle_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Cylinder.006
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Cylinder.007
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Cube.010
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Pinkie_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Cylinder.020
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Cylinder.022
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Cube.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Ring_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Cylinder.008
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Cylinder.009
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Cube.011
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Thumb_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/Cylinder.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/LowerArm_L.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/Sphere.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Cylinder.011
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002/Hand_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Cylinder.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Cylinder.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Cube.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Index_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Cylinder.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Cylinder.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Cube.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Middle_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Cylinder.018
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Cylinder.017
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Cube.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Pinkie_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Cylinder.010
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Cylinder.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Cube.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Ring_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Cylinder.016
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Cylinder.015
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Cube.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Thumb_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/Cylinder.014
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/LowerArm_R.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/Sphere.001
+        weight: 0
+      maskType: 1
+      maskSource: {fileID: 31900000, guid: 7a5e6692f7cde294e863215fe144fb8a, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|LEGS Skating Fall
+      takeName: Player_Armature|LEGS Skating Fall
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 9
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|LEGS Skating Idle
+      takeName: Player_Armature|LEGS Skating Idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Board
+        weight: 1
+      - path: Board/Board_end
+        weight: 1
+      - path: Board/Cube.007
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/FootIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L/KneeIK_L_end
+        weight: 1
+      - path: Root/FootIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R/KneeIK_R_end
+        weight: 1
+      - path: Root/HandIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L/IndexIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L/MiddleIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L/PinkieIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L/RingIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L/ThumbIK_L_end
+        weight: 0
+      - path: Root/HandIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R/IndexIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R/MiddleIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R/PinkieIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R/RingIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R/ThumbIK_R_end
+        weight: 0
+      - path: Root/HipIK
+        weight: 1
+      - path: Root/HipIK/Hip
+        weight: 1
+      - path: Root/HipIK/Hip/Cube.015
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/Cylinder.025
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Cylinder.026
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Cylinder.028
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Cube.009
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Toes_L_end
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/Cylinder.019
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Cylinder.021
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Cylinder.024
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Cube.008
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Toes_R_end
+        weight: 1
+      - path: Root/Spine
+        weight: 0
+      - path: Root/Spine/Cube
+        weight: 0
+      - path: Root/Spine/ElbowIK_L
+        weight: 0
+      - path: Root/Spine/ElbowIK_L/ElbowIK_L_end
+        weight: 0
+      - path: Root/Spine/ElbowIK_R
+        weight: 0
+      - path: Root/Spine/ElbowIK_R/ElbowIK_R_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Cylinder.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002/Hand_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Cylinder.029
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Cylinder.030
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Cube.014
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Index_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Cylinder.023
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Cylinder.027
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Cube.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Middle_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Cylinder.006
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Cylinder.007
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Cube.010
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Pinkie_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Cylinder.020
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Cylinder.022
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Cube.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Ring_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Cylinder.008
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Cylinder.009
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Cube.011
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Thumb_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/Cylinder.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/LowerArm_L.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/Sphere.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Cylinder.011
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002/Hand_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Cylinder.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Cylinder.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Cube.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Index_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Cylinder.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Cylinder.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Cube.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Middle_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Cylinder.018
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Cylinder.017
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Cube.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Pinkie_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Cylinder.010
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Cylinder.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Cube.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Ring_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Cylinder.016
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Cylinder.015
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Cube.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Thumb_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/Cylinder.014
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/LowerArm_R.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/Sphere.001
+        weight: 0
+      maskType: 1
+      maskSource: {fileID: 31900000, guid: 4d9f9ed9b16d0b542aef541d94ea3346, type: 2}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|LEGS Skating Jump
+      takeName: Player_Armature|LEGS Skating Jump
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|LEGS Strafe Right
+      takeName: Player_Armature|LEGS Strafe Right
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|LEGS Wall Run Left
+      takeName: Player_Armature|LEGS Wall Run Left
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|LEGS Wall Run Right.001
+      takeName: Player_Armature|LEGS Wall Run Right.001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|Running Idle
+      takeName: Player_Armature|Running Idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Dive
+      takeName: Player_Armature|TORSO Dive
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Punch Left
+      takeName: Player_Armature|TORSO Punch Left
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Punch right
+      takeName: Player_Armature|TORSO Punch right
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO running
+      takeName: Player_Armature|TORSO running
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Running Accept Grab
+      takeName: Player_Armature|TORSO Running Accept Grab
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Running Fall
+      takeName: Player_Armature|TORSO Running Fall
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 7
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Running Grab
+      takeName: Player_Armature|TORSO Running Grab
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 9
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Running Jump
+      takeName: Player_Armature|TORSO Running Jump
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 7
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Running Land
+      takeName: Player_Armature|TORSO Running Land
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Running Use
+      takeName: Player_Armature|TORSO Running Use
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 27
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Skating Accept Grab
+      takeName: Player_Armature|TORSO Skating Accept Grab
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Skating Fall
+      takeName: Player_Armature|TORSO Skating Fall
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Skating Grab
+      takeName: Player_Armature|TORSO Skating Grab
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 7
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Skating Idle
+      takeName: Player_Armature|TORSO Skating Idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Skating Jump
+      takeName: Player_Armature|TORSO Skating Jump
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 16
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Skating Land
+      takeName: Player_Armature|TORSO Skating Land
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Skating Use
+      takeName: Player_Armature|TORSO Skating Use
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Super Jump
+      takeName: Player_Armature|TORSO Super Jump
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 27
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Thrust Continue
+      takeName: Player_Armature|TORSO Thrust Continue
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Thrust Start
+      takeName: Player_Armature|TORSO Thrust Start
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 9
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO Thrust Stop
+      takeName: Player_Armature|TORSO Thrust Stop
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO wallrunning Left
+      takeName: Player_Armature|TORSO wallrunning Left
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|TORSO WallRunning Right
+      takeName: Player_Armature|TORSO WallRunning Right
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Armature|Yeet
+      takeName: Player_Armature|Yeet
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
