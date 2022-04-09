@@ -48,7 +48,6 @@ public class PlayerBehavior : MonoBehaviour
 	readonly float distanceFromCenterToEdgeOfPlayer = 0.95f;
 	public bool isGrounded = false;
 	public struct MoveStats
-
 	{
 		public float friction;
 		public float topSpeed;
@@ -144,7 +143,7 @@ public class PlayerBehavior : MonoBehaviour
 	readonly float thrustForce = 1.75f;
 	readonly float thrustMass = 50;
 	readonly float thrustMaxSpeed = 32;
-	readonly float thrustTurnAssist = 1000;					//make it so the player can turn with thrust
+	readonly float thrustTurnAssist = 50;					//make it so the player can turn with thrust
 	readonly float thrustSoundMinVolume = 0.15f;
 	readonly float thrustMaxForce = 80;                     //affects the thrust sound(thrustMinForce is always 0)
 	readonly float thrustingSlopeSkatingAssistForce = 1;	//how much gravity is negated on slopes when thrusting up them

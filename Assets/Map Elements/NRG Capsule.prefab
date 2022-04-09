@@ -82,7 +82,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -162,6 +162,7 @@ MonoBehaviour:
     type: 3}
   myParticleSystem: {fileID: 6102774083007921923}
   myPointLight: {fileID: 654310034465226230}
+  myOverheadLabel: {fileID: 0}
 --- !u!54 &4015594009598339889
 Rigidbody:
   m_ObjectHideFlags: 0
