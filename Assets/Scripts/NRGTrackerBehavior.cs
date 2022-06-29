@@ -30,7 +30,7 @@ public class NRGTrackerBehavior : MonoBehaviour
 			startingCaps = References.startingEnergyCapsuleCount;
 		}
 
-		Debug.Log(References.currentEnergyCapsuleCount);
+		//Debug.Log(References.currentEnergyCapsuleCount);
 	}
 
 	public void SetNRGTrackerDisplay(int numberLeft)
