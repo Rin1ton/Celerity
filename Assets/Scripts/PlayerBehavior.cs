@@ -520,8 +520,8 @@ public class PlayerBehavior : MonoBehaviour
 		Quaternion yQuaternion = Quaternion.AngleAxis(rotationY, -Vector3.right);
 
 		//rotate player and camera
-		myRB.transform.localRotation = myRBOriginalRotation * xQuaternion;
-		myCamera.transform.localRotation = myCameraOriginalRotation * yQuaternion;
+		myRB.transform.localRotation = myRBOriginalRotation * xQuaternion * myRBOriginalRotation;
+		myCamera.transform.localRotation = myCameraOriginalRotation * yQuaternion * myCameraOriginalRotation;
 	}
 
 	//move the player laterally based on the keyboard and physics settings
@@ -557,13 +557,16 @@ public class PlayerBehavior : MonoBehaviour
 		if (isThrusting)
 			moveInput = myRB.velocity.magnitude > currentMove.topSpeed ? Vector3.zero : myRB.transform.forward;
 
+		Vector3 correctedMoveInput = new Vector3();
+		correctedMoveInput = myRBOriginalRotation * moveInput;
+
 		//call the appropriate move function, whether we're on the ground or the air
 		if (isGrounded)
-			MoveWithFriction(myRB.velocity, moveInput);
+			MoveWithFriction(myRB.velocity, correctedMoveInput);
 		else if (!isWallRunning)
-			MoveWithNoFriction(myRB.velocity, moveInput);
+			MoveWithNoFriction(myRB.velocity, correctedMoveInput);
 		else
-			MoveOnWall(myRB.velocity, moveInput);
+			MoveOnWall(myRB.velocity, correctedMoveInput);
 	}
 
 	/*
