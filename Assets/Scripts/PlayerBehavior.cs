@@ -158,7 +158,7 @@ public class PlayerBehavior : MonoBehaviour
 	//double jump
 	readonly float timeToDoubleJumpAfterWallRun = 1.6f;
 	readonly float doubleJumpMinLateralSpeed = 16;
-	readonly float doubleJumpHeight = 6;
+	readonly float doubleJumpHeight = 10;
 	bool doubleJumpReady = false;
 
 	//grab
