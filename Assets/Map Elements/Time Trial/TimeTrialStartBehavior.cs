@@ -21,12 +21,22 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	Vector3 emitterLaunchVector;
 	float timeSinceSentTrailEmitter = 9999;
 	GameObject currentTrailEmitter;
-	readonly float emitterTimeToReachFinish = 1.5f;
-	
+	readonly float emitterTimeToReachFinish = 2;
+	readonly float playerDistanceToEmitTrail = 12;
+
+	//awarding NRG stuff
+	public GameObject finishLineCube;
+	public GameObject blankNRGPrefab;
+	bool raceIsRunning = false;
 
 	// Start is called before the first frame update
 	void Start()
 	{
+		if (myFinishLine != null)
+			References.startingEnergyCapsuleCount++;
+		else
+			Debug.LogError("I don't have a finish line!!!");
+
 		//get the renderers for my parts
 		myLeftPillarHeadRenderer = myLeftPillarHead.GetComponent<Renderer>();
 		myRightPillarHeadRenderer = myRightPillarHead.GetComponent<Renderer>();
@@ -48,17 +58,29 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		EmitTrailToFinish();
+	}
+
+	public void EmitTrailToFinish()
+	{
+		if (timeSinceSentTrailEmitter < emitterTimeToReachFinish)
+			timeSinceSentTrailEmitter += Time.deltaTime;
+
 		if (timeSinceSentTrailEmitter >= emitterTimeToReachFinish)
 		{
-			timeSinceSentTrailEmitter = 0;
 
 			if (currentTrailEmitter != null)
 				Destroy(currentTrailEmitter);
 
-			currentTrailEmitter = Instantiate(trailEmitterPrefab, startPosition, transform.rotation);
-			Rigidbody TERB = currentTrailEmitter.GetComponent<Rigidbody>();
+			if (Vector3.Distance(References.thePlayer.transform.position, startPosition) <= playerDistanceToEmitTrail || raceIsRunning)
+			{
+				currentTrailEmitter = Instantiate(trailEmitterPrefab, startPosition, transform.rotation);
+				Rigidbody TERB = currentTrailEmitter.GetComponent<Rigidbody>();
+				TERB.velocity = emitterLaunchVector;
 
-			TERB.velocity = emitterLaunchVector;
+				timeSinceSentTrailEmitter = 0;
+			}
+		
 		}
 	}
 
@@ -75,7 +97,29 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	{
 		//if we're passed through by the player
 		if (other.GetComponent<PlayerBehavior>() != null)
+		{
 			SetMyColor(Color.green);
+			raceIsRunning = true;
+		}
+	}
+
+	public void PlayerCrossedFinish()
+	{
+		if (raceIsRunning)
+		{
+			SetMyColor(Color.gray);
+			Instantiate(blankNRGPrefab, finishLineOrb.position, Quaternion.identity);
+			Destroy(finishLineOrb.gameObject);
+			Destroy(finishLineCube.gameObject);
+
+			raceIsRunning = false;
+
+			if (currentTrailEmitter != null)
+				Destroy(currentTrailEmitter);
+			Destroy(myFinishLine);
+			Destroy(this);
+		}
+
 	}
 
 	/*

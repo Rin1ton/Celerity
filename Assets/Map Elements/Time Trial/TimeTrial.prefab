@@ -61,6 +61,17 @@ PrefabInstance:
       objectReference: {fileID: 7104926913273286544}
     - target: {fileID: 2472931654412890952, guid: f8bb82584f42cfa45ac1e3072e60fd9e,
         type: 3}
+      propertyPath: blankNRGPrefab
+      value: 
+      objectReference: {fileID: 1681752119625257047, guid: f925f163e4a368946ab2c36e069df549,
+        type: 3}
+    - target: {fileID: 2472931654412890952, guid: f8bb82584f42cfa45ac1e3072e60fd9e,
+        type: 3}
+      propertyPath: finishLineCube
+      value: 
+      objectReference: {fileID: 3143050187633079424}
+    - target: {fileID: 2472931654412890952, guid: f8bb82584f42cfa45ac1e3072e60fd9e,
+        type: 3}
       propertyPath: trailEmitterPrefab
       value: 
       objectReference: {fileID: 2425536841659332451, guid: a0c86d947e8e0e248beeeb0289433e6d,
@@ -128,6 +139,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2433595545611219445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &257901986567439037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2472931654412890952, guid: f8bb82584f42cfa45ac1e3072e60fd9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2433595545611219445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b239073c63bd74d968846a388327e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3865898592272984278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,6 +218,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeTrialEnd
       objectReference: {fileID: 0}
+    - target: {fileID: 6128717018395153879, guid: 49fa06b6d6e1eb649b1a00b120e2761e,
+        type: 3}
+      propertyPath: myOrb
+      value: 
+      objectReference: {fileID: 4173200751535312126}
+    - target: {fileID: 6128717018395153879, guid: 49fa06b6d6e1eb649b1a00b120e2761e,
+        type: 3}
+      propertyPath: myStart
+      value: 
+      objectReference: {fileID: 257901986567439037}
+    - target: {fileID: 6128717018395153879, guid: 49fa06b6d6e1eb649b1a00b120e2761e,
+        type: 3}
+      propertyPath: myOrbRenderer
+      value: 
+      objectReference: {fileID: 4173200751535312126}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49fa06b6d6e1eb649b1a00b120e2761e, type: 3}
 --- !u!4 &1082632976379451847 stripped
@@ -218,6 +256,18 @@ MonoBehaviour:
 --- !u!4 &7104926913273286544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6286931809743234886, guid: 49fa06b6d6e1eb649b1a00b120e2761e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3865898592272984278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4173200751535312126 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 886155453434356776, guid: 49fa06b6d6e1eb649b1a00b120e2761e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3865898592272984278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3143050187633079424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2177548933176564822, guid: 49fa06b6d6e1eb649b1a00b120e2761e,
     type: 3}
   m_PrefabInstance: {fileID: 3865898592272984278}
   m_PrefabAsset: {fileID: 0}

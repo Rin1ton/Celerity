@@ -21,6 +21,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
 	public ParticleSystem myParticleSystem;
 	public GameObject myPointLight;
 	public GameObject myOverheadLabel;
+	public bool isAccountedFor;
 	float timeToDieAfterCollected = 2.5f;
 	bool collected = false;
 	float chaseThePlayerSpeed;
@@ -35,7 +36,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {		
-		if (myOverheadLabel == null)
+		if (myOverheadLabel == null && !isAccountedFor)
 			References.startingEnergyCapsuleCount++;
 
         //get player
