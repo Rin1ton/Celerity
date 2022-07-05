@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeTrialStartBehavior : MonoBehaviour
 {
 
+	public float raceTimeLimit;
 	public GameObject myLeftPillarHead;
 	public GameObject myRightPillarHead;
 	public GameObject myCrossingLine;
@@ -21,6 +22,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	Vector3 emitterLaunchVector;
 	float timeSinceSentTrailEmitter = 9999;
 	GameObject currentTrailEmitter;
+	TrailRenderer currentTrailEmitterTR;
 	readonly float emitterTimeToReachFinish = 2;
 	readonly float playerDistanceToEmitTrail = 12;
 
@@ -73,11 +75,15 @@ public class TimeTrialStartBehavior : MonoBehaviour
 		{
 
 			if (currentTrailEmitter != null)
-				Destroy(currentTrailEmitter);
+			{
+				Destroy(currentTrailEmitter, currentTrailEmitterTR.time);
+				currentTrailEmitterTR.emitting = false;
+			}
 
 			if (Vector3.Distance(References.thePlayer.transform.position, startPosition) <= playerDistanceToEmitTrail || raceIsRunning)
 			{
 				currentTrailEmitter = Instantiate(trailEmitterPrefab, startPosition, transform.rotation);
+				currentTrailEmitterTR = currentTrailEmitter.GetComponent<TrailRenderer>();
 				Rigidbody TERB = currentTrailEmitter.GetComponent<Rigidbody>();
 				TERB.velocity = emitterLaunchVector;
 

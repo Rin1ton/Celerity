@@ -4085,6 +4085,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 257901986567439037, guid: 657d5ba6ee00e3e4aa53a0b486b611ae,
+        type: 3}
+      propertyPath: raceTimeLimit
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1082632976379451847, guid: 657d5ba6ee00e3e4aa53a0b486b611ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8383,6 +8388,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 830722287266254316, guid: 30cbf69e63f33854298b16518ba4bee1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1477738514900952281, guid: 30cbf69e63f33854298b16518ba4bee1,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -8497,6 +8507,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755383674041787041, guid: 30cbf69e63f33854298b16518ba4bee1,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755383674041787041, guid: 30cbf69e63f33854298b16518ba4bee1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755383674041787041, guid: 30cbf69e63f33854298b16518ba4bee1,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5244953881025122989, guid: 30cbf69e63f33854298b16518ba4bee1,
         type: 3}
