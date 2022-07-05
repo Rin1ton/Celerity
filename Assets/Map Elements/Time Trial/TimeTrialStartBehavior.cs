@@ -53,6 +53,9 @@ public class TimeTrialStartBehavior : MonoBehaviour
 		emitterLaunchVector.x = finishPositionDelta.x / emitterTimeToReachFinish;
 		emitterLaunchVector.y = (finishPositionDelta.y / emitterTimeToReachFinish) - (0.5f * Physics.gravity.y * emitterTimeToReachFinish);
 		emitterLaunchVector.z = finishPositionDelta.z / emitterTimeToReachFinish;
+
+		//set my starting color
+		SetMyColor(Color.cyan);
 	}
 
 	// Update is called once per frame

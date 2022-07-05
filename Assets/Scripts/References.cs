@@ -16,6 +16,7 @@ public static class References
 	public static PauseMenuBehavior thePauseMenu;
 	public static TextMeshProUGUI mainMenuExitPrompt;
 	public static float yeeto = 0;
+	public static GameObject ActiveHUD;
 
 	public const string jump = "Jump";
 	public const string yeet = "Attack";
