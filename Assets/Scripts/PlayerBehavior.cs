@@ -190,6 +190,12 @@ public class PlayerBehavior : MonoBehaviour
 	readonly float speedLineParticleMultiplier = 35;
 	readonly float speedLineParticleMax = 200;
 
+	//water running
+	readonly float waterRunTimeLimit = 2.5f;
+	readonly float minSpeedToWaterRun = 20;
+	float timeLeftToWaterRun;
+	bool isOnWater = false;
+
 	//testing
 	//public GameObject colliderMarker;
 	//public Rigidbody sphereRB;					funny sphere attached to camera, 7.5 meters in front
@@ -325,6 +331,7 @@ public class PlayerBehavior : MonoBehaviour
 			Thrust();
 			AirKick();
 			Grab();
+			WaterRun();
 		}
 		HUD();
 	}
@@ -368,6 +375,9 @@ public class PlayerBehavior : MonoBehaviour
 
 		if (timeSinceLastYeet < yeetCoolDown)
 			timeSinceLastYeet += Time.deltaTime;
+
+		if (isOnWater && timeLeftToWaterRun >= 0)
+			timeLeftToWaterRun -= Time.deltaTime;
 	}
 
 	void HUD()
@@ -1042,6 +1052,18 @@ public class PlayerBehavior : MonoBehaviour
 
 	}
 
+	void WaterRun()
+	{
+		if (timeLeftToWaterRun <= 0 || MyLateralVelocity().magnitude < minSpeedToWaterRun)
+		{
+			Physics.IgnoreLayerCollision(9, 4, true);
+		}
+		else
+		{
+			Physics.IgnoreLayerCollision(9, 4, false);
+		}
+	}
+
 	/*
 	 * resets the jump so the player can jump again
 	 */
@@ -1062,7 +1084,7 @@ public class PlayerBehavior : MonoBehaviour
 		Vector3 ourWall = Vector3.ProjectOnPlane(currentWall, Vector3.up);      //determine our wall run candidate and treat it as perfectly vertical
 
 		if (currentWall != Vector3.zero &&																				//if we're in contact with a viable wall
-			!isSkating &&                                                                                               //can't wall run while skating
+			isSkating &&                                                                                                //can't wall run while *not* skating
 			timeSinceGrounded > wallRunGroundedBuffer &&                                                                //have to be off the ground for a period of time before a wall run can be initiated
 			timeSinceLastJump > wallRunGroundedBuffer &&                                                                //jumping exits the wall run
 			(isWallRunning || !TwoWallsTooClose(lastWall, currentWall)) &&                                              //can't initiate a wall run on a wall that's too similar in angle to the last one
@@ -1139,6 +1161,20 @@ public class PlayerBehavior : MonoBehaviour
 	private void OnCollisionStay(Collision other)
 	{
 		GroundAndWallNormal(other);
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		//if we've collided with water
+		if (collision.gameObject.layer == 4)
+		{
+			isOnWater = true;
+		} else
+		{
+			isOnWater = false;
+			timeLeftToWaterRun = waterRunTimeLimit;
+		}
+
 	}
 
 	void GroundAndWallNormal(Collision other)

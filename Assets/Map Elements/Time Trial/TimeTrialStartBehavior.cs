@@ -5,7 +5,6 @@ using UnityEngine;
 public class TimeTrialStartBehavior : MonoBehaviour
 {
 
-	public float raceTimeLimit;
 	public GameObject myLeftPillarHead;
 	public GameObject myRightPillarHead;
 	public GameObject myCrossingLine;
@@ -30,6 +29,15 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	public GameObject finishLineCube;
 	public GameObject blankNRGPrefab;
 	bool raceIsRunning = false;
+
+	//timing race stuff
+	public float raceTimeLimit;
+	float timeRemaining = 0;
+
+	//colors
+	Color defaultColor = Color.cyan;
+	Color runningColor = Color.green;
+	Color deadColor = Color.gray;
 
 	// Start is called before the first frame update
 	void Start()
@@ -57,16 +65,42 @@ public class TimeTrialStartBehavior : MonoBehaviour
 		emitterLaunchVector.z = finishPositionDelta.z / emitterTimeToReachFinish;
 
 		//set my starting color
-		SetMyColor(Color.cyan);
+		SetMyColor(defaultColor);
+
+		//
+		if (raceTimeLimit == 0)
+		{
+			raceTimeLimit = 10;
+			Debug.Log("race has no time limit, setting to default.");
+		}
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		EmitTrailToFinish();
+		UpdateTimer();
 	}
 
-	public void EmitTrailToFinish()
+	void UpdateTimer()
+	{
+		if (raceIsRunning)
+		{
+			timeRemaining -= Time.deltaTime;
+			References.theTimerBar.SetValue(timeRemaining / raceTimeLimit);
+
+			//if the player fails the race
+			if (timeRemaining <= 0)
+			{
+				SetMyColor(defaultColor);
+				raceIsRunning = false;
+				References.theTimerBar.Hide();
+			}
+		}
+
+	}
+
+	void EmitTrailToFinish()
 	{
 		if (timeSinceSentTrailEmitter < emitterTimeToReachFinish)
 			timeSinceSentTrailEmitter += Time.deltaTime;
@@ -107,8 +141,11 @@ public class TimeTrialStartBehavior : MonoBehaviour
 		//if we're passed through by the player
 		if (other.GetComponent<PlayerBehavior>() != null)
 		{
-			SetMyColor(Color.green);
+			SetMyColor(runningColor);
 			raceIsRunning = true;
+
+			timeRemaining = raceTimeLimit;
+			References.theTimerBar.Show();
 		}
 	}
 
@@ -116,12 +153,13 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	{
 		if (raceIsRunning)
 		{
-			SetMyColor(Color.gray);
+			SetMyColor(deadColor);
 			Instantiate(blankNRGPrefab, finishLineOrb.position, Quaternion.identity);
 			Destroy(finishLineOrb.gameObject);
 			Destroy(finishLineCube.gameObject);
 
 			raceIsRunning = false;
+			References.theTimerBar.Hide();
 
 			if (currentTrailEmitter != null)
 				Destroy(currentTrailEmitter);

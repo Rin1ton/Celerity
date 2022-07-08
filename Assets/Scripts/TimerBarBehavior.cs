@@ -20,7 +20,7 @@ public class TimerBarBehavior : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		//Hide();
+		Hide();
 	}
 
 	public void SetValue(float val)

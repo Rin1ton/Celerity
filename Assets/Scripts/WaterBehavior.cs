@@ -15,7 +15,7 @@ public class WaterBehavior : MonoBehaviour
 	{
 		thePlayer = References.thePlayer.GetComponent<PlayerBehavior>();
 	}
-
+	/*
 	// Update is called once per frame
 	void Update()
 	{
@@ -37,6 +37,6 @@ public class WaterBehavior : MonoBehaviour
 	{
 		if (other.GetComponent<PlayerBehavior>() != null)
 			playerInContact = false;
-	}
+	}*/
 
 }
