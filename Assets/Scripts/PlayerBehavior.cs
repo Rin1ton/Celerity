@@ -196,6 +196,12 @@ public class PlayerBehavior : MonoBehaviour
 	float timeLeftToWaterRun;
 	bool isOnWater = false;
 
+	//animation
+	public GameObject myLeftArm;
+	public GameObject myRightArm;
+	public GameObject myBoard;
+	public GameObject myArmRotationPoint;
+
 	//testing
 	//public GameObject colliderMarker;
 	//public Rigidbody sphereRB;					funny sphere attached to camera, 7.5 meters in front
@@ -207,6 +213,11 @@ public class PlayerBehavior : MonoBehaviour
 	 * here it is:
 	 * [my code]
 	 =====================================================================*/
+
+
+
+
+
 
 	//awake runs before start
 	void Awake()
@@ -308,6 +319,11 @@ public class PlayerBehavior : MonoBehaviour
 		
 	}
 
+
+
+
+
+
 	/*===========================================================================
 	 * Very important
 	 * update is called once per frame.
@@ -350,6 +366,29 @@ public class PlayerBehavior : MonoBehaviour
 		MyLateUpdate();             //MUST BE LAST IN FIXED UPDATE
 	}
 
+	private void LateUpdate()
+	{
+		//
+		Quaternion myLeftArmOriginalRotation = myLeftArm.transform.rotation;
+		Quaternion myRightArmOriginalRotation = myRightArm.transform.rotation;
+		Quaternion myBoardOriginalRotation = myBoard.transform.rotation;
+
+		//
+		Quaternion yQuaternion = Quaternion.AngleAxis(-rotationY, -Vector3.right);
+
+		//rotate hands
+		myLeftArm.transform.rotation = myLeftArmOriginalRotation * yQuaternion;
+
+		//myRightArm.transform.rotation = myRightArmOriginalRotation * yQuaternion;
+		myRightArm.transform.RotateAround(myArmRotationPoint.transform.position, myArmRotationPoint.transform.right, -rotationY);
+		
+		myBoard.transform.rotation = myBoardOriginalRotation * yQuaternion;
+	}
+
+
+
+
+
 	//called at the end of every fixed frame, but before unity calculates any collisions
 	void MyLateUpdate()
 	{
@@ -358,6 +397,7 @@ public class PlayerBehavior : MonoBehaviour
 		currentGround = Vector3.zero;
 		currentWall = Vector3.zero;
 	}
+
 
 	void Timers()
 	{
@@ -612,7 +652,6 @@ public class PlayerBehavior : MonoBehaviour
 		//call our accelerate function
 		Accelerate(prevVelocity, currentMove.groundAcceleration, moveDir);
 	}
-
 
 	/*
 	 * Movement in air calls Accelerate without applying friction
