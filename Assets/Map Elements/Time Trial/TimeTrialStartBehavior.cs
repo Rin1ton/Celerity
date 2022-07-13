@@ -139,7 +139,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		//if we're passed through by the player
-		if (other.GetComponent<PlayerBehavior>() != null)
+		if (other.GetComponent<PlayerBehavior>() != null && !raceIsRunning)
 		{
 			SetMyColor(runningColor);
 			raceIsRunning = true;

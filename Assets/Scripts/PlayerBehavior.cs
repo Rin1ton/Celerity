@@ -377,12 +377,14 @@ public class PlayerBehavior : MonoBehaviour
 		Quaternion yQuaternion = Quaternion.AngleAxis(-rotationY, -Vector3.right);
 
 		//rotate hands
-		myLeftArm.transform.rotation = myLeftArmOriginalRotation * yQuaternion;
+		//myLeftArm.transform.rotation = myLeftArmOriginalRotation * yQuaternion;
 
 		//myRightArm.transform.rotation = myRightArmOriginalRotation * yQuaternion;
 		myRightArm.transform.RotateAround(myArmRotationPoint.transform.position, myArmRotationPoint.transform.right, -rotationY);
+		myLeftArm.transform.RotateAround(myArmRotationPoint.transform.position, myArmRotationPoint.transform.right, -rotationY);
+		myBoard.transform.RotateAround(myArmRotationPoint.transform.position, myArmRotationPoint.transform.right, -rotationY);
 		
-		myBoard.transform.rotation = myBoardOriginalRotation * yQuaternion;
+		//myBoard.transform.rotation = myBoardOriginalRotation * yQuaternion;
 	}
 
 
