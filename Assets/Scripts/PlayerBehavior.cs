@@ -200,7 +200,7 @@ public class PlayerBehavior : MonoBehaviour
 	public GameObject myLeftArm;
 	public GameObject myRightArm;
 	public GameObject myBoard;
-	public GameObject myArmRotationPoint;
+	public Transform myArmRotationPoint;
 
 	//testing
 	//public GameObject colliderMarker;
@@ -368,23 +368,14 @@ public class PlayerBehavior : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		//
-		Quaternion myLeftArmOriginalRotation = myLeftArm.transform.rotation;
-		Quaternion myRightArmOriginalRotation = myRightArm.transform.rotation;
-		Quaternion myBoardOriginalRotation = myBoard.transform.rotation;
+		float myArmAndBoardRotation = Mathf.Clamp(-rotationY, -37, 30);
 
-		//
-		Quaternion yQuaternion = Quaternion.AngleAxis(-rotationY, -Vector3.right);
-
-		//rotate hands
-		//myLeftArm.transform.rotation = myLeftArmOriginalRotation * yQuaternion;
-
-		//myRightArm.transform.rotation = myRightArmOriginalRotation * yQuaternion;
-		myRightArm.transform.RotateAround(myArmRotationPoint.transform.position, myArmRotationPoint.transform.right, -rotationY);
-		myLeftArm.transform.RotateAround(myArmRotationPoint.transform.position, myArmRotationPoint.transform.right, -rotationY);
-		myBoard.transform.RotateAround(myArmRotationPoint.transform.position, myArmRotationPoint.transform.right, -rotationY);
-		
-		//myBoard.transform.rotation = myBoardOriginalRotation * yQuaternion;
+		if (!isSkating)
+		{
+			myBoard.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
+			myRightArm.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
+			myLeftArm.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
+		}
 	}
 
 

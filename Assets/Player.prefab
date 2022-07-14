@@ -6638,7 +6638,7 @@ MonoBehaviour:
   myLeftArm: {fileID: 424162036097563287}
   myRightArm: {fileID: 1268433898968712720}
   myBoard: {fileID: 3553073284887900856}
-  myArmRotationPoint: {fileID: 4930489506641230482}
+  myArmRotationPoint: {fileID: 3826954519257584517}
 --- !u!114 &7127299252928392713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11920,8 +11920,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4930489506641230482}
-  m_LocalRotation: {x: 0.7073509, y: -1.4443555e-11, z: -1.4154741e-11, w: 0.70686257}
-  m_LocalPosition: {x: 0.0005946378, y: -0.005325198, z: 0.42940322}
+  m_LocalRotation: {x: 0.7073509, y: -1.4443554e-11, z: -1.4154742e-11, w: 0.70686257}
+  m_LocalPosition: {x: 0, y: -0.005805075, z: 0.43191284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6559502301967086170}

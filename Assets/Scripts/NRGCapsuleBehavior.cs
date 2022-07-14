@@ -50,6 +50,8 @@ public class NRGCapsuleBehavior : MonoBehaviour
 
 		//add me to the list of NRG
 		References.theLevelLogic.thisLevelsNRG.Add(this);
+
+		Debug.Log(gameObject.name);
     }
 
     // Update is called once per frame
