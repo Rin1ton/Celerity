@@ -368,14 +368,7 @@ public class PlayerBehavior : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		float myArmAndBoardRotation = Mathf.Clamp(-rotationY, -37, 30);
-
-		if (!isSkating)
-		{
-			myBoard.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
-			myRightArm.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
-			myLeftArm.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
-		}
+		MoveArmsWithCamera();
 	}
 
 
@@ -563,8 +556,20 @@ public class PlayerBehavior : MonoBehaviour
 		Quaternion yQuaternion = Quaternion.AngleAxis(rotationY, -Vector3.right);
 
 		//rotate player and camera
-		myRB.transform.localRotation = myRBOriginalRotation * xQuaternion * myRBOriginalRotation;
-		myCamera.transform.localRotation = myCameraOriginalRotation * yQuaternion * myCameraOriginalRotation;
+		myRB.transform.localRotation = myRBOriginalRotation * xQuaternion /** myRBOriginalRotation*/;
+		myCamera.transform.localRotation = myCameraOriginalRotation * yQuaternion /** myCameraOriginalRotation*/;
+	}
+
+	void MoveArmsWithCamera()
+	{
+		float myArmAndBoardRotation = Mathf.Clamp(-rotationY, -37, 30);
+
+		if (!isSkating)
+		{
+			myBoard.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
+			myRightArm.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
+			myLeftArm.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
+		}
 	}
 
 	//move the player laterally based on the keyboard and physics settings
@@ -600,7 +605,7 @@ public class PlayerBehavior : MonoBehaviour
 		if (isThrusting)
 			moveInput = myRB.velocity.magnitude > currentMove.topSpeed ? Vector3.zero : myRB.transform.forward;
 
-		Vector3 correctedMoveInput = new Vector3();
+		Vector3 correctedMoveInput;
 		correctedMoveInput = myRBOriginalRotation * moveInput;
 
 		//call the appropriate move function, whether we're on the ground or the air
