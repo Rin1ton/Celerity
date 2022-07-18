@@ -228,6 +228,7 @@ public class PlayerBehavior : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		
 		//get my rigidbody
 		myRB = GetComponent<Rigidbody>();
 
@@ -241,6 +242,12 @@ public class PlayerBehavior : MonoBehaviour
 		//lock the mouse and make it disappear
 		UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 		UnityEngine.Cursor.visible = false;
+
+		//camera broke; heinous fix inbound
+		//this makes it so we can place the player in any rotation
+		Quaternion cameraCorrection = Quaternion.AngleAxis(-myCamera.transform.rotation.eulerAngles.y, Vector3.up);
+		Quaternion cameraIncorrectPosition = myCamera.transform.rotation;
+		myCamera.transform.rotation = cameraIncorrectPosition * cameraCorrection;
 
 		//get my original rotation
 		myRBOriginalRotation = myRB.transform.rotation;
@@ -556,8 +563,8 @@ public class PlayerBehavior : MonoBehaviour
 		Quaternion yQuaternion = Quaternion.AngleAxis(rotationY, -Vector3.right);
 
 		//rotate player and camera
-		myRB.transform.localRotation = myRBOriginalRotation * xQuaternion /** myRBOriginalRotation*/;
-		myCamera.transform.localRotation = myCameraOriginalRotation * yQuaternion /** myCameraOriginalRotation*/;
+		myRB.transform.localRotation = myRBOriginalRotation * xQuaternion;
+		myCamera.transform.localRotation = myCameraOriginalRotation * yQuaternion;
 	}
 
 	void MoveArmsWithCamera()
@@ -605,16 +612,13 @@ public class PlayerBehavior : MonoBehaviour
 		if (isThrusting)
 			moveInput = myRB.velocity.magnitude > currentMove.topSpeed ? Vector3.zero : myRB.transform.forward;
 
-		Vector3 correctedMoveInput;
-		correctedMoveInput = myRBOriginalRotation * moveInput;
-
 		//call the appropriate move function, whether we're on the ground or the air
 		if (isGrounded)
-			MoveWithFriction(myRB.velocity, correctedMoveInput);
+			MoveWithFriction(myRB.velocity, moveInput);
 		else if (!isWallRunning)
-			MoveWithNoFriction(myRB.velocity, correctedMoveInput);
+			MoveWithNoFriction(myRB.velocity, moveInput);
 		else
-			MoveOnWall(myRB.velocity, correctedMoveInput);
+			MoveOnWall(myRB.velocity, moveInput);
 	}
 
 	/*
