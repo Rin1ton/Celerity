@@ -136,7 +136,7 @@ public class SavedSettings
 			}
 
 			//save the binding in our save file
-			RebindActionInSaveFile(currentRebindButton.myActionName, lastKeyPressed);
+			//RebindActionInSaveFile(currentRebindButton.myActionName, lastKeyPressed);
 
 			//rebind the action in the current player behavior script, if the player exists exists
 			if (References.thePlayer != null)
@@ -224,7 +224,7 @@ public class SavedSettings
 		verticalSensSlider.value = newVerticalSens;
 
 		//update sens on file
-		UpdateSensOnFile(newHorizontalSens, newVerticalSens);
+		//UpdateSensOnFile(newHorizontalSens, newVerticalSens);
 
 		//set the sens for the players
 		if (References.thePlayer != null)
@@ -241,7 +241,7 @@ public class SavedSettings
 		verticalSensInputField.text = References.thePauseMenu.SetInputFieldText(verticalSensSlider.value);
 
 		//update sens on file
-		UpdateSensOnFile(horizontalSensSlider.value, verticalSensSlider.value);
+		//UpdateSensOnFile(horizontalSensSlider.value, verticalSensSlider.value);
 
 		//update the sens for the player
 		if (References.thePlayer != null)
@@ -263,12 +263,12 @@ public class SavedSettings
 			ourPlayerBehavior.invertY = false;
 			myInvertButton.myTextObject.text = "Disabled";
 		}
-		UpdateMouseInvertOnFile(ourPlayerBehavior.invertY);
+		//UpdateMouseInvertOnFile(ourPlayerBehavior.invertY);
 	}
 
 	#region Writing to Save File
 
-	static void UpdateMouseInvertOnFile(bool invertMouse)
+	/*static void UpdateMouseInvertOnFile(bool invertMouse)
 	{
 		return;
 	}
@@ -281,7 +281,7 @@ public class SavedSettings
 	static void RebindActionInSaveFile(string actionName, KeyCode buttonToRebindItTo)
 	{
 		return;
-	}
+	}*/
 
 	public static void SavePlayerSettings()
 	{

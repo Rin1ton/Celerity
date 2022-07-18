@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 
 public class LevelBehavior : MonoBehaviour
@@ -10,8 +13,14 @@ public class LevelBehavior : MonoBehaviour
 	public List<NRGCapsuleBehavior> thisLevelsNRG;
 	bool levelJustLoaded = true;
 
+	//saving and loading
+	public static string saveGamePath;
+
 	private void Awake()
     {
+		//
+		saveGamePath = Application.persistentDataPath + "/PlayerSaveGame.cringe";
+
         References.theLevelLogic = this;
 		References.startingEnergyCapsuleCount = 0;
     }
@@ -19,7 +28,7 @@ public class LevelBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+		SaveGame();
     }
 
     // Update is called once per frame
@@ -44,6 +53,17 @@ public class LevelBehavior : MonoBehaviour
 		{
 			Destroy(thisLevelsNRG[NRGs].gameObject);
 		}
+	}
+
+	public void SaveGame()
+	{
+		BinaryFormatter myFormatter = new BinaryFormatter();
+		FileStream myStream = new FileStream(saveGamePath, FileMode.Create);
+
+		PlayerSavedGame myData = new PlayerSavedGame();
+
+		myFormatter.Serialize(myStream, myData);
+		myStream.Close();
 	}
 
 }

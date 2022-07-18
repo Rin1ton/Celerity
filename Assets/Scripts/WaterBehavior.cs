@@ -13,30 +13,14 @@ public class WaterBehavior : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		thePlayer = References.thePlayer.GetComponent<PlayerBehavior>();
-	}
-	/*
-	// Update is called once per frame
-	void Update()
-	{
-		if (myCollider.enabled == true && thePlayer.GetVector3("MyLateralVelocity()").magnitude < minPlayerSpeed)
-			myCollider.enabled = false;
-		else if (myCollider.enabled == false && 
-				 thePlayer.GetVector3("MyLateralVelocity()").magnitude >= minPlayerSpeed && 
-				 !playerInContact)
-			myCollider.enabled = true;
+		if (References.thePlayer != null)
+			thePlayer = References.thePlayer.GetComponent<PlayerBehavior>();
 	}
 
-	private void OnTriggerEnter(Collider other)
+	private void Update()
 	{
-		if (other.GetComponent<PlayerBehavior>() != null)
-			playerInContact = true;
+		if (References.thePlayer != null && thePlayer == null)
+			thePlayer = References.thePlayer.GetComponent<PlayerBehavior>();
 	}
-
-	private void OnTriggerExit(Collider other)
-	{
-		if (other.GetComponent<PlayerBehavior>() != null)
-			playerInContact = false;
-	}*/
 
 }
