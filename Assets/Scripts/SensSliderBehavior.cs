@@ -23,7 +23,7 @@ public class SensSliderBehavior : MonoBehaviour
 		//			   "after this, just the invert mouselook button is left.");
 		if (References.thePlayer != null)
 		{
-			Debug.Log("X Sens : " + References.thePlayer.GetComponent<PlayerBehavior>().xSens + " Y Sens : " + References.thePlayer.GetComponent<PlayerBehavior>().ySens);
+			//Debug.Log("X Sens : " + References.thePlayer.GetComponent<PlayerBehavior>().xSens + " Y Sens : " + References.thePlayer.GetComponent<PlayerBehavior>().ySens);
 			if (isHorizontal)
 				gameObject.GetComponent<Slider>().value = References.thePlayer.GetComponent<PlayerBehavior>().xSens;
 			else

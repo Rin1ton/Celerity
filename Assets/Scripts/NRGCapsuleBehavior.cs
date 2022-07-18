@@ -50,8 +50,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
 
 		//add me to the list of NRG
 		References.theLevelLogic.thisLevelsNRG.Add(this);
-
-		Debug.Log(gameObject.name);
     }
 
     // Update is called once per frame
@@ -81,7 +79,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
 					myParticleSystem.Stop();
 					if (myPointLight != null)
 						Destroy(myPointLight);
-					References.theLevelLogic.NRGCollect();
+					References.theLevelLogic.NRGCollect(this);
 					hasBeenCollected = true;
 
 					//if I'm a main menu selection, Run the function of that menu option
@@ -98,7 +96,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
 			{
 				if (!hasBeenCollected)
 				{
-					References.theLevelLogic.NRGCollect();
+					References.theLevelLogic.NRGCollect(this);
 					hasBeenCollected = true;
 				}
 				Destroy(gameObject);

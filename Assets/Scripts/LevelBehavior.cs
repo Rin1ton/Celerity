@@ -11,6 +11,7 @@ public class LevelBehavior : MonoBehaviour
 {
 
 	public List<NRGCapsuleBehavior> thisLevelsNRG;
+	public List<string> NRGCollectedThisSession;
 	bool levelJustLoaded = true;
 
 	//saving and loading
@@ -28,7 +29,7 @@ public class LevelBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		SaveGame();
+		
     }
 
     // Update is called once per frame
@@ -41,10 +42,11 @@ public class LevelBehavior : MonoBehaviour
 		}
 	}
 
-	public void NRGCollect()
+	public void NRGCollect(NRGCapsuleBehavior collectedNRG)
 	{
 		if (References.playerNRGTracker != null)
 			References.playerNRGTracker.SetNRGTrackerDisplay(References.currentEnergyCapsuleCount);
+		NRGCollectedThisSession.Add(collectedNRG.name);
 	}
 
 	public void DestroyAllNRG()
