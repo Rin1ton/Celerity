@@ -21,7 +21,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
 	public ParticleSystem myParticleSystem;
 	public GameObject myPointLight;
 	public GameObject myOverheadLabel;
-	public bool isAccountedFor;
+	public bool isAccountedForByChallenge;
 	float timeToDieAfterCollected = 2.5f;
 	bool collected = false;
 	float chaseThePlayerSpeed;
@@ -36,7 +36,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {		
-		if (myOverheadLabel == null && !isAccountedFor)
+		if (myOverheadLabel == null && !isAccountedForByChallenge)
 			References.startingEnergyCapsuleCount++;
 
         //get player
@@ -79,7 +79,14 @@ public class NRGCapsuleBehavior : MonoBehaviour
 					myParticleSystem.Stop();
 					if (myPointLight != null)
 						Destroy(myPointLight);
-					References.theLevelLogic.NRGCollect(this);
+
+					//if we are spawned by a time trial, DO NOT pass our name to the game saving script.
+					//our time trial will keep track of our collected status.
+					if (!isAccountedForByChallenge)
+						References.theLevelLogic.NRGCollect(this);
+					else
+						References.theLevelLogic.NRGCollect();
+
 					hasBeenCollected = true;
 
 					//if I'm a main menu selection, Run the function of that menu option
@@ -96,7 +103,13 @@ public class NRGCapsuleBehavior : MonoBehaviour
 			{
 				if (!hasBeenCollected)
 				{
-					References.theLevelLogic.NRGCollect(this);
+					//if we are spawned by a time trial, DO NOT pass our name to the game saving script.
+					//our time trial will keep track of our collected status.
+					if (!isAccountedForByChallenge)
+						References.theLevelLogic.NRGCollect(this);
+					else
+						References.theLevelLogic.NRGCollect();
+
 					hasBeenCollected = true;
 				}
 				Destroy(gameObject);

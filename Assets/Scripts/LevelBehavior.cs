@@ -49,6 +49,12 @@ public class LevelBehavior : MonoBehaviour
 		NRGCollectedThisSession.Add(collectedNRG.name);
 	}
 
+	public void NRGCollect()
+	{
+		if (References.playerNRGTracker != null)
+			References.playerNRGTracker.SetNRGTrackerDisplay(References.currentEnergyCapsuleCount);
+	}
+
 	public void DestroyAllNRG()
 	{
 		for (int NRGs = thisLevelsNRG.Count - 1; NRGs >= 0; NRGs--)
