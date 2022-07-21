@@ -16,6 +16,9 @@ public class LevelBehavior : MonoBehaviour
 
 	//saving and loading
 	public static string saveGamePath;
+	readonly KeyCode deleteSavedGameKey1 = KeyCode.LeftShift;
+	readonly KeyCode deleteSavedGameKey2 = KeyCode.Semicolon;
+	bool isTryingToDeleteGame = false;
 
 	private void Awake()
     {
@@ -40,6 +43,7 @@ public class LevelBehavior : MonoBehaviour
 			References.currentEnergyCapsuleCount = References.startingEnergyCapsuleCount;
 			levelJustLoaded = false;
 		}
+		TryToDeleteGame();
 	}
 
 	public void NRGCollect(NRGCapsuleBehavior collectedNRG)
@@ -72,6 +76,37 @@ public class LevelBehavior : MonoBehaviour
 
 		myFormatter.Serialize(myStream, myData);
 		myStream.Close();
+	}
+
+	public void CastSavedGameToBeDeleted()
+	{
+		References.thePauseMenu.ShowDialogueWindow("Press " + deleteSavedGameKey1 + " and " + deleteSavedGameKey2 + " to delete saved game and quit\n(ESCAPE to cancel)");
+		isTryingToDeleteGame = true;
+	}
+
+	void TryToDeleteGame()
+	{
+		Debug.Log(isTryingToDeleteGame);
+		if (isTryingToDeleteGame)
+		{
+
+			//if we press escape, cancel the whole process
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				References.thePauseMenu.HideRebindWindow();
+				//isTryingToDeleteGame = false;
+				return;
+			}
+
+			//if the appropriate keys are pressed, delete the file and quit
+			if (Input.GetKey(deleteSavedGameKey1) &&
+				Input.GetKey(deleteSavedGameKey2))
+			{
+				References.thePauseMenu.ShowDialogueWindow("Deleting save file and quitting...");
+				File.Delete(saveGamePath);
+				Application.Quit();
+			}
+		}
 	}
 
 }

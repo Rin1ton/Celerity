@@ -32,6 +32,11 @@ public class SavedSettings
 	public static Slider verticalSensSlider;
 	static bool settingsLoaded = false;
 
+
+
+
+
+
 	public static void Awake()
 	{
 		//get my settings path
@@ -66,6 +71,11 @@ public class SavedSettings
 		TryToRebindAction();
 		lastKeyPressed = SearchForButtonPush();
     }
+
+
+
+
+
 
 	public static void ApplyPlayerSettingsFromFile()
 	{

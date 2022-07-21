@@ -163,7 +163,7 @@ MonoBehaviour:
   myParticleSystem: {fileID: 6102774083007921923}
   myPointLight: {fileID: 654310034465226230}
   myOverheadLabel: {fileID: 0}
-  isAccountedFor: 1
+  isAccountedForByChallenge: 1
 --- !u!54 &4015594009598339889
 Rigidbody:
   m_ObjectHideFlags: 0

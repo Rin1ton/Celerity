@@ -22,7 +22,7 @@ public class PauseMenuBehavior : MonoBehaviour
 	public GameObject rebindWindow;
 	TextMeshProUGUI rebindWindowText;
 	bool inOptions = false;
-	bool isRebindingFunction = false;
+	bool dialogueWindowIsOpen = false;
 
 	[NonSerialized] public TMP_InputField horizontalSensInputField;
 	[NonSerialized] public TMP_InputField verticalSensInputField;
@@ -101,9 +101,9 @@ public class PauseMenuBehavior : MonoBehaviour
 	{
 		if (Input.GetKeyDown(pauseButton) && !References.isPaused)
 			PauseGame();
-		else if (Input.GetKeyDown(pauseButton) && inOptions && !isRebindingFunction)
+		else if (Input.GetKeyDown(pauseButton) && inOptions && !dialogueWindowIsOpen)
 			ExitOptions();
-		else if (isRebindingFunction) 
+		else if (dialogueWindowIsOpen) 
 			return;				//RebindAction() takes care of cancelling the rebind, so we don't do anything here with the pausebutton
 		else if (Input.GetKeyDown(pauseButton) && References.isPaused)
 			UnpauseGame();
@@ -111,7 +111,7 @@ public class PauseMenuBehavior : MonoBehaviour
 
 	void GetBackButton()
 	{
-		if (Input.GetKeyDown(pauseButton) && inOptions && !isRebindingFunction)
+		if (Input.GetKeyDown(pauseButton) && inOptions && !dialogueWindowIsOpen)
 			ExitOptions();
 	}
 
@@ -153,6 +153,8 @@ public class PauseMenuBehavior : MonoBehaviour
 	{
 		inOptions = false;
 		SavedSettings.SavePlayerSettings();
+		HideRebindWindow();
+		dialogueWindowIsOpen = false;
 
 		optionsMenu.SetActive(false);
 		rootMenu.SetActive(true);
@@ -162,7 +164,14 @@ public class PauseMenuBehavior : MonoBehaviour
 	{
 		rebindWindowText.text = "Press any button to rebind \"" + actionName + "\"\n(ESCAPE to cancel)";
 		rebindWindow.SetActive(true);
-		isRebindingFunction = true;
+		dialogueWindowIsOpen = true;
+	}
+
+	public void ShowDialogueWindow(string message)
+	{
+		rebindWindowText.text = message;
+		rebindWindow.SetActive(true);
+		dialogueWindowIsOpen = true;
 	}
 
 	public void ApplySettingsToOptionsMenu(PlayerSettingsData dataOnFile)
@@ -193,7 +202,7 @@ public class PauseMenuBehavior : MonoBehaviour
 	public void HideRebindWindow()
 	{
 		rebindWindow.SetActive(false);
-		isRebindingFunction = false;
+		dialogueWindowIsOpen = false;
 	}
 
 	public string SetInputFieldText(float value)

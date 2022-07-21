@@ -5079,10 +5079,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1237674767033737515, guid: 9e521256569e41542b197f5e78d6efff,
+      - m_Target: {fileID: 3125932807270691851, guid: 9e521256569e41542b197f5e78d6efff,
           type: 3}
-        m_TargetAssemblyTypeName: RebindButtonBehavior, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: LevelBehavior, Assembly-CSharp
+        m_MethodName: CastSavedGameToBeDeleted
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5091,7 +5091,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: Jump Button
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 1
 --- !u!1 &5372050395692053668
 GameObject:
   m_ObjectHideFlags: 0
