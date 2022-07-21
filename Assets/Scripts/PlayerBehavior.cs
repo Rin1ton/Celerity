@@ -81,10 +81,10 @@ public class PlayerBehavior : MonoBehaviour
 	bool isSkating = false;
 
 	//wall running
-	readonly float wallRunFriction = 5;
-	readonly float wallRunTopSpeed = 16;
+	readonly float wallRunFriction = .5f;
+	readonly float wallRunTopSpeed = 48;
 	readonly float wallRunAirAcceleration = Mathf.Infinity;
-	readonly float wallRunGroundAcceleration = 6;
+	readonly float wallRunGroundAcceleration = 1.22f;
 
 	readonly float wallRunMinAngle = 74;
 	readonly float wallRunMaxAngle = 106;
