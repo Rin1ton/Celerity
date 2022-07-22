@@ -9,7 +9,7 @@ public class TimerBarBehavior : MonoBehaviour
 	Slider mySlider;
 	public GameObject myFillBar;
 	public GameObject myBackGround;
-	public bool myballse;
+	public bool isRacing => myFillBar.activeSelf;
 
 	private void Awake()
 	{

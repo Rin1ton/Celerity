@@ -114,8 +114,9 @@ public class TimeTrialStartBehavior : MonoBehaviour
 				Destroy(currentTrailEmitter, currentTrailEmitterTR.time);
 				currentTrailEmitterTR.emitting = false;
 			}
-
-			if (Vector3.Distance(References.thePlayer.transform.position, startPosition) <= playerDistanceToEmitTrail || raceIsRunning)
+			
+			//if player is close enough, or a race is running, emit the trail
+			if ((Vector3.Distance(References.thePlayer.transform.position, startPosition) <= playerDistanceToEmitTrail && !References.theTimerBar.isRacing) || raceIsRunning)
 			{
 				currentTrailEmitter = Instantiate(trailEmitterPrefab, startPosition, transform.rotation);
 				currentTrailEmitterTR = currentTrailEmitter.GetComponent<TrailRenderer>();
@@ -139,8 +140,8 @@ public class TimeTrialStartBehavior : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		//if we're passed through by the player
-		if (other.GetComponent<PlayerBehavior>() != null && !raceIsRunning)
+		//if we're passed through by the player and there isn't already a race running
+		if (other.GetComponent<PlayerBehavior>() != null && !raceIsRunning && !References.theTimerBar.isRacing)
 		{
 			SetMyColor(runningColor);
 			raceIsRunning = true;
