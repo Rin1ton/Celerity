@@ -59,9 +59,9 @@ public class PlayerBehavior : MonoBehaviour
 	MoveStats currentMove;                                  //move stats we have at any given time, only thing read directly by the keyboard movement functions
 	MoveStats runningMove;                                  //default move stats. used when not skating or boosting
 	MoveStats skatingMove;                                  //skating move stats. used when skating, but not boosting
-	MoveStats wallRunMove;                                  //wall running move stats, used called when wall running
-	Vector3 currentGround = Vector3.zero;					//slope of platform we're walking on. equals zero if we're not grounded
-	float currentGroundAngle;								//0 means 0 slope. 90 means sheer wall
+	MoveStats wallRunMove;                                  //wall running move stats, used when wall running
+	Vector3 currentGround = Vector3.zero;					//normal of platform we're walking on. equals zero if we're not grounded
+	float currentGroundAngle;								//0 means flat ground. 90 means sheer wall
 	float timeSinceGrounded = 0;
 	float savedSpeed = 0;
 

@@ -11,6 +11,9 @@ namespace Unity.Splines.Examples
         LineRenderer m_Line;
         bool m_Dirty;
         Vector3[] m_Points;
+        float segmentAvgLength = 0;
+        float segmentMaxLength = 0;
+        
 
         [SerializeField, Range(16, 512)]
         int m_Segments = 128;
@@ -39,7 +42,24 @@ namespace Unity.Splines.Examples
             m_Dirty = false;
 
             for (int i = 0; i < m_Segments; i++)
+            {
                 m_Points[i] = m_Spline.EvaluatePosition(i / (m_Segments - 1f));
+                m_Points[i] += transform.position;
+
+                if (i > 0)
+				{
+                    float thisSegmentsLength = Vector3.Distance(m_Points[i], m_Points[i - 1]);
+                    segmentAvgLength += thisSegmentsLength;
+                    segmentMaxLength = thisSegmentsLength > segmentMaxLength ? thisSegmentsLength : segmentMaxLength;
+
+                }
+			}
+
+            segmentAvgLength /= m_Segments;
+
+            Debug.Log("AVG length: " + segmentAvgLength + " MAX length: " + segmentMaxLength);
+
+
             
             m_Line.SetPositions(m_Points);
         }
