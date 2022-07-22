@@ -13,6 +13,7 @@ public class PlayerSavedGame
 	public float playerRotationY;
 	public float playerRotationZ;
 	public string[] NRGCollected;
+	public string[] TimeTrialsCompleted;
 
 	public PlayerSavedGame()
 	{
@@ -25,12 +26,15 @@ public class PlayerSavedGame
 		playerRotationY = References.thePlayer.transform.rotation.y;
 		playerRotationZ = References.thePlayer.transform.rotation.z;
 		NRGCollected = new string[References.theLevelLogic.NRGCollectedThisSession.Count];
+		TimeTrialsCompleted = new string[References.theLevelLogic.NRGCollectedThisSession.Count];
 
 		//NRG directly collected
 		for(int NRG = 0; NRG < References.theLevelLogic.NRGCollectedThisSession.Count; NRG++)
 			NRGCollected[NRG] = References.theLevelLogic.NRGCollectedThisSession[NRG];
 
 		//NRG collected from time trials
+		for (int timeTrial = 0; timeTrial < References.theLevelLogic.timeTrialsCompletedThisSession.Count; timeTrial++)
+			TimeTrialsCompleted[timeTrial] = References.theLevelLogic.timeTrialsCompletedThisSession[timeTrial];
 
 		//NRG collected from speed traps
 	}

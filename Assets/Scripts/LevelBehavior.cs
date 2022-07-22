@@ -12,13 +12,14 @@ public class LevelBehavior : MonoBehaviour
 
 	public List<NRGCapsuleBehavior> thisLevelsNRG;
 	public List<string> NRGCollectedThisSession;
+	public List<string> timeTrialsCompletedThisSession;
 	bool levelJustLoaded = true;
 
 	//saving and loading
 	public static string saveGamePath;
 	readonly KeyCode deleteSavedGameKey1 = KeyCode.LeftShift;
 	readonly KeyCode deleteSavedGameKey2 = KeyCode.Semicolon;
-	bool isTryingToDeleteGame = false;
+	static bool isTryingToDeleteGame;
 
 	private void Awake()
     {
@@ -32,7 +33,7 @@ public class LevelBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		
+
     }
 
     // Update is called once per frame
@@ -86,7 +87,6 @@ public class LevelBehavior : MonoBehaviour
 
 	void TryToDeleteGame()
 	{
-		Debug.Log(isTryingToDeleteGame);
 		if (isTryingToDeleteGame)
 		{
 
@@ -94,7 +94,7 @@ public class LevelBehavior : MonoBehaviour
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
 				References.thePauseMenu.HideRebindWindow();
-				//isTryingToDeleteGame = false;
+				isTryingToDeleteGame = false;
 				return;
 			}
 
@@ -102,9 +102,8 @@ public class LevelBehavior : MonoBehaviour
 			if (Input.GetKey(deleteSavedGameKey1) &&
 				Input.GetKey(deleteSavedGameKey2))
 			{
-				References.thePauseMenu.ShowDialogueWindow("Deleting save file and quitting...");
+				References.thePauseMenu.ShowDialogueWindow("Save file deleted. (ESCAPE to close this menu)");
 				File.Delete(saveGamePath);
-				Application.Quit();
 			}
 		}
 	}

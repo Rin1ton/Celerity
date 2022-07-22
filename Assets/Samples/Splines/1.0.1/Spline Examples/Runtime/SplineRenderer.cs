@@ -57,7 +57,7 @@ namespace Unity.Splines.Examples
 
             segmentAvgLength /= m_Segments;
 
-            Debug.Log("AVG length: " + segmentAvgLength + " MAX length: " + segmentMaxLength);
+            //Debug.Log("AVG length: " + segmentAvgLength + " MAX length: " + segmentMaxLength);
 
 
             

@@ -12,7 +12,7 @@ public class coob : MonoBehaviour
 	private void Awake()
 	{
         //myPath = transform.parent.GetComponent<Spline>();
-        //myballse = transform.parent.GetComponent<Rollercoaster>();
+        myballse = transform.parent.GetComponent<Rollercoaster>();
 	}
 
 	// Start is called before the first frame update

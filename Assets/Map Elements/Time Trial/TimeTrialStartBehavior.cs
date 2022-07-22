@@ -29,6 +29,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	public GameObject finishLineCube;
 	public GameObject blankNRGPrefab;
 	bool raceIsRunning = false;
+	public GameObject objectOfOurName;
 
 	//timing race stuff
 	public float raceTimeLimit;
@@ -155,6 +156,9 @@ public class TimeTrialStartBehavior : MonoBehaviour
 		{
 			SetMyColor(deadColor);
 			Instantiate(blankNRGPrefab, finishLineOrb.position, Quaternion.identity);
+			
+			References.theLevelLogic.timeTrialsCompletedThisSession.Add(objectOfOurName.name);
+
 			Destroy(finishLineOrb.gameObject);
 			Destroy(finishLineCube.gameObject);
 

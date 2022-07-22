@@ -13,7 +13,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 // the purpose of this script is to allow the rebinding of and setting of player controlled settings by passing the buttons and keys pressed to the 
 // player script and handle them ourselves to write them to the settings file.
 // this script will also be able to detect whether or not we're at the main menu, so no other script has to.
-public class SavedSettings
+public static class SavedSettings
 {
 	//options
 	public static readonly float sliderMin = 0.001f;
