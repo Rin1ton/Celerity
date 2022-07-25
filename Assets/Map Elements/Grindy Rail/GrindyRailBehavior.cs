@@ -75,7 +75,7 @@ public class GrindyRailBehavior : MonoBehaviour
 			Debug.Log(Time.deltaTime);
 	}
 
-	public Vector3 ClosestPointOnSpline(Vector3 queryPoint)
+	public Vector3 ClosestPoint(Vector3 queryPoint)
 	{
 		int relevantPoint = 0;
 		float distanceToClosestPoint = Mathf.Infinity;
@@ -93,7 +93,7 @@ public class GrindyRailBehavior : MonoBehaviour
 		return m_Points[relevantPoint];
 	}
 
-	private float ClosestTOnSpline(Vector3 queryPoint)
+	private float ClosestT(Vector3 queryPoint)
 	{
 		int relevantPoint = 0;
 		float distanceToClosestPoint = Mathf.Infinity;
@@ -113,14 +113,14 @@ public class GrindyRailBehavior : MonoBehaviour
 
 	public Vector3 TangentAtPointOnSpline(Vector3 queryPoint)
 	{
-		Vector3 relevantPointOnSpline = ClosestPointOnSpline(queryPoint);
-		return m_Spline.EvaluateTangent(ClosestTOnSpline(queryPoint) / (m_Segments - 1f));
+		Vector3 relevantPointOnSpline = ClosestPoint(queryPoint);
+		return m_Spline.EvaluateTangent(ClosestT(queryPoint) / (m_Segments - 1f));
 	}
 
 	public Vector3 GetPointAtLinearDistance(Vector3 queryPoint, float distance)
 	{
 
-		return m_Spline.GetPointAtLinearDistance(ClosestTOnSpline(queryPoint), distance, out distance);
+		return m_Spline.GetPointAtLinearDistance(ClosestT(queryPoint), distance, out distance);
 	}
 
 }
