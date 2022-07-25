@@ -15,7 +15,7 @@ public class LevelBehavior : MonoBehaviour
 	public List<string> timeTrialsCompletedThisSession;
 	bool levelJustLoaded = true;
 
-	//saving and loading
+	//saving and loading and deleting
 	public static string saveGamePath;
 	readonly KeyCode deleteSavedGameKey1 = KeyCode.LeftShift;
 	readonly KeyCode deleteSavedGameKey2 = KeyCode.Semicolon;

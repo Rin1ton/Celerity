@@ -23,6 +23,7 @@ namespace Unity.Splines.Examples
             m_Spline = GetComponent<SplineContainer>().Spline;
             m_Line = GetComponent<LineRenderer>();
             m_Spline.changed += () => m_Dirty = true;
+            
         }
 
         void Update()
@@ -57,7 +58,8 @@ namespace Unity.Splines.Examples
 
             segmentAvgLength /= m_Segments;
 
-            //Debug.Log("AVG length: " + segmentAvgLength + " MAX length: " + segmentMaxLength);
+            Debug.Log("AVG length: " + segmentAvgLength + " MAX length: " + segmentMaxLength);
+            Debug.Log(m_Spline.GetLength() / m_Segments);
 
 
             
