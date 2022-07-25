@@ -60,6 +60,7 @@ public class PlayerBehavior : MonoBehaviour
 	MoveStats runningMove;                                  //default move stats. used when not skating or boosting
 	MoveStats skatingMove;                                  //skating move stats. used when skating, but not boosting
 	MoveStats wallRunMove;                                  //wall running move stats, used when wall running
+	MoveStats grindingMove;
 	Vector3 currentGround = Vector3.zero;					//normal of platform we're walking on. equals zero if we're not grounded
 	float currentGroundAngle;								//0 means flat ground. 90 means sheer wall
 	float timeSinceGrounded = 0;
@@ -110,7 +111,7 @@ public class PlayerBehavior : MonoBehaviour
 	//jump
 	readonly float jumpSpeed = 15;							//vertical velocity applied to the player when they jump
 	readonly float hardJumpCooldown = 0.045f;               //it is impossible to jump more than once during this interval in seconds
-	readonly float offPlatformJumpLeniency = 0.15f;			//if we're off a platform for this amount of time OR LESS we can still jump
+	readonly float coyoteTime = 0.15f;			//if we're off a platform for this amount of time OR LESS we can still jump
 	bool jumpReady = true;
 	float timeSinceLastJump = 0;
 
@@ -202,9 +203,12 @@ public class PlayerBehavior : MonoBehaviour
 	public GameObject myBoard;
 	public Transform myArmRotationPoint;
 
-	//testing
-	//public GameObject colliderMarker;
-	//public Rigidbody sphereRB;					funny sphere attached to camera, 7.5 meters in front
+	//grinding
+	public GrindyRailBehavior myCurrentRail;
+	readonly float grindingFriction = 0;
+	readonly float grindingTopSpeed = 28;
+	readonly float grindingAirAcceleration = 1.22f;
+	readonly float grindingGroundAcceleration = 1.22f;
 
 	/*====================================================================
 	 * enough with the variable declaration
@@ -274,6 +278,12 @@ public class PlayerBehavior : MonoBehaviour
 			wallRunMove.topSpeed = wallRunTopSpeed;
 			wallRunMove.airAcceleration = wallRunAirAcceleration;
 			wallRunMove.groundAcceleration = wallRunGroundAcceleration;
+		}
+		{
+			grindingMove.friction = grindingFriction;
+			grindingMove.topSpeed = grindingTopSpeed;
+			grindingMove.airAcceleration = grindingAirAcceleration;
+			grindingMove.groundAcceleration = grindingGroundAcceleration;
 		}
 		currentMove = runningMove;
 
@@ -772,7 +782,8 @@ public class PlayerBehavior : MonoBehaviour
 	//jump if the jump is available and the player wants to jump
 	void Jump()
 	{
-		if (timeSinceGrounded > offPlatformJumpLeniency && !isWallRunning)
+		//can't jump while in the air
+		if (timeSinceGrounded > coyoteTime && !isWallRunning && myCurrentRail != null)
 			jumpReady = false;
 
 		//jump if jumping, and we have a jump ready
@@ -794,7 +805,7 @@ public class PlayerBehavior : MonoBehaviour
 
 		if (isGrounded)
 		{
-			ResetJump();
+			ReloadJump();
 		}
 	}
 
@@ -1108,7 +1119,7 @@ public class PlayerBehavior : MonoBehaviour
 	/*
 	 * resets the jump so the player can jump again
 	 */
-	public void ResetJump()
+	public void ReloadJump()
 	{
 		if (!jumpReady)
 		{
@@ -1136,7 +1147,7 @@ public class PlayerBehavior : MonoBehaviour
 			if (!isWallRunning)
 			{
 				//reset our jump
-				ResetJump();
+				ReloadJump();
 
 				//start the wall run timer
 				timeSinceWallRunStart = 0;

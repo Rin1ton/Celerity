@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
+using Unity.Mathematics;
 
-[RequireComponent(typeof(LineRenderer), typeof(SplineContainer))]
+//[RequireComponent(typeof(LineRenderer), typeof(SplineContainer))]
 
 public class GrindyRailBehavior : MonoBehaviour
 {
@@ -15,19 +16,21 @@ public class GrindyRailBehavior : MonoBehaviour
 	float segmentAvgLength = 0;
 	float segmentMaxLength = 0;
 
+	//
+	readonly int segmentsPerMeter
 
-	[SerializeField, Range(16, 512)]
-	int m_Segments = 128;
+	int m_Segments;
 
 	void Awake()
 	{
 		m_Spline = GetComponent<SplineContainer>().Spline;
 		//m_Line = GetComponent<LineRenderer>();
 		m_Spline.changed += () => m_Dirty = true;
-
+		m_Segments = Mathf.RoundToInt(m_Spline.GetLength() * segmentsPerMeter);
+		
 	}
 
-	void Update()
+	void Start()
 	{
 		// It's nice to be able to see resolution changes at runtime
 		if (m_Points?.Length != m_Segments)
@@ -46,6 +49,7 @@ public class GrindyRailBehavior : MonoBehaviour
 		for (int i = 0; i < m_Segments; i++)
 		{
 			m_Points[i] = m_Spline.EvaluatePosition(i / (m_Segments - 1f));
+			//adjust by the transform of the spline, so we aren't at world origin
 			m_Points[i] += transform.position;
 
 			if (i > 0)
@@ -63,6 +67,60 @@ public class GrindyRailBehavior : MonoBehaviour
 		Debug.Log(m_Spline.GetLength() / m_Segments);
 
 		//m_Line.SetPositions(m_Points);
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.GetComponent<PlayerBehavior>() != null)
+			Debug.Log(Time.deltaTime);
+	}
+
+	public Vector3 ClosestPointOnSpline(Vector3 queryPoint)
+	{
+		int relevantPoint = 0;
+		float distanceToClosestPoint = Mathf.Infinity;
+		float currentDistance;
+		for (int currentPoint = 0; currentPoint < m_Points.Length; currentPoint++)
+		{
+			currentDistance = Vector3.Distance(m_Points[currentPoint], queryPoint);
+			if (currentDistance < distanceToClosestPoint)
+			{
+				distanceToClosestPoint = currentDistance;
+				relevantPoint = currentPoint;
+			}
+		}
+
+		return m_Points[relevantPoint];
+	}
+
+	private float ClosestTOnSpline(Vector3 queryPoint)
+	{
+		int relevantPoint = 0;
+		float distanceToClosestPoint = Mathf.Infinity;
+		float currentDistance;
+		for (int currentPoint = 0; currentPoint < m_Points.Length; currentPoint++)
+		{
+			currentDistance = Vector3.Distance(m_Points[currentPoint], queryPoint);
+			if (currentDistance < distanceToClosestPoint)
+			{
+				distanceToClosestPoint = currentDistance;
+				relevantPoint = currentPoint;
+			}
+		}
+
+		return relevantPoint;
+	}
+
+	public Vector3 TangentAtPointOnSpline(Vector3 queryPoint)
+	{
+		Vector3 relevantPointOnSpline = ClosestPointOnSpline(queryPoint);
+		return m_Spline.EvaluateTangent(ClosestTOnSpline(queryPoint) / (m_Segments - 1f));
+	}
+
+	public Vector3 GetPointAtLinearDistance(Vector3 queryPoint, float distance)
+	{
+
+		return m_Spline.GetPointAtLinearDistance(ClosestTOnSpline(queryPoint), distance, out distance);
 	}
 
 }
