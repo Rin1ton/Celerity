@@ -17,7 +17,7 @@ public class GrindyRailBehavior : MonoBehaviour
 	float segmentMaxLength = 0;
 
 	//
-	readonly int segmentsPerMeter
+	readonly int segmentsPerMeter = 10;
 
 	int m_Segments;
 
