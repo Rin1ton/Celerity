@@ -204,11 +204,13 @@ public class PlayerBehavior : MonoBehaviour
 	public Transform myArmRotationPoint;
 
 	//grinding
-	public GrindyRailBehavior myCurrentRail;
+	public GrindyRailBehavior currentRail;
 	readonly float grindingFriction = 0;
 	readonly float grindingTopSpeed = 28;
 	readonly float grindingAirAcceleration = 1.22f;
 	readonly float grindingGroundAcceleration = 1.22f;
+	bool isGrinding = false;
+	float playerGrindingVerticalOffset = 1;
 
 	/*====================================================================
 	 * enough with the variable declaration
@@ -365,6 +367,7 @@ public class PlayerBehavior : MonoBehaviour
 			AirKick();
 			Grab();
 			WaterRun();
+			GrindOnRail();
 		}
 		HUD();
 	}
@@ -783,7 +786,7 @@ public class PlayerBehavior : MonoBehaviour
 	void Jump()
 	{
 		//can't jump while in the air
-		if (timeSinceGrounded > coyoteTime && !isWallRunning && myCurrentRail != null)
+		if (timeSinceGrounded > coyoteTime && !isWallRunning && currentRail != null)
 			jumpReady = false;
 
 		//jump if jumping, and we have a jump ready
@@ -1116,6 +1119,21 @@ public class PlayerBehavior : MonoBehaviour
 		}
 	}
 
+	void GrindOnRail()
+	{
+		if (currentRail != null)
+		{
+			//This code runs once when grinding starts
+			if (!isGrinding)
+			{
+				isGrinding = true;
+
+
+
+			}
+		}
+	}
+
 	/*
 	 * resets the jump so the player can jump again
 	 */
@@ -1303,7 +1321,7 @@ public class PlayerBehavior : MonoBehaviour
 			lastWall = Vector3.zero;
 		}
 
-		isGrounded = grounded;
+		isGrounded = grounded || currentRail != null;
 	}
 	
 	//two walls need to be different by a certain margin for a wall run to be possible
@@ -1313,6 +1331,11 @@ public class PlayerBehavior : MonoBehaviour
 		tooClose = (Vector3.Angle(a, b)) < wallAngleDifferenceThreshold;
 		tooClose &= (a != Vector3.zero) && (b != Vector3.zero);
 		return tooClose;
+	}
+
+	public void SetCurrentRail (GrindyRailBehavior theRail)
+	{
+		currentRail = theRail;
 	}
 
 	//these two getters are for the character animation controller script.

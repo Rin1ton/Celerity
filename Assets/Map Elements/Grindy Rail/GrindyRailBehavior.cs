@@ -15,6 +15,7 @@ public class GrindyRailBehavior : MonoBehaviour
 	Vector3[] m_Points;
 	float segmentAvgLength = 0;
 	float segmentMaxLength = 0;
+	PlayerBehavior thePlayerBehavior;
 
 	//
 	readonly int segmentsPerMeter = 10;
@@ -32,6 +33,9 @@ public class GrindyRailBehavior : MonoBehaviour
 
 	void Start()
 	{
+		//
+		thePlayerBehavior = References.thePlayer.GetComponent<PlayerBehavior>();
+
 		// It's nice to be able to see resolution changes at runtime
 		if (m_Points?.Length != m_Segments)
 		{
@@ -71,8 +75,11 @@ public class GrindyRailBehavior : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.GetComponent<PlayerBehavior>() != null)
-			Debug.Log(Time.deltaTime);
+		if (collision.gameObject == References.thePlayer)
+		{
+			thePlayerBehavior.SetCurrentRail(this);
+			Debug.Log("Ow!");
+		}
 	}
 
 	public Vector3 ClosestPoint(Vector3 queryPoint)
