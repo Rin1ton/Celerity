@@ -209,10 +209,12 @@ public class PlayerBehavior : MonoBehaviour
 	readonly float grindingTopSpeed = 28;
 	readonly float grindingAirAcceleration = 1.22f;
 	readonly float grindingGroundAcceleration = 1.22f;
+	readonly float minDistanceToStayOnRail = 1;
 	bool isGrinding = false;
 	float playerGrindingVerticalOffset = 1;
 	Vector3 pointOnRail;
 	Vector3 tangentVector;
+
 
 	/*====================================================================
 	 * enough with the variable declaration
@@ -357,6 +359,7 @@ public class PlayerBehavior : MonoBehaviour
 		{
 			MouseLook();
 			MoveStatSet();
+			GrindOnRail();
 			KeyboardMovement();
 			Timers();
 			SkatingOrRunning();
@@ -370,7 +373,6 @@ public class PlayerBehavior : MonoBehaviour
 			AirKick();
 			Grab();
 			WaterRun();
-			GrindOnRail();
 		}
 		HUD();
 	}
@@ -541,13 +543,12 @@ public class PlayerBehavior : MonoBehaviour
 	{
 		if (isWallRunning)
 			currentMove = wallRunMove;
+		else if (isSkating)
+			currentMove = skatingMove;
+		else if (isGrinding)
+			currentMove = grindingMove;
 		else
-		{
-			if (isSkating)
-				currentMove = skatingMove;
-			else
-				currentMove = runningMove;
-		}
+			currentMove = runningMove;
 		
 	}
 	
@@ -627,14 +628,14 @@ public class PlayerBehavior : MonoBehaviour
 			moveInput = myRB.velocity.magnitude > currentMove.topSpeed ? Vector3.zero : myRB.transform.forward;
 
 		//call the appropriate move function, whether we're on the ground or the air
-		if (isGrounded)
-			MoveWithFriction(myRB.velocity, moveInput);
-		else if (!isWallRunning && !isGrinding)
-			MoveWithNoFriction(myRB.velocity, moveInput);
-		else if (isWallRunning)
-			MoveOnWall(myRB.velocity, moveInput);
-		else
+		if (isGrinding)
 			MoveOnRail(myRB.velocity, moveInput);
+		else if (isGrounded)
+			MoveWithFriction(myRB.velocity, moveInput);
+		else if (!isWallRunning)
+			MoveWithNoFriction(myRB.velocity, moveInput);
+		else
+			MoveOnWall(myRB.velocity, moveInput);
 	}
 
 	/*
@@ -684,6 +685,7 @@ public class PlayerBehavior : MonoBehaviour
 		//flaten our wall plane; treat it as 90 degrees
 		Vector3 ourWall = Vector3.ProjectOnPlane(currentWall, Vector3.up);
 
+		//pulling off the wall nonsense
 		//check if the player is trying to use moveDir to pull off the wall
 		if (Vector3.Angle(moveDir, ourWall) <= wallPullOffAngle && moveDir != Vector3.zero)
 			timeSinceStartedPullingOff += Time.deltaTime;
@@ -725,11 +727,35 @@ public class PlayerBehavior : MonoBehaviour
 
 	void MoveOnRail(Vector3 prevVelocity, Vector3 moveDir)
 	{
-		//moveDir = Vector3.Project(moveDir, currentRail.TangentAtPointOnSpline())
+		Vector3 tangent = currentRail.TangentAtPointOnSpline(pointOnRail);
+		prevVelocity = Vector3.Dot(tangent, prevVelocity) < 0 ? -tangent.normalized * prevVelocity.magnitude : tangent;
+		float speed = prevVelocity.magnitude;
+		float drop = 0;
+		float friction = currentMove.friction;
+		moveDir = Vector3.Project(moveDir, tangent).normalized;
+
+		if (speed != 0)//avoid divide by 0 errors
+		{
+			//define how much we have to slow down based on our speed and friction
+
+			//if speed is less than 0, make control 0, otherwise, make control speed
+			float control = speed < 0 ? 0 : speed;
+
+			drop += control * friction * Time.deltaTime;
+
+			//scale the velocity
+			float newSpeed = speed - drop < 0 ? 0 : speed - drop;
+			newSpeed = speed != 0 ? newSpeed / speed : 0;
+
+			prevVelocity *= newSpeed;
+			//prevVelocity *= Mathf.Max(speed - drop, 0) / speed; //Scale the velocity based on friction
+		}
+
+		Accelerate(prevVelocity, currentMove.groundAcceleration, moveDir);
 	}
 
 	/*===================================*\
-    ||* the most important bit           ||
+    ||* the most important bit           |
     ||* MOVEMENT                         ||
     ||* thank you quake                  ||
     \*===================================*/
@@ -793,7 +819,7 @@ public class PlayerBehavior : MonoBehaviour
 	void Jump()
 	{
 		//can't jump while in the air
-		if (timeSinceGrounded > coyoteTime && !isWallRunning && currentRail != null)
+		if (timeSinceGrounded > coyoteTime && !isWallRunning && currentRail == null)
 			jumpReady = false;
 
 		//jump if jumping, and we have a jump ready
@@ -1140,10 +1166,17 @@ public class PlayerBehavior : MonoBehaviour
 				isGrinding = true;
 				myRB.velocity = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -tangentVector.normalized * myRB.velocity.magnitude : tangentVector.normalized * myRB.velocity.magnitude;
 				transform.position = currentRail.ClosestPoint(transform.position) + new Vector3(0, playerGrindingVerticalOffset, 0);
-				Debug.Log(myRB.velocity.magnitude);
 			}
+			//this code runs continuously while grinding
 
-			
+			Vector3 playerFeet = new Vector3(transform.position.x, transform.position.y - playerGrindingVerticalOffset, transform.position.z);
+
+			float distanceTravelled = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -myRB.velocity.magnitude : myRB.velocity.magnitude;
+			transform.position = currentRail.GetPointAtLinearDistance(pointOnRail, distanceTravelled * Time.deltaTime);
+
+			if (Vector3.Distance(pointOnRail, playerFeet) > minDistanceToStayOnRail) {
+				//currentRail = null;
+			}
 
 		}
 		else if(isGrinding)		//this code runs once when grinding stops
@@ -1356,7 +1389,8 @@ public class PlayerBehavior : MonoBehaviour
 
 	public void SetCurrentRail (GrindyRailBehavior theRail)
 	{
-		currentRail = theRail;
+		if (isSkating)
+			currentRail = theRail;
 	}
 
 	//these two getters are for the character animation controller script.
