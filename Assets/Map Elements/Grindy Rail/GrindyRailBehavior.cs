@@ -73,6 +73,11 @@ public class GrindyRailBehavior : MonoBehaviour
 		//m_Line.SetPositions(m_Points);
 	}
 
+
+
+
+
+
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject == References.thePlayer)
