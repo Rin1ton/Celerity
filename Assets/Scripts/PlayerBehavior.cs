@@ -83,7 +83,7 @@ public class PlayerBehavior : MonoBehaviour
 
 	//wall running
 	readonly float wallRunFriction = 0.5f;
-	readonly float wallRunTopSpeed = 48;
+	readonly float wallRunTopSpeed = 58;
 	readonly float wallRunAirAcceleration = Mathf.Infinity;
 	readonly float wallRunGroundAcceleration = 0.6f;
 
@@ -111,7 +111,7 @@ public class PlayerBehavior : MonoBehaviour
 	//jump
 	readonly float jumpSpeed = 15;							//vertical velocity applied to the player when they jump
 	readonly float hardJumpCooldown = 0.045f;               //it is impossible to jump more than once during this interval in seconds
-	readonly float coyoteTime = 0.15f;			//if we're off a platform for this amount of time OR LESS we can still jump
+	readonly float coyoteTime = 0.15f;						//if we're off a platform for this amount of time OR LESS we can still jump
 	bool jumpReady = true;
 	float timeSinceLastJump = 0;
 
@@ -211,6 +211,8 @@ public class PlayerBehavior : MonoBehaviour
 	readonly float grindingGroundAcceleration = 1.22f;
 	bool isGrinding = false;
 	float playerGrindingVerticalOffset = 1;
+	Vector3 pointOnRail;
+	Vector3 tangentVector;
 
 	/*====================================================================
 	 * enough with the variable declaration
@@ -355,6 +357,7 @@ public class PlayerBehavior : MonoBehaviour
 		{
 			MouseLook();
 			MoveStatSet();
+			KeyboardMovement();
 			Timers();
 			SkatingOrRunning();
 			SuperJump();					//must be called *before* standard jump. Superjump must expend "jumpReady" so the standard jump cannot.
@@ -376,9 +379,8 @@ public class PlayerBehavior : MonoBehaviour
 	void FixedUpdate()
 	{
 		//don't have to check if the game is paused for these because fixed updates stop while time-scale is 0
-		CheckIfGrounded();
-		KeyboardMovement();
 		WallRun();
+		CheckIfGrounded();
 		StickToGround();
 		CounterSlope();
 		SlopeSkatingAssist();
@@ -598,7 +600,6 @@ public class PlayerBehavior : MonoBehaviour
 		//keyboard inputs
 		float xMovement = 0;
 		float zMovement = 0;
-		Vector3 unityMoveInput = Vector3.zero;
 
 		//use my own move input if it's applicable
 		if (Input.GetKey(forwardButton))
@@ -628,10 +629,12 @@ public class PlayerBehavior : MonoBehaviour
 		//call the appropriate move function, whether we're on the ground or the air
 		if (isGrounded)
 			MoveWithFriction(myRB.velocity, moveInput);
-		else if (!isWallRunning)
+		else if (!isWallRunning && !isGrinding)
 			MoveWithNoFriction(myRB.velocity, moveInput);
-		else
+		else if (isWallRunning)
 			MoveOnWall(myRB.velocity, moveInput);
+		else
+			MoveOnRail(myRB.velocity, moveInput);
 	}
 
 	/*
@@ -654,7 +657,7 @@ public class PlayerBehavior : MonoBehaviour
 			//if speed is less than 0, make control 0, otherwise, make control speed
 			float control = speed;//< 0 ? 0 : speed;
 
-			drop += control * friction * Time.fixedDeltaTime;
+			drop += control * friction * Time.deltaTime;
 
 			//scale the velocity
 			float newSpeed = speed - drop < 0 ? 0 : speed - drop;
@@ -683,10 +686,9 @@ public class PlayerBehavior : MonoBehaviour
 
 		//check if the player is trying to use moveDir to pull off the wall
 		if (Vector3.Angle(moveDir, ourWall) <= wallPullOffAngle && moveDir != Vector3.zero)
-			timeSinceStartedPullingOff += Time.fixedDeltaTime;
+			timeSinceStartedPullingOff += Time.deltaTime;
 		else
 			timeSinceStartedPullingOff = 0;
-
 		//if they've pulled off for a significant amount of time, let them pull off
 		if (timeSinceStartedPullingOff >= timeToPullOffWall)
 			currentWall = Vector3.zero;
@@ -708,7 +710,7 @@ public class PlayerBehavior : MonoBehaviour
 			//if speed is less than 0, make control 0, otherwise, make control speed
 			float control = speed < 0 ? 0 : speed;
 
-			drop += control * friction * Time.fixedDeltaTime;
+			drop += control * friction * Time.deltaTime;
 
 			//scale the velocity
 			float newSpeed = speed - drop < 0 ? 0 : speed - drop;
@@ -719,6 +721,11 @@ public class PlayerBehavior : MonoBehaviour
 		}
 
 		Accelerate(prevVelocity, currentMove.groundAcceleration, moveDir);
+	}
+
+	void MoveOnRail(Vector3 prevVelocity, Vector3 moveDir)
+	{
+		//moveDir = Vector3.Project(moveDir, currentRail.TangentAtPointOnSpline())
 	}
 
 	/*===================================*\
@@ -790,13 +797,13 @@ public class PlayerBehavior : MonoBehaviour
 			jumpReady = false;
 
 		//jump if jumping, and we have a jump ready
-		if (Input.GetKeyDown(jumpButton) && 
-			jumpReady)   //don't call this jump if we fall under super jump conditions
+		if (Input.GetKeyDown(jumpButton) && jumpReady)
 		{
 			mySounds.jumpSound.Play();
 			timeSinceLastJump = 0;
 			jumpReady = false;
 			isGrounded = false;
+			currentRail = null;
 
 			//should not be stuck to ground for the frame we jump, so nullify our ground stick force
 			currentGround = Vector3.zero;
@@ -831,6 +838,7 @@ public class PlayerBehavior : MonoBehaviour
 			timeSinceLastJump = 0;
 			jumpReady = false;
 			isGrounded = false;
+			currentRail = null;
 
 			//should not be stuck to ground for the frame we jump, so nullify our ground stick force
 			currentGround = Vector3.zero;
@@ -1123,16 +1131,29 @@ public class PlayerBehavior : MonoBehaviour
 	{
 		if (currentRail != null)
 		{
+			tangentVector = currentRail.TangentAtPointOnSpline(transform.position);
+			pointOnRail = currentRail.ClosestPoint(transform.position);
+			
 			//This code runs once when grinding starts
 			if (!isGrinding)
 			{
 				isGrinding = true;
-
-
-
+				myRB.velocity = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -tangentVector.normalized * myRB.velocity.magnitude : tangentVector.normalized * myRB.velocity.magnitude;
+				transform.position = currentRail.ClosestPoint(transform.position) + new Vector3(0, playerGrindingVerticalOffset, 0);
+				Debug.Log(myRB.velocity.magnitude);
 			}
+
+			
+
 		}
+		else if(isGrinding)		//this code runs once when grinding stops
+		{
+			isGrinding = false;
+		}
+
 	}
+
+
 
 	/*
 	 * resets the jump so the player can jump again
@@ -1321,7 +1342,7 @@ public class PlayerBehavior : MonoBehaviour
 			lastWall = Vector3.zero;
 		}
 
-		isGrounded = grounded || currentRail != null;
+		isGrounded = grounded /*|| currentRail != null*/;
 	}
 	
 	//two walls need to be different by a certain margin for a wall run to be possible

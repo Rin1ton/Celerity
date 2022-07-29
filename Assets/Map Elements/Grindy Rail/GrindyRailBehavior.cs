@@ -67,8 +67,8 @@ public class GrindyRailBehavior : MonoBehaviour
 
 		segmentAvgLength /= m_Segments;
 
-		Debug.Log("AVG length: " + segmentAvgLength + " MAX length: " + segmentMaxLength);
-		Debug.Log(m_Spline.GetLength() / m_Segments);
+		//Debug.Log("AVG length: " + segmentAvgLength + " MAX length: " + segmentMaxLength);
+		//Debug.Log(m_Spline.GetLength() / m_Segments);
 
 		//m_Line.SetPositions(m_Points);
 	}
@@ -76,10 +76,7 @@ public class GrindyRailBehavior : MonoBehaviour
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject == References.thePlayer)
-		{
 			thePlayerBehavior.SetCurrentRail(this);
-			Debug.Log("Ow!");
-		}
 	}
 
 	public Vector3 ClosestPoint(Vector3 queryPoint)
