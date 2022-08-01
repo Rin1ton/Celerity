@@ -17,6 +17,7 @@ public class LevelBehavior : MonoBehaviour
 
 	//saving and loading and deleting
 	public static string saveGamePath;
+	public GameObject playerPrefab;
 	readonly KeyCode deleteSavedGameKey1 = KeyCode.LeftShift;
 	readonly KeyCode deleteSavedGameKey2 = KeyCode.Semicolon;
 	static bool isTryingToDeleteGame;
@@ -28,6 +29,10 @@ public class LevelBehavior : MonoBehaviour
 
         References.theLevelLogic = this;
 		References.startingEnergyCapsuleCount = 0;
+
+
+
+		SpawnPlayer(new Vector3(-2.13818312f, 22, 23.389225f), new Quaternion(0, 1, 0, 0), Vector3.zero);
     }
 
     // Start is called before the first frame update
@@ -35,6 +40,7 @@ public class LevelBehavior : MonoBehaviour
     {
 
     }
+
 
     // Update is called once per frame
     void Update()
@@ -45,6 +51,12 @@ public class LevelBehavior : MonoBehaviour
 			levelJustLoaded = false;
 		}
 		TryToDeleteGame();
+	}
+
+	void SpawnPlayer(Vector3 position, Quaternion rotation, Vector3 velocity)
+	{
+		GameObject thePlayer = Instantiate(playerPrefab, position, rotation);
+		thePlayer.GetComponent<Rigidbody>().velocity = velocity;
 	}
 
 	public void NRGCollect(NRGCapsuleBehavior collectedNRG)
@@ -105,6 +117,25 @@ public class LevelBehavior : MonoBehaviour
 				References.thePauseMenu.ShowDialogueWindow("Save file deleted. (ESCAPE to close this menu)");
 				File.Delete(saveGamePath);
 			}
+		}
+	}
+
+	static PlayerSavedGame LoadPlayerGame()
+	{
+		if (File.Exists(saveGamePath))
+		{
+			BinaryFormatter myFormatter = new BinaryFormatter();
+			FileStream myStream = new FileStream(saveGamePath, FileMode.Open);
+
+			PlayerSavedGame mySaveGame = myFormatter.Deserialize(myStream) as PlayerSavedGame;
+			myStream.Close();
+
+			return mySaveGame;
+		}
+		else
+		{
+			//if the save file does not exist, it should be generated
+			return null;
 		}
 	}
 

@@ -109,7 +109,7 @@ public static class SavedSettings
 		} catch (ArgumentNullException e)
 		{
 			//the way we do this happens to keep player settings
-			Debug.Log("OLD SETTINGS FILE DETECTED!!! Saving new file. Exception: \"" + e + "\"");
+			Debug.LogWarning("OLD SETTINGS FILE DETECTED!!! Saving new file. Exception: \"" + e + "\"");
 			SavePlayerSettings();
 			ApplyPlayerSettingsFromFile();
 		}

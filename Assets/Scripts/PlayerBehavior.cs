@@ -1172,7 +1172,7 @@ public class PlayerBehavior : MonoBehaviour
 			Vector3 playerFeet = new Vector3(transform.position.x, transform.position.y - playerGrindingVerticalOffset, transform.position.z);
 
 			float distanceTravelled = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -myRB.velocity.magnitude : myRB.velocity.magnitude;
-			transform.position = currentRail.GetPointAtLinearDistance(pointOnRail, distanceTravelled * Time.deltaTime);
+			//transform.position = currentRail.GetPointAtLinearDistance(pointOnRail, distanceTravelled * Time.deltaTime);
 
 			if (Vector3.Distance(pointOnRail, playerFeet) > minDistanceToStayOnRail) {
 				//currentRail = null;
