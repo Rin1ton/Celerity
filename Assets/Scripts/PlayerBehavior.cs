@@ -209,7 +209,7 @@ public class PlayerBehavior : MonoBehaviour
 	readonly float grindingTopSpeed = 28;
 	readonly float grindingAirAcceleration = 1.22f;
 	readonly float grindingGroundAcceleration = 1.22f;
-	readonly float minDistanceToStayOnRail = 1;
+	readonly float minDistanceToStayOnRail = .5f;
 	bool isGrinding = false;
 	float playerGrindingVerticalOffset = 1;
 	Vector3 pointOnRail;
@@ -625,10 +625,10 @@ public class PlayerBehavior : MonoBehaviour
 
 		//if we're thrusting, no keyboard movement
 		if (isThrusting)
-			moveInput = myRB.velocity.magnitude > currentMove.topSpeed ? Vector3.zero : myRB.transform.forward;
+			moveInput = myRB.velocity.magnitude > currentMove.topSpeed ? Vector3.zero :myRB.transform.forward;
 
 		//call the appropriate move function, whether we're on the ground or the air
-		if (isGrinding)
+		if (currentRail != null)
 			MoveOnRail(myRB.velocity, moveInput);
 		else if (isGrounded)
 			MoveWithFriction(myRB.velocity, moveInput);
@@ -1178,6 +1178,9 @@ public class PlayerBehavior : MonoBehaviour
 				//currentRail = null;
 			}
 
+			if (!isSkating || Vector3.Distance(pointOnRail, playerFeet) > minDistanceToStayOnRail)
+				StopGrinding();
+
 		}
 		else if(isGrinding)		//this code runs once when grinding stops
 		{
@@ -1186,7 +1189,10 @@ public class PlayerBehavior : MonoBehaviour
 
 	}
 
-
+	void StopGrinding()
+	{
+		currentRail = null;
+	}
 
 	/*
 	 * resets the jump so the player can jump again
