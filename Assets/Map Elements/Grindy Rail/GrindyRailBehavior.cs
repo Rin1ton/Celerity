@@ -34,7 +34,7 @@ public class GrindyRailBehavior : MonoBehaviour
 	void Start()
 	{
 		//
-		thePlayerBehavior = References.thePlayer.GetComponent<PlayerBehavior>();
+		thePlayerBehavior = References.thePlayer;
 
 		// It's nice to be able to see resolution changes at runtime
 		if (m_Points?.Length != m_Segments)
@@ -80,7 +80,7 @@ public class GrindyRailBehavior : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject == References.thePlayer)
+		if (collision.gameObject == References.thePlayer.gameObject)
 			thePlayerBehavior.SetCurrentRail(this);
 	}
 

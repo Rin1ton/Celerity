@@ -20,6 +20,8 @@ public class LevelBehavior : MonoBehaviour
 	public GameObject playerPrefab;
 	readonly KeyCode deleteSavedGameKey1 = KeyCode.LeftShift;
 	readonly KeyCode deleteSavedGameKey2 = KeyCode.Semicolon;
+	static Vector3 defaultPlayerPosition = new Vector3(-2.13818312f, 22, 23.389225f);
+	static Quaternion defaultPlayerRotation = new Quaternion(0, 1, 0, 0);
 	static bool isTryingToDeleteGame;
 
 	private void Awake()
@@ -30,9 +32,23 @@ public class LevelBehavior : MonoBehaviour
         References.theLevelLogic = this;
 		References.startingEnergyCapsuleCount = 0;
 
+		PlayerSavedGame myLoadedGame = LoadPlayerGame();
 
+		foreach(string NRGname in myLoadedGame.NRGCollected)
+		{
+			NRGCollectedThisSession.Add(NRGname);
+		}
 
-		SpawnPlayer(new Vector3(-2.13818312f, 22, 23.389225f), new Quaternion(0, 1, 0, 0), Vector3.zero);
+		foreach(string timeTrialName in myLoadedGame.TimeTrialsCompleted)
+		{
+			timeTrialsCompletedThisSession.Add(timeTrialName);
+		}
+
+		Vector3 playerSpawnPos = new Vector3(myLoadedGame.playerPosX, myLoadedGame.playerPosY, myLoadedGame.playerPosZ);
+		Quaternion playerSpawnRot = new Quaternion(myLoadedGame.playerRotX, myLoadedGame.playerRotY, myLoadedGame.playerRotZ, myLoadedGame.playerRotW);
+		Vector3 playerSpawnVel = new Vector3(myLoadedGame.playerVelX, myLoadedGame.playerVelY, myLoadedGame.playerVelZ);
+
+		SpawnPlayer(playerSpawnPos, playerSpawnRot, playerSpawnVel).diveReady = myLoadedGame.playerDiveReady;
     }
 
     // Start is called before the first frame update
@@ -53,10 +69,11 @@ public class LevelBehavior : MonoBehaviour
 		TryToDeleteGame();
 	}
 
-	void SpawnPlayer(Vector3 position, Quaternion rotation, Vector3 velocity)
+	PlayerBehavior SpawnPlayer(Vector3 position, Quaternion rotation, Vector3 velocity)
 	{
 		GameObject thePlayer = Instantiate(playerPrefab, position, rotation);
 		thePlayer.GetComponent<Rigidbody>().velocity = velocity;
+		return thePlayer.GetComponent<PlayerBehavior>();
 	}
 
 	public void NRGCollect(NRGCapsuleBehavior collectedNRG)
@@ -122,21 +139,21 @@ public class LevelBehavior : MonoBehaviour
 
 	static PlayerSavedGame LoadPlayerGame()
 	{
+		PlayerSavedGame mySaveGame;
 		if (File.Exists(saveGamePath))
 		{
 			BinaryFormatter myFormatter = new BinaryFormatter();
 			FileStream myStream = new FileStream(saveGamePath, FileMode.Open);
 
-			PlayerSavedGame mySaveGame = myFormatter.Deserialize(myStream) as PlayerSavedGame;
+			mySaveGame = myFormatter.Deserialize(myStream) as PlayerSavedGame;
 			myStream.Close();
-
-			return mySaveGame;
 		}
 		else
 		{
 			//if the save file does not exist, it should be generated
-			return null;
+			mySaveGame = new PlayerSavedGame(defaultPlayerPosition, defaultPlayerRotation, Vector3.zero);
 		}
+			return mySaveGame;
 	}
 
 }

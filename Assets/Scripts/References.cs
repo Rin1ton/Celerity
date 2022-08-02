@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class References
 {
-    public static GameObject thePlayer;
+    public static PlayerBehavior thePlayer;
     public static GameObject canvas;
     public static bool isPaused;
     public static int startingEnergyCapsuleCount;

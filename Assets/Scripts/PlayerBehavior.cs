@@ -136,8 +136,8 @@ public class PlayerBehavior : MonoBehaviour
 	readonly float diveRegenRate = 4;						//the amount the dive recharges per second
 	readonly float minAngleTowardUpDive = 60;				//the closest the dive vector can be to the up vector
 	readonly float diveSpeedPenalty = 0.95f;
-	float minMaxDiveSpeedDifference;						//difference between maxDiveSpeed and minDiveSpeed, initialized in Start()
-	bool diveReady = true;
+	float minMaxDiveSpeedDifference;                        //difference between maxDiveSpeed and minDiveSpeed, initialized in Start()
+	public bool diveReady = false;
 	float currentDiveSpeed;
 
 	//thrust
@@ -232,7 +232,7 @@ public class PlayerBehavior : MonoBehaviour
 	//awake runs before start
 	void Awake()
 	{
-		References.thePlayer = gameObject;
+		References.thePlayer = this;
 	}
 
 	// Start is called before the first frame update
@@ -1417,8 +1417,6 @@ public class PlayerBehavior : MonoBehaviour
 	{
 		switch (vectorName)
 		{
-			case "myRB.velocity":
-				return myRB.velocity;
 			case "currentGround":
 				return currentGround;
 			case "currentWall":
@@ -1434,4 +1432,6 @@ public class PlayerBehavior : MonoBehaviour
 				return Vector3.zero;
 		}
 	}
+
+	public Vector3 velocity => myRB.velocity;
 }

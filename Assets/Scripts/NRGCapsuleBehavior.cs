@@ -40,7 +40,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
 			References.startingEnergyCapsuleCount++;
 
         //get player
-		player = References.thePlayer;
+		player = References.thePlayer.gameObject;
 
 		//get my sound system
 		mySounds = transform.Find("NRGSoundEmitter").GetComponent<NRGSoundEmitterBehavior>();

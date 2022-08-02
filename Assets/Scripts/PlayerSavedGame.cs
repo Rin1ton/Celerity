@@ -5,28 +5,36 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerSavedGame
 {
-	public float playerPositionX;
-	public float playerPositionY;
-	public float playerPositionZ;
-	public float playerRotationW;
-	public float playerRotationX;
-	public float playerRotationY;
-	public float playerRotationZ;
+	public float playerPosX;
+	public float playerPosY;
+	public float playerPosZ;
+	public float playerRotW;
+	public float playerRotX;
+	public float playerRotY;
+	public float playerRotZ;
+	public float playerVelX;
+	public float playerVelY;
+	public float playerVelZ;
+	public bool playerDiveReady;
 	public string[] NRGCollected;
 	public string[] TimeTrialsCompleted;
 
 	public PlayerSavedGame()
 	{
 		//player coordinates
-		playerPositionX = References.thePlayer.transform.position.x;
-		playerPositionY = References.thePlayer.transform.position.y;
-		playerPositionZ = References.thePlayer.transform.position.z;
-		playerRotationW = References.thePlayer.transform.rotation.w;
-		playerRotationX = References.thePlayer.transform.rotation.x;
-		playerRotationY = References.thePlayer.transform.rotation.y;
-		playerRotationZ = References.thePlayer.transform.rotation.z;
+		playerPosX = References.thePlayer.transform.position.x;
+		playerPosY = References.thePlayer.transform.position.y;
+		playerPosZ = References.thePlayer.transform.position.z;
+		playerRotW = References.thePlayer.transform.rotation.w;
+		playerRotX = References.thePlayer.transform.rotation.x;
+		playerRotY = References.thePlayer.transform.rotation.y;
+		playerRotZ = References.thePlayer.transform.rotation.z;
+		playerVelX = References.thePlayer.velocity.x;
+		playerVelY = References.thePlayer.velocity.y;
+		playerVelZ = References.thePlayer.velocity.z;
+		playerDiveReady = References.thePlayer.diveReady;
 		NRGCollected = new string[References.theLevelLogic.NRGCollectedThisSession.Count];
-		TimeTrialsCompleted = new string[References.theLevelLogic.NRGCollectedThisSession.Count];
+		TimeTrialsCompleted = new string[References.theLevelLogic.timeTrialsCompletedThisSession.Count];
 
 		//NRG directly collected
 		for(int NRG = 0; NRG < References.theLevelLogic.NRGCollectedThisSession.Count; NRG++)
@@ -38,4 +46,22 @@ public class PlayerSavedGame
 
 		//NRG collected from speed traps
 	}
+
+	public PlayerSavedGame(Vector3 playerPosition, Quaternion playerRotation, Vector3 playerVelocity)
+	{
+		playerPosX = playerPosition.x;
+		playerPosY = playerPosition.y;
+		playerPosZ = playerPosition.z;
+		playerRotW = playerRotation.w;
+		playerRotX = playerRotation.x;
+		playerRotY = playerRotation.y;
+		playerRotZ = playerRotation.z;
+		playerVelX = playerVelocity.x;
+		playerVelY = playerVelocity.y;
+		playerVelZ = playerVelocity.z;
+		playerDiveReady = false;
+		NRGCollected = new string[0];
+		TimeTrialsCompleted = new string[0];
+	}
 }
+

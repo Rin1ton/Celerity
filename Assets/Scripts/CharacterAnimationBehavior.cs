@@ -15,7 +15,7 @@ public class CharacterAnimationBehavior : MonoBehaviour
     void Start()
     {
         //anim = GetComponent<Animator>();
-		ourPlayer = References.thePlayer.GetComponent<PlayerBehavior>();
+		ourPlayer = References.thePlayer;
 		//runForwardAnim = myAnimatorController.Get
     }
 
@@ -63,7 +63,7 @@ public class CharacterAnimationBehavior : MonoBehaviour
 			if (!ourPlayer.GetBool("isGrounded"))
 			{
 				myAnimator.SetBool("isGrounded", false);
-				if (ourPlayer.GetVector3("myRB.velocity").y >= 0)
+				if (ourPlayer.velocity.y >= 0)
 					myAnimator.SetBool("isFalling", false);
 				else
 					myAnimator.SetBool("isFalling", true);

@@ -116,7 +116,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 			}
 			
 			//if player is close enough, or a race is running, emit the trail
-			if ((Vector3.Distance(References.thePlayer.transform.position, startPosition) <= playerDistanceToEmitTrail && !References.theTimerBar.isRacing) || raceIsRunning)
+			if ((Vector3.Distance(References.thePlayer.gameObject.transform.position, startPosition) <= playerDistanceToEmitTrail && !References.theTimerBar.isRacing) || raceIsRunning)
 			{
 				currentTrailEmitter = Instantiate(trailEmitterPrefab, startPosition, transform.rotation);
 				currentTrailEmitterTR = currentTrailEmitter.GetComponent<TrailRenderer>();
