@@ -30,6 +30,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	public GameObject blankNRGPrefab;
 	bool raceIsRunning = false;
 	public GameObject objectOfOurName;
+	bool levelJustLoaded = true;
 
 	//timing race stuff
 	public float raceTimeLimit;
@@ -72,13 +73,22 @@ public class TimeTrialStartBehavior : MonoBehaviour
 		if (raceTimeLimit == 0)
 		{
 			raceTimeLimit = 10;
-			Debug.Log("race has no time limit, setting to default.");
+			Debug.Log("race has no time limit, setting to default: " + 10);
 		}
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		if (levelJustLoaded)
+		{
+			levelJustLoaded = false;
+			foreach(string trialName in References.theLevelLogic.timeTrialsCompletedThisSession)
+			{
+				if (trialName == objectOfOurName.name)
+					FinishWithoutEffect();
+			}
+		}
 		EmitTrailToFinish();
 		UpdateTimer();
 	}
@@ -158,6 +168,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 			SetMyColor(deadColor);
 			Instantiate(blankNRGPrefab, finishLineOrb.position, Quaternion.identity);
 			
+			//give my name to the level logic for saving the game
 			References.theLevelLogic.timeTrialsCompletedThisSession.Add(objectOfOurName.name);
 
 			Destroy(finishLineOrb.gameObject);
@@ -172,6 +183,20 @@ public class TimeTrialStartBehavior : MonoBehaviour
 			Destroy(this);
 		}
 
+	}
+
+	void FinishWithoutEffect()
+	{
+		SetMyColor(deadColor);
+
+		Destroy(finishLineOrb.gameObject);
+		Destroy(finishLineCube.gameObject);
+
+		References.theLevelLogic.NRGCollect();
+		References.currentEnergyCapsuleCount--;
+
+		Destroy(myFinishLine);
+		Destroy(this);
 	}
 
 	/*
