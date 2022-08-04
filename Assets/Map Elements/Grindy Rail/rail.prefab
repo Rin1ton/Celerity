@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Sides: 8
   m_SegmentsPerUnit: 4
   m_Capped: 1
-  m_Radius: 0.075
+  m_Radius: 0.15
   m_Range: {x: 0, y: 1}
 --- !u!64 &6840030269815530376
 MeshCollider:

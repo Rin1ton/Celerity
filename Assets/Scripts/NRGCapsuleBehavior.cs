@@ -27,6 +27,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
 	float chaseThePlayerSpeed;
 	float chaseThePlayerMinSpeed = 15;
 	bool hasBeenCollected = false;
+	bool levelJustLoaded = true;
 
     private void Awake()
     {
@@ -50,11 +51,22 @@ public class NRGCapsuleBehavior : MonoBehaviour
 
 		//add me to the list of NRG
 		References.theLevelLogic.thisLevelsNRG.Add(this);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+		if (levelJustLoaded)
+		{
+			foreach (string NRGName in References.theLevelLogic.NRGCollectedThisSession)
+			{
+				if (name == NRGName)
+					CollectWithoutEffects();
+			}
+			levelJustLoaded = false;
+		}
+
 		if (collected)
 		{
 			//countdown to die
@@ -158,6 +170,14 @@ public class NRGCapsuleBehavior : MonoBehaviour
 			Debug.LogError("NO BROKEN CAPSULE PREFAB");
 		collected = true;
     }
+
+	void CollectWithoutEffects()
+	{
+		References.currentEnergyCapsuleCount--;
+		References.theLevelLogic.thisLevelsNRG.Remove(this);
+		References.theLevelLogic.NRGCollect();
+		Destroy(gameObject);
+	}
 
 	private void OnDestroy()
 	{

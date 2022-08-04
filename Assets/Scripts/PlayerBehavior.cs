@@ -1381,7 +1381,7 @@ public class PlayerBehavior : MonoBehaviour
 			lastWall = Vector3.zero;
 		}
 
-		isGrounded = grounded /*|| currentRail != null*/;
+		isGrounded = grounded || currentRail != null;
 	}
 	
 	//two walls need to be different by a certain margin for a wall run to be possible

@@ -63,7 +63,7 @@ public class LevelBehavior : MonoBehaviour
     {
 		if (levelJustLoaded)
 		{
-			References.currentEnergyCapsuleCount = References.startingEnergyCapsuleCount;
+			References.currentEnergyCapsuleCount = References.startingEnergyCapsuleCount + References.currentEnergyCapsuleCount;
 			levelJustLoaded = false;
 		}
 		TryToDeleteGame();
