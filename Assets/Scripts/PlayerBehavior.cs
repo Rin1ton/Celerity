@@ -207,11 +207,11 @@ public class PlayerBehavior : MonoBehaviour
 	public GrindyRailBehavior currentRail;
 	readonly float grindingFriction = 0;
 	readonly float grindingTopSpeed = 28;
-	readonly float grindingAirAcceleration = 1.22f;
-	readonly float grindingGroundAcceleration = 1.22f;
-	readonly float minDistanceToStayOnRail = .5f;
+	readonly float grindingAirAcceleration = Mathf.Infinity;
+	readonly float grindingGroundAcceleration = 5;
+	readonly float minDistanceToStayOnRail = 1.5f;
 	bool isGrinding = false;
-	float playerGrindingVerticalOffset = 1;
+	Vector3 playerGrindingVerticalOffset = new Vector3(0, 1, 0);
 	Vector3 pointOnRail;
 	Vector3 tangentVector;
 
@@ -728,7 +728,7 @@ public class PlayerBehavior : MonoBehaviour
 	void MoveOnRail(Vector3 prevVelocity, Vector3 moveDir)
 	{
 		Vector3 tangent = currentRail.TangentAtPointOnSpline(pointOnRail);
-		prevVelocity = Vector3.Dot(tangent, prevVelocity) < 0 ? -tangent.normalized * prevVelocity.magnitude : tangent;
+		prevVelocity = Vector3.Dot(tangent, prevVelocity) < 0 ? -tangent.normalized * prevVelocity.magnitude : tangent.normalized * prevVelocity.magnitude;
 		float speed = prevVelocity.magnitude;
 		float drop = 0;
 		float friction = currentMove.friction;
@@ -1163,16 +1163,19 @@ public class PlayerBehavior : MonoBehaviour
 			//This code runs once when grinding starts
 			if (!isGrinding)
 			{
+				Physics.IgnoreLayerCollision(9, 6, true);
+				myRB.useGravity = false;
+
 				isGrinding = true;
 				myRB.velocity = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -tangentVector.normalized * myRB.velocity.magnitude : tangentVector.normalized * myRB.velocity.magnitude;
-				transform.position = currentRail.ClosestPoint(transform.position) + new Vector3(0, playerGrindingVerticalOffset, 0);
+				transform.position = currentRail.ClosestPoint(transform.position) + playerGrindingVerticalOffset;
 			}
 			//this code runs continuously while grinding
 
-			Vector3 playerFeet = new Vector3(transform.position.x, transform.position.y - playerGrindingVerticalOffset, transform.position.z);
+			Vector3 playerFeet = transform.position - playerGrindingVerticalOffset;
 
 			float distanceTravelled = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -myRB.velocity.magnitude : myRB.velocity.magnitude;
-			//transform.position = currentRail.GetPointAtLinearDistance(pointOnRail, distanceTravelled * Time.deltaTime);
+			//transform.position = currentRail.ClosestPoint(transform.position) + playerGrindingVerticalOffset;
 
 			if (Vector3.Distance(pointOnRail, playerFeet) > minDistanceToStayOnRail) {
 				//currentRail = null;
@@ -1184,6 +1187,9 @@ public class PlayerBehavior : MonoBehaviour
 		}
 		else if(isGrinding)		//this code runs once when grinding stops
 		{
+			Physics.IgnoreLayerCollision(9, 6, false);
+			myRB.useGravity = true;
+
 			isGrinding = false;
 		}
 

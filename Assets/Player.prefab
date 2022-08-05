@@ -6746,7 +6746,7 @@ Rigidbody:
   m_AngularDrag: Infinity
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &1697833099020863702
@@ -6764,6 +6764,7 @@ MonoBehaviour:
   myCamera: {fileID: 4260670259700391399}
   isGrounded: 0
   myYeetTrigger: {fileID: 950208170631881624}
+  diveReady: 0
   myAnimaions: {fileID: 91685788977711308}
   speedometerPrefab: {fileID: 8255427879829051032, guid: 5de0b7f455dee7d4e91df185c7a71956,
     type: 3}
