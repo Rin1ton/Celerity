@@ -10,7 +10,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class LevelBehavior : MonoBehaviour
 {
 
-	public List<NRGCapsuleBehavior> thisLevelsNRG;
 	public List<string> NRGCollectedThisSession;
 	public List<string> timeTrialsCompletedThisSession;
 	bool levelJustLoaded = true;
@@ -87,14 +86,6 @@ public class LevelBehavior : MonoBehaviour
 	{
 		if (References.playerNRGTracker != null)
 			References.playerNRGTracker.SetNRGTrackerDisplay(References.currentEnergyCapsuleCount);
-	}
-
-	public void DestroyAllNRG()
-	{
-		for (int NRGs = thisLevelsNRG.Count - 1; NRGs >= 0; NRGs--)
-		{
-			Destroy(thisLevelsNRG[NRGs].gameObject);
-		}
 	}
 
 	public void SaveGame()

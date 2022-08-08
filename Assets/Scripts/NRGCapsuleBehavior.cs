@@ -20,7 +20,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
 	public GameObject brokenCapsulePrefab;
 	public ParticleSystem myParticleSystem;
 	public GameObject myPointLight;
-	public GameObject myOverheadLabel;
 	public bool isAccountedForByChallenge;
 	float timeToDieAfterCollected = 2.5f;
 	bool collected = false;
@@ -37,7 +36,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {		
-		if (myOverheadLabel == null && !isAccountedForByChallenge)
+		if (!isAccountedForByChallenge)
 			References.startingEnergyCapsuleCount++;
 
         //get player
@@ -48,10 +47,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
 
 		//get my particle system
 		myParticleSystem = myParticleSystem.GetComponent<ParticleSystem>();
-
-		//add me to the list of NRG
-		References.theLevelLogic.thisLevelsNRG.Add(this);
-
     }
 
     // Update is called once per frame
@@ -100,11 +95,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
 						References.theLevelLogic.NRGCollect();
 
 					hasBeenCollected = true;
-
-					//if I'm a main menu selection, Run the function of that menu option
-					if (myOverheadLabel != null)
-						myOverheadLabel.GetComponent<MenuSpriteBehavior>().MyFunction();
-					
 				}
 				
 				Destroy(myNRG);
@@ -146,11 +136,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
 		//pull me from every list I'm apart of
 		gameObject.GetComponent<RemoveMeFromListBehavior>().RemoveMeFromAllYeetLists();
 		References.currentEnergyCapsuleCount--;
-		References.theLevelLogic.thisLevelsNRG.Remove(this);
-		
-		//if we're a menu option, destroy every other one
-		if (myOverheadLabel != null)
-			References.theLevelLogic.DestroyAllNRG();
 
 		//do the Collecting effects
 		gameObject.GetComponent<Collider>().enabled = false;
@@ -174,8 +159,8 @@ public class NRGCapsuleBehavior : MonoBehaviour
 	void CollectWithoutEffects()
 	{
 		References.currentEnergyCapsuleCount--;
-		References.theLevelLogic.thisLevelsNRG.Remove(this);
 		References.theLevelLogic.NRGCollect();
+		Debug.Log(name + "has been collected");
 		Destroy(gameObject);
 	}
 
@@ -183,7 +168,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
 	{
 		//pull me from every list I'm apart of
 		gameObject.GetComponent<RemoveMeFromListBehavior>().RemoveMeFromAllYeetLists();
-		References.theLevelLogic.thisLevelsNRG.Remove(this);
 	}
 
 }

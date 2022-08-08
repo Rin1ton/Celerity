@@ -18,7 +18,7 @@ public class GrindyRailBehavior : MonoBehaviour
 	PlayerBehavior thePlayerBehavior;
 
 	//
-	readonly int segmentsPerMeter = 10;
+	readonly int segmentsPerMeter = 1000;
 
 	int m_Segments;
 
@@ -84,6 +84,33 @@ public class GrindyRailBehavior : MonoBehaviour
 			thePlayerBehavior.SetCurrentRail(this);
 	}
 
+	public Vector3 ClosestPoint(Vector3 queryPoint, out float newT)
+	{
+		int relevantPoint = 0;
+		float distanceToClosestPoint = Mathf.Infinity;
+		float currentDistance;
+		for (int currentPoint = 0; currentPoint < m_Points.Length; currentPoint++)
+		{
+			currentDistance = Vector3.Distance(m_Points[currentPoint], queryPoint);
+			if (currentDistance < distanceToClosestPoint)
+			{
+				distanceToClosestPoint = currentDistance;
+				relevantPoint = currentPoint;
+			}
+		}
+
+		/*float3 nearestPoint;
+		float T;
+		SplineUtility.GetNearestPoint(m_Spline, queryPoint, out nearestPoint , out T);
+
+		Vector3 myballse = nearestPoint;
+		return myballse + transform.position;*/
+
+		newT = relevantPoint;
+
+		return m_Points[relevantPoint];
+	}
+
 	public Vector3 ClosestPoint(Vector3 queryPoint)
 	{
 		int relevantPoint = 0;
@@ -98,6 +125,13 @@ public class GrindyRailBehavior : MonoBehaviour
 				relevantPoint = currentPoint;
 			}
 		}
+
+		/*float3 nearestPoint;
+		float T;
+		SplineUtility.GetNearestPoint(m_Spline, queryPoint, out nearestPoint , out T);
+
+		Vector3 myballse = nearestPoint;
+		return myballse + transform.position;*/
 
 		return m_Points[relevantPoint];
 	}
@@ -126,10 +160,10 @@ public class GrindyRailBehavior : MonoBehaviour
 		return m_Spline.EvaluateTangent(ClosestT(queryPoint) / (m_Segments - 1f));
 	}
 
-	public Vector3 GetPointAtLinearDistance(Vector3 queryPoint, float distance)
+	public Vector3 GetPointAtLinearDistance(float fromT, float distance, out float newT)
 	{
-
-		return m_Spline.GetPointAtLinearDistance(ClosestT(queryPoint), distance, out distance);
+		
+		return m_Spline.GetPointAtLinearDistance(fromT, distance, out newT);
 	}
 
 }

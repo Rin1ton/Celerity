@@ -56,6 +56,7 @@ public class PlayerBehavior : MonoBehaviour
 	}
 	Rigidbody myRB;
 	Vector3 moveInput = new Vector3();
+	Vector3 myImaginaryVel;
 	MoveStats currentMove;                                  //move stats we have at any given time, only thing read directly by the keyboard movement functions
 	MoveStats runningMove;                                  //default move stats. used when not skating or boosting
 	MoveStats skatingMove;                                  //skating move stats. used when skating, but not boosting
@@ -205,6 +206,7 @@ public class PlayerBehavior : MonoBehaviour
 
 	//grinding
 	public GrindyRailBehavior currentRail;
+	float railT = -1;
 	readonly float grindingFriction = 0;
 	readonly float grindingTopSpeed = 28;
 	readonly float grindingAirAcceleration = Mathf.Infinity;
@@ -347,11 +349,7 @@ public class PlayerBehavior : MonoBehaviour
 
 
 
-	/*===========================================================================
-	 * Very important
-	 * update is called once per frame.
-	 * here we call every function that must act all the time, in real time
-	 ============================================================================*/
+	//update is called once per frame
 	void Update()
 	{
 		//can't play game if game is paused
@@ -359,7 +357,6 @@ public class PlayerBehavior : MonoBehaviour
 		{
 			MouseLook();
 			MoveStatSet();
-			GrindOnRail();
 			KeyboardMovement();
 			Timers();
 			SkatingOrRunning();
@@ -387,6 +384,7 @@ public class PlayerBehavior : MonoBehaviour
 		CounterSlope();
 		SlopeSkatingAssist();
 		ThrustForce();
+		GrindOnRail();
 		MyLateUpdate();             //MUST BE LAST IN FIXED UPDATE
 	}
 
@@ -627,15 +625,17 @@ public class PlayerBehavior : MonoBehaviour
 		if (isThrusting)
 			moveInput = myRB.velocity.magnitude > currentMove.topSpeed ? Vector3.zero :myRB.transform.forward;
 
+		Vector3 velToPass = myImaginaryVel == Vector3.zero ? myRB.velocity : myImaginaryVel;
+
 		//call the appropriate move function, whether we're on the ground or the air
 		if (currentRail != null)
-			MoveOnRail(myRB.velocity, moveInput);
+			MoveOnRail(velToPass, moveInput);
 		else if (isGrounded)
-			MoveWithFriction(myRB.velocity, moveInput);
+			MoveWithFriction(velToPass, moveInput);
 		else if (!isWallRunning)
-			MoveWithNoFriction(myRB.velocity, moveInput);
+			MoveWithNoFriction(velToPass, moveInput);
 		else
-			MoveOnWall(myRB.velocity, moveInput);
+			MoveOnWall(velToPass, moveInput);
 	}
 
 	/*
@@ -751,7 +751,7 @@ public class PlayerBehavior : MonoBehaviour
 			//prevVelocity *= Mathf.Max(speed - drop, 0) / speed; //Scale the velocity based on friction
 		}
 
-		Accelerate(prevVelocity, currentMove.groundAcceleration, moveDir);
+		AccelerateOnRail(prevVelocity, currentMove.groundAcceleration, moveDir, tangent);
 	}
 
 	/*===================================*\
@@ -788,19 +788,61 @@ public class PlayerBehavior : MonoBehaviour
 
 		//now apply our witchcraft to my velocity to accelerate
 		myRB.velocity = newVelocity;
+		myImaginaryVel = Vector3.zero;
 
 		//make the player *feel* the speed
-		SpeedEffects();
+		SpeedEffects(myRB.velocity);
+	}
+
+	void AccelerateOnRail(Vector3 prevVel, float accel, Vector3 wishDir, Vector3 tangent)
+	{
+		float wishSpeed, addSpeed, accelSpeed;
+
+		wishSpeed = currentMove.topSpeed;
+
+		//this is straight witchcraft. determine how much to accelerate
+		float currentSpeed = Vector3.Dot(prevVel, wishDir); // Vector projection of Current velocity onto wishDir
+
+		//the difference between our top speed and our current speed is what we'll be adding to our speed.
+		addSpeed = wishSpeed - currentSpeed;
+
+		//if we're going faster than our top speed, allow holding [W]
+		if (addSpeed <= 0)
+			addSpeed = 0;
+
+		//bungus
+		//apply our acceleration to a float
+		accelSpeed = accel * Time.deltaTime * wishSpeed;
+
+		//drop acceleration to top speed?
+		if (accelSpeed > addSpeed)
+			accelSpeed = addSpeed;
+
+		//save what our new velocity should be
+		Vector3 newVelocity = prevVel + wishDir * accelSpeed;
+
+		//move along the rail the appropriate distance
+		float newSpeed = Vector3.Dot(newVelocity, tangent) < 0 ? -newVelocity.magnitude : newVelocity.magnitude;
+		transform.position = currentRail.GetPointAtLinearDistance(railT, newSpeed * Time.deltaTime, out railT);
+
+		//make sure our velocity is tangent to the spline now
+		newVelocity = Vector3.Dot(newVelocity, tangent) < 0 ? -tangent.normalized * newVelocity.magnitude : tangent.normalized * newVelocity.magnitude;
+
+		//now save the velocity to imaginary so everyone knows our "velocity"
+		myImaginaryVel = newVelocity;
+		myRB.velocity = Vector3.zero;
+
+		SpeedEffects(myImaginaryVel);
 	}
 
 	//dependent on how fast the player is moving, add some elements to the HUD that indicates their speed
-	void SpeedEffects()
+	void SpeedEffects(Vector3 velocity)
 	{
 		//update our speedometer
 		mySpeedometer.SetSpeedDisplay(MyLateralVelocity().magnitude);
 
 		//update our speed line generator
-		int speedParticlesToGenerate = Mathf.RoundToInt(Mathf.Clamp(speedLineParticleMultiplier * (myRB.velocity.magnitude - skatingMove.topSpeed), 0, speedLineParticleMax));
+		int speedParticlesToGenerate = Mathf.RoundToInt(Mathf.Clamp(speedLineParticleMultiplier * (velocity.magnitude - skatingMove.topSpeed), 0, speedLineParticleMax));
 		var emission = speedLinesParticleSystem.emission;
 		emission.rateOverTime = speedParticlesToGenerate;
 
@@ -1169,17 +1211,11 @@ public class PlayerBehavior : MonoBehaviour
 				isGrinding = true;
 				myRB.velocity = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -tangentVector.normalized * myRB.velocity.magnitude : tangentVector.normalized * myRB.velocity.magnitude;
 				transform.position = currentRail.ClosestPoint(transform.position) + playerGrindingVerticalOffset;
+				Debug.LogError("nice");
 			}
 			//this code runs continuously while grinding
 
 			Vector3 playerFeet = transform.position - playerGrindingVerticalOffset;
-
-			float distanceTravelled = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -myRB.velocity.magnitude : myRB.velocity.magnitude;
-			//transform.position = currentRail.ClosestPoint(transform.position) + playerGrindingVerticalOffset;
-
-			if (Vector3.Distance(pointOnRail, playerFeet) > minDistanceToStayOnRail) {
-				//currentRail = null;
-			}
 
 			if (!isSkating || Vector3.Distance(pointOnRail, playerFeet) > minDistanceToStayOnRail)
 				StopGrinding();
@@ -1198,6 +1234,7 @@ public class PlayerBehavior : MonoBehaviour
 	void StopGrinding()
 	{
 		currentRail = null;
+		railT = -1;
 	}
 
 	/*
@@ -1284,7 +1321,11 @@ public class PlayerBehavior : MonoBehaviour
 	//return the horizontal velocity of the player character
 	Vector3 MyLateralVelocity()
 	{
-		Vector3 latVel = new Vector3(myRB.velocity.x, 0, myRB.velocity.z);
+		Vector3 latVel;
+		if (myImaginaryVel == Vector3.zero)
+			latVel = new Vector3(myRB.velocity.x, 0, myRB.velocity.z);
+		else
+			latVel = new Vector3(myImaginaryVel.x, 0, myImaginaryVel.z);
 		return latVel;
 	}
 
@@ -1401,6 +1442,14 @@ public class PlayerBehavior : MonoBehaviour
 
 	public void SetCurrentRail (GrindyRailBehavior theRail)
 	{
+		//make it so you can't grind for [0.1f] seconds after you come off a rail.
+		//make it so you can't grind for [0.1f] seconds after you come off a rail.
+		//make it so you can't grind for [0.1f] seconds after you come off a rail.
+		//make it so you can't grind for [0.1f] seconds after you come off a rail.
+		//make it so you can't grind for [0.1f] seconds after you come off a rail.
+		//make it so you can't grind for [0.1f] seconds after you come off a rail.
+		//make it so you can't grind for [0.1f] seconds after you come off a rail.
+		//make it so you can't grind for [0.1f] seconds after you come off a rail.
 		if (isSkating)
 			currentRail = theRail;
 	}
@@ -1445,5 +1494,5 @@ public class PlayerBehavior : MonoBehaviour
 		}
 	}
 
-	public Vector3 velocity => myRB.velocity;
+	public Vector3 velocity => myImaginaryVel == Vector3.zero ? myRB.velocity : myRB.velocity;
 }
