@@ -106,7 +106,8 @@ public class GrindyRailBehavior : MonoBehaviour
 		Vector3 myballse = nearestPoint;
 		return myballse + transform.position;*/
 
-		newT = relevantPoint;
+		newT = relevantPoint * (1 / m_Segments);
+		Debug.Log(newT);
 
 		return m_Points[relevantPoint];
 	}
@@ -156,14 +157,20 @@ public class GrindyRailBehavior : MonoBehaviour
 
 	public Vector3 TangentAtPointOnSpline(Vector3 queryPoint)
 	{
-		Vector3 relevantPointOnSpline = ClosestPoint(queryPoint);
+		//Vector3 relevantPointOnSpline = ClosestPoint(queryPoint);
 		return m_Spline.EvaluateTangent(ClosestT(queryPoint) / (m_Segments - 1f));
+	}
+
+	public Vector3 TangentAtPointOnSpline(float queryT)
+	{
+		return m_Spline.EvaluateTangent(queryT);
 	}
 
 	public Vector3 GetPointAtLinearDistance(float fromT, float distance, out float newT)
 	{
-		
-		return m_Spline.GetPointAtLinearDistance(fromT, distance, out newT);
+		Vector3 output = m_Spline.GetPointAtLinearDistance(fromT, distance, out newT);
+		output += transform.position;
+		return output;
 	}
 
 }

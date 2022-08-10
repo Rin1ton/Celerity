@@ -211,11 +211,8 @@ public class PlayerBehavior : MonoBehaviour
 	readonly float grindingTopSpeed = 28;
 	readonly float grindingAirAcceleration = Mathf.Infinity;
 	readonly float grindingGroundAcceleration = 5;
-	readonly float minDistanceToStayOnRail = 1.5f;
 	bool isGrinding = false;
-	Vector3 playerGrindingVerticalOffset = new Vector3(0, 1, 0);
-	Vector3 pointOnRail;
-	Vector3 tangentVector;
+	Vector3 playerFeetOffset = new Vector3(0, 1.1f, 0);
 
 
 	/*====================================================================
@@ -357,6 +354,7 @@ public class PlayerBehavior : MonoBehaviour
 		{
 			MouseLook();
 			MoveStatSet();
+			GrindOnRail();
 			KeyboardMovement();
 			Timers();
 			SkatingOrRunning();
@@ -384,7 +382,6 @@ public class PlayerBehavior : MonoBehaviour
 		CounterSlope();
 		SlopeSkatingAssist();
 		ThrustForce();
-		GrindOnRail();
 		MyLateUpdate();             //MUST BE LAST IN FIXED UPDATE
 	}
 
@@ -727,7 +724,7 @@ public class PlayerBehavior : MonoBehaviour
 
 	void MoveOnRail(Vector3 prevVelocity, Vector3 moveDir)
 	{
-		Vector3 tangent = currentRail.TangentAtPointOnSpline(pointOnRail);
+		Vector3 tangent = currentRail.TangentAtPointOnSpline(railT);
 		prevVelocity = Vector3.Dot(tangent, prevVelocity) < 0 ? -tangent.normalized * prevVelocity.magnitude : tangent.normalized * prevVelocity.magnitude;
 		float speed = prevVelocity.magnitude;
 		float drop = 0;
@@ -823,7 +820,7 @@ public class PlayerBehavior : MonoBehaviour
 
 		//move along the rail the appropriate distance
 		float newSpeed = Vector3.Dot(newVelocity, tangent) < 0 ? -newVelocity.magnitude : newVelocity.magnitude;
-		transform.position = currentRail.GetPointAtLinearDistance(railT, newSpeed * Time.deltaTime, out railT);
+		transform.position = currentRail.GetPointAtLinearDistance(railT, newSpeed * Time.deltaTime, out railT) + playerFeetOffset;
 
 		//make sure our velocity is tangent to the spline now
 		newVelocity = Vector3.Dot(newVelocity, tangent) < 0 ? -tangent.normalized * newVelocity.magnitude : tangent.normalized * newVelocity.magnitude;
@@ -1199,25 +1196,23 @@ public class PlayerBehavior : MonoBehaviour
 	{
 		if (currentRail != null)
 		{
-			tangentVector = currentRail.TangentAtPointOnSpline(transform.position);
-			pointOnRail = currentRail.ClosestPoint(transform.position);
 			
 			//This code runs once when grinding starts
 			if (!isGrinding)
 			{
+				Vector3 tangentVector = currentRail.TangentAtPointOnSpline(transform.position);
 				Physics.IgnoreLayerCollision(9, 6, true);
 				myRB.useGravity = false;
 
 				isGrinding = true;
 				myRB.velocity = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -tangentVector.normalized * myRB.velocity.magnitude : tangentVector.normalized * myRB.velocity.magnitude;
-				transform.position = currentRail.ClosestPoint(transform.position) + playerGrindingVerticalOffset;
-				Debug.LogError("nice");
+				transform.position = currentRail.ClosestPoint(transform.position, out railT) + playerFeetOffset;
 			}
 			//this code runs continuously while grinding
 
-			Vector3 playerFeet = transform.position - playerGrindingVerticalOffset;
+			Vector3 playerFeet = transform.position - playerFeetOffset;
 
-			if (!isSkating || Vector3.Distance(pointOnRail, playerFeet) > minDistanceToStayOnRail)
+			if (!isSkating)
 				StopGrinding();
 
 		}
