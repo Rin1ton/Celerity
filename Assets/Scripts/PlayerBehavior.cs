@@ -205,14 +205,17 @@ public class PlayerBehavior : MonoBehaviour
 	public Transform myArmRotationPoint;
 
 	//grinding
-	public GrindyRailBehavior currentRail;
-	float railT = -1;
 	readonly float grindingFriction = 0;
 	readonly float grindingTopSpeed = 28;
 	readonly float grindingAirAcceleration = Mathf.Infinity;
 	readonly float grindingGroundAcceleration = 5;
+	readonly float grindCoolDown = 0.15f;
+	readonly Vector3 playerFeetOffset = new Vector3(0, 1.1f, 0);
+	public GrindyRailBehavior currentRail;
+	float grindingInitialSpeed = 0;
+	float railT = -1;
+	float timeSinceStoppedGrinding = 120;
 	bool isGrinding = false;
-	Vector3 playerFeetOffset = new Vector3(0, 1.1f, 0);
 
 
 	/*====================================================================
@@ -403,7 +406,6 @@ public class PlayerBehavior : MonoBehaviour
 		currentWall = Vector3.zero;
 	}
 
-
 	void Timers()
 	{
 		if (timeSinceWallRunStart <= shortTimerStop)
@@ -423,6 +425,9 @@ public class PlayerBehavior : MonoBehaviour
 
 		if (isOnWater && timeLeftToWaterRun >= 0)
 			timeLeftToWaterRun -= Time.deltaTime;
+
+		if (timeSinceStoppedGrinding <= shortTimerStop)
+			timeSinceStoppedGrinding += Time.deltaTime;
 	}
 
 	void HUD()
@@ -622,7 +627,8 @@ public class PlayerBehavior : MonoBehaviour
 		if (isThrusting)
 			moveInput = myRB.velocity.magnitude > currentMove.topSpeed ? Vector3.zero :myRB.transform.forward;
 
-		Vector3 velToPass = myImaginaryVel == Vector3.zero ? myRB.velocity : myImaginaryVel;
+		//Vector3 velToPass = myImaginaryVel == Vector3.zero ? myRB.velocity : myImaginaryVel;
+		Vector3 velToPass = myRB.velocity;
 
 		//call the appropriate move function, whether we're on the ground or the air
 		if (currentRail != null)
@@ -827,9 +833,9 @@ public class PlayerBehavior : MonoBehaviour
 
 		//now save the velocity to imaginary so everyone knows our "velocity"
 		myImaginaryVel = newVelocity;
-		myRB.velocity = Vector3.zero;
+		myRB.velocity = newVelocity;
 
-		SpeedEffects(myImaginaryVel);
+		SpeedEffects(newVelocity);
 	}
 
 	//dependent on how fast the player is moving, add some elements to the HUD that indicates their speed
@@ -868,7 +874,7 @@ public class PlayerBehavior : MonoBehaviour
 			timeSinceLastJump = 0;
 			jumpReady = false;
 			isGrounded = false;
-			currentRail = null;
+			StopGrinding();
 
 			//should not be stuck to ground for the frame we jump, so nullify our ground stick force
 			currentGround = Vector3.zero;
@@ -1205,14 +1211,14 @@ public class PlayerBehavior : MonoBehaviour
 				myRB.useGravity = false;
 
 				isGrinding = true;
-				myRB.velocity = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -tangentVector.normalized * myRB.velocity.magnitude : tangentVector.normalized * myRB.velocity.magnitude;
+				myRB.velocity = Vector3.Dot(myRB.velocity, tangentVector) < 0 ? -tangentVector.normalized * grindingInitialSpeed : tangentVector.normalized * grindingInitialSpeed;
 				transform.position = currentRail.ClosestPoint(transform.position, out railT) + playerFeetOffset;
 			}
 			//this code runs continuously while grinding
 
 			Vector3 playerFeet = transform.position - playerFeetOffset;
 
-			if (!isSkating)
+			if (!isSkating || (!currentRail.closed && (railT >=1 || railT <= 0)))
 				StopGrinding();
 
 		}
@@ -1230,6 +1236,8 @@ public class PlayerBehavior : MonoBehaviour
 	{
 		currentRail = null;
 		railT = -1;
+		grindingInitialSpeed = 0;
+		timeSinceStoppedGrinding = 0;
 	}
 
 	/*
@@ -1252,7 +1260,7 @@ public class PlayerBehavior : MonoBehaviour
 		Vector3 ourWall = Vector3.ProjectOnPlane(currentWall, Vector3.up);      //determine our wall run candidate and treat it as perfectly vertical
 
 		if (currentWall != Vector3.zero &&																				//if we're in contact with a viable wall
-			isSkating &&                                                                                                //can't wall run while *not* skating
+			!isSkating &&                                                                                               //can't wall run while skating
 			timeSinceGrounded > wallRunGroundedBuffer &&                                                                //have to be off the ground for a period of time before a wall run can be initiated
 			timeSinceLastJump > wallRunGroundedBuffer &&                                                                //jumping exits the wall run
 			(isWallRunning || !TwoWallsTooClose(lastWall, currentWall)) &&                                              //can't initiate a wall run on a wall that's too similar in angle to the last one
@@ -1435,18 +1443,13 @@ public class PlayerBehavior : MonoBehaviour
 		return tooClose;
 	}
 
-	public void SetCurrentRail (GrindyRailBehavior theRail)
+	public void SetCurrentRail (GrindyRailBehavior theRail, float initialSpeed)
 	{
-		//make it so you can't grind for [0.1f] seconds after you come off a rail.
-		//make it so you can't grind for [0.1f] seconds after you come off a rail.
-		//make it so you can't grind for [0.1f] seconds after you come off a rail.
-		//make it so you can't grind for [0.1f] seconds after you come off a rail.
-		//make it so you can't grind for [0.1f] seconds after you come off a rail.
-		//make it so you can't grind for [0.1f] seconds after you come off a rail.
-		//make it so you can't grind for [0.1f] seconds after you come off a rail.
-		//make it so you can't grind for [0.1f] seconds after you come off a rail.
-		if (isSkating)
+		if (isSkating && timeSinceStoppedGrinding >= grindCoolDown)
+		{
 			currentRail = theRail;
+			grindingInitialSpeed = initialSpeed;
+		}
 	}
 
 	//these two getters are for the character animation controller script.

@@ -209,7 +209,7 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287424162526611092}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -242,7 +242,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5.5
+  m_Time: 8
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -250,8 +250,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.031547546
-        value: 0.23913002
+        time: 0.08631551
+        value: 0.37165862
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -270,17 +270,17 @@ TrailRenderer:
       key4: {r: 0.60784316, g: 1, b: 0.9725491, a: 1}
       key5: {r: 0.3921569, g: 0.5058824, b: 1, a: 1}
       key6: {r: 0.60784316, g: 1, b: 0.9725491, a: 1}
-      key7: {r: 0.60784316, g: 1, b: 0.9725491, a: 1}
+      key7: {r: 0.40000004, g: 0.5294118, b: 1, a: 1}
       ctime0: 9059
-      ctime1: 11180
+      ctime1: 15806
       ctime2: 24479
-      ctime3: 26214
-      ctime4: 44911
-      ctime5: 46646
-      ctime6: 52428
-      ctime7: 61487
-      atime0: 1157
-      atime1: 3277
+      ctime3: 34117
+      ctime4: 41827
+      ctime5: 48573
+      ctime6: 54741
+      ctime7: 63608
+      atime0: 1735
+      atime1: 4819
       atime2: 8096
       atime3: 28720
       atime4: 31418
@@ -12510,7 +12510,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5.5
+      scalar: 8
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19067,8 +19067,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5.45
-      minScalar: 5
+      scalar: 8.8
+      minScalar: 7.8
       maxCurve:
         serializedVersion: 2
         m_Curve:

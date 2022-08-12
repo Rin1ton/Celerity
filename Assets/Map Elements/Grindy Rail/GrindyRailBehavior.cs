@@ -18,7 +18,7 @@ public class GrindyRailBehavior : MonoBehaviour
 	PlayerBehavior thePlayerBehavior;
 
 	//
-	readonly int segmentsPerMeter = 1000;
+	readonly int segmentsPerMeter = 100;
 
 	int m_Segments;
 
@@ -78,15 +78,24 @@ public class GrindyRailBehavior : MonoBehaviour
 
 
 
+	private void OnCollisionStay(Collision collision)
+	{
+		if (collision.gameObject == References.thePlayer.gameObject)
+			thePlayerBehavior.SetCurrentRail(this, collision.relativeVelocity.magnitude);
+	}
+
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject == References.thePlayer.gameObject)
-			thePlayerBehavior.SetCurrentRail(this);
+		{
+			thePlayerBehavior.SetCurrentRail(this, collision.relativeVelocity.magnitude);
+		}
+
 	}
 
 	public Vector3 ClosestPoint(Vector3 queryPoint, out float newT)
 	{
-		int relevantPoint = 0;
+		float relevantPoint = 0;
 		float distanceToClosestPoint = Mathf.Infinity;
 		float currentDistance;
 		for (int currentPoint = 0; currentPoint < m_Points.Length; currentPoint++)
@@ -106,10 +115,9 @@ public class GrindyRailBehavior : MonoBehaviour
 		Vector3 myballse = nearestPoint;
 		return myballse + transform.position;*/
 
-		newT = relevantPoint * (1 / m_Segments);
-		Debug.Log(newT);
+		newT = (relevantPoint / (m_Segments - 1));
 
-		return m_Points[relevantPoint];
+		return m_Points[Mathf.FloorToInt(relevantPoint)];
 	}
 
 	public Vector3 ClosestPoint(Vector3 queryPoint)
@@ -172,5 +180,7 @@ public class GrindyRailBehavior : MonoBehaviour
 		output += transform.position;
 		return output;
 	}
+
+	public bool closed => m_Spline.Closed;
 
 }
