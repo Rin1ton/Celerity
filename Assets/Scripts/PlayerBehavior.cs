@@ -788,6 +788,8 @@ public class PlayerBehavior : MonoBehaviour
 
 		//save what our new velocity should be
 		Vector3 newVelocity = prevVelocity + wishDir * accelSpeed;
+		if (isGrounded)
+			newVelocity = Vector3.ProjectOnPlane(newVelocity, currentGround).normalized * newVelocity.magnitude;
 
 		//now apply our witchcraft to my velocity to accelerate
 		myRB.velocity = newVelocity;
