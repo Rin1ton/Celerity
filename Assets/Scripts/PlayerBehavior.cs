@@ -789,7 +789,10 @@ public class PlayerBehavior : MonoBehaviour
 		//save what our new velocity should be
 		Vector3 newVelocity = prevVelocity + wishDir * accelSpeed;
 		if (isGrounded)
+		{
 			newVelocity = Vector3.ProjectOnPlane(newVelocity, currentGround).normalized * newVelocity.magnitude;
+
+		}
 
 		//now apply our witchcraft to my velocity to accelerate
 		myRB.velocity = newVelocity;
@@ -1146,6 +1149,8 @@ public class PlayerBehavior : MonoBehaviour
 				thrustVector = Vector3.ProjectOnPlane(wishVector * thrustForce * thrustTurnAssist, lateralVelocityOnPlatform);
 			}
 
+
+
 			//set some effects variables based on the thrust force for this frame
 			float currentThrustForce = thrustVector.magnitude;
 
@@ -1372,7 +1377,7 @@ public class PlayerBehavior : MonoBehaviour
 				lowestNormalAngle = Vector3.Angle(Vector3.up, normal);
 				lowestNormal = normal;
 			}
-		}
+		}		
 		
 		//if any part of this collision is shallow enough to be the ground, then this is the collision with the ground
 		if (lowestNormalAngle <= maxGroundAngle)

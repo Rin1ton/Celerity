@@ -43,6 +43,7 @@ public class LevelBehavior : MonoBehaviour
 			timeTrialsCompletedThisSession.Add(timeTrialName);
 		}
 
+		//use the information from the player's saved game to spawn them in the last place they saved the game.
 		Vector3 playerSpawnPos = new Vector3(myLoadedGame.playerPosX, myLoadedGame.playerPosY, myLoadedGame.playerPosZ);
 		Quaternion playerSpawnRot = new Quaternion(myLoadedGame.playerRotX, myLoadedGame.playerRotY, myLoadedGame.playerRotZ, myLoadedGame.playerRotW);
 		Vector3 playerSpawnVel = new Vector3(myLoadedGame.playerVelX, myLoadedGame.playerVelY, myLoadedGame.playerVelZ);
