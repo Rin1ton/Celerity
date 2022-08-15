@@ -6,7 +6,7 @@ public class SpeedTrapBehavior : MonoBehaviour
 {
 
 	public GameObject myCamera;
-	readonly float trackingRange = 30;
+	readonly float trackingRange = 15;
 	readonly float captureRange = 5;
 	GameObject thePlayer;
 
@@ -30,7 +30,10 @@ public class SpeedTrapBehavior : MonoBehaviour
 
 	void LookAtObject(GameObject trackedObject)
 	{
-		myCamera.transform.LookAt(trackedObject.transform);
+		if (Vector3.Distance(trackedObject.transform.position, transform.position) <= trackingRange)
+		{
+			myCamera.transform.LookAt(trackedObject.transform);
+		}
 	}
 
 }
