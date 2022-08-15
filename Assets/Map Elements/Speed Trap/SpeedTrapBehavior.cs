@@ -8,7 +8,8 @@ public class SpeedTrapBehavior : MonoBehaviour
 	public GameObject myCamera;
 	readonly float trackingRange = 15;
 	readonly float captureRange = 5;
-	GameObject thePlayer;
+	Vector3 idleRotation = new Vector3(0, 15, 0);
+	GameObject thePlayerCamera;
 
 	private void Awake()
 	{
@@ -19,13 +20,13 @@ public class SpeedTrapBehavior : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		thePlayer = References.thePlayer.gameObject;
+		thePlayerCamera = References.thePlayer.myCamera;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		LookAtObject(thePlayer);
+		LookAtObject(thePlayerCamera);
 	}
 
 	void LookAtObject(GameObject trackedObject)
@@ -33,6 +34,9 @@ public class SpeedTrapBehavior : MonoBehaviour
 		if (Vector3.Distance(trackedObject.transform.position, transform.position) <= trackingRange)
 		{
 			myCamera.transform.LookAt(trackedObject.transform);
+		} else
+		{
+			myCamera.transform.Rotate(idleRotation * Time.deltaTime, Space.World);
 		}
 	}
 
