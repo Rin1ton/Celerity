@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpeedTrapBehavior : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class SpeedTrapBehavior : MonoBehaviour
 	public GameObject myCamera;
 	public float challengeSpeed;
 	public GameObject NRGPrefab;
+	public GameObject myBillBoard;
+	TextMeshPro myText;
 	readonly Vector3 NRGSpawnOffset = new Vector3(0, 4.5f, 0);
 	readonly float trackingRange = 15;
 	readonly float captureRange = 5;
+	readonly string decPlaces = "F1";
 	bool completed = false;
 	Vector3 idleRotation = new Vector3(0, 15, 0);
 	GameObject thePlayerCamera;
@@ -27,13 +31,18 @@ public class SpeedTrapBehavior : MonoBehaviour
 		if (myCamera == null)
 			Debug.LogError("I DON'T HAVE MY CAMERA SET!!!");
 
+		myText = myBillBoard.GetComponent<TextMeshPro>();
+
 		myRenderer = myCamera.transform.GetChild(0).GetComponent<Renderer>();
 		myPSR = GetComponent<ParticleSystemRenderer>();
 
 		if (challengeSpeed == 0)
 		{
 			Debug.LogWarning("Speed not set, setting to default: " + 25);
+			challengeSpeed = 25;
 		}
+
+		SetMyText(challengeSpeed);
 	}
 
 	// Start is called before the first frame update
@@ -79,7 +88,17 @@ public class SpeedTrapBehavior : MonoBehaviour
 	{
 		myRenderer.material.SetColor("_EmissionColor", color);
 		myPSR.material.SetColor("_Color", color);
+		myText.color = color;
 	}
 
+	void SetMyText(string input)
+	{
+		myText.text = input;
+	}
+
+	void SetMyText(float input)
+	{
+		myText.text = input.ToString(decPlaces);
+	}
 
 }

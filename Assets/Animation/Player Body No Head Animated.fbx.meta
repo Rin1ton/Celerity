@@ -1610,11 +1610,11 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Board
-        weight: 0
+        weight: 1
       - path: Board/Board_end
-        weight: 0
+        weight: 1
       - path: Board/Cube.007
-        weight: 0
+        weight: 1
       - path: Root
         weight: 1
       - path: Root/FootIK_L
@@ -1908,7 +1908,7 @@ ModelImporter:
       - path: Root/Spine/UpperArm_R/Sphere.001
         weight: 0
       maskType: 1
-      maskSource: {fileID: 31900000, guid: 7a5e6692f7cde294e863215fe144fb8a, type: 2}
+      maskSource: {fileID: 31900000, guid: 4d9f9ed9b16d0b542aef541d94ea3346, type: 2}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Player_Armature|LEGS Skating Idle
