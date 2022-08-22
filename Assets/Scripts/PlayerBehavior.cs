@@ -589,9 +589,9 @@ public class PlayerBehavior : MonoBehaviour
 
 		if (!isSkating)
 		{
-			myBoard.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
 			myRightArm.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
 			myLeftArm.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
+			myBoard.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
 		}
 	}
 
