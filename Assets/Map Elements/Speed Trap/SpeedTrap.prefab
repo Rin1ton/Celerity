@@ -147,6 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCamera: {fileID: 1843821276909097266}
+  challengeSpeed: 0
+  NRGPrefab: {fileID: 1681752119625257047, guid: f925f163e4a368946ab2c36e069df549,
+    type: 3}
 --- !u!198 &8951641928322383343
 ParticleSystem:
   m_ObjectHideFlags: 0

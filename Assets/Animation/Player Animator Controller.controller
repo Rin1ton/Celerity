@@ -522,7 +522,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Legs Layer
     m_StateMachine: {fileID: 8537081202984950603}
-    m_Mask: {fileID: 31900000, guid: 7a5e6692f7cde294e863215fe144fb8a, type: 2}
+    m_Mask: {fileID: 31900000, guid: 4d9f9ed9b16d0b542aef541d94ea3346, type: 2}
     m_Motions:
     - serializedVersion: 2
       m_State: {fileID: 940191804759276129}

@@ -73,7 +73,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 		if (raceTimeLimit == 0)
 		{
 			raceTimeLimit = 10;
-			Debug.Log("race has no time limit, setting to default: " + 10);
+			Debug.LogWarning("race has no time limit, setting to default: " + 10);
 		}
 	}
 
