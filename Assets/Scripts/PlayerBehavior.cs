@@ -216,13 +216,13 @@ public class PlayerBehavior : MonoBehaviour
 	Vector3 tangentVector;
 
 
-	/*====================================================================
+	/*====================================================================*\
 	 * enough with the variable declaration
 	 * let's get coding
 	 * i'm a bad mam-ah jam-ah
 	 * here it is:
 	 * [my code]
-	 =====================================================================*/
+	\*====================================================================*/
 
 
 
@@ -755,7 +755,7 @@ public class PlayerBehavior : MonoBehaviour
 	}
 
 	/*===================================*\
-    ||* the most important bit           |
+    ||* the most important bit           ||
     ||* MOVEMENT                         ||
     ||* thank you quake                  ||
     \*===================================*/
@@ -774,8 +774,8 @@ public class PlayerBehavior : MonoBehaviour
 		//if we're going faster than our top speed, allow holding [W]
 		if (addSpeed <= 0)
 			addSpeed = 0;
-
 		//bungus
+
 		//apply our acceleration to a float
 		accelSpeed = accel * Time.deltaTime * wishSpeed;
 
