@@ -10,7 +10,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class LevelBehavior : MonoBehaviour
 {
 
-	public List<NRGCapsuleBehavior> thisLevelsNRG;
 	public List<string> NRGCollectedThisSession;
 	public List<string> timeTrialsCompletedThisSession;
 	bool levelJustLoaded = true;
@@ -44,6 +43,7 @@ public class LevelBehavior : MonoBehaviour
 			timeTrialsCompletedThisSession.Add(timeTrialName);
 		}
 
+		//use the information from the player's saved game to spawn them in the last place they saved the game.
 		Vector3 playerSpawnPos = new Vector3(myLoadedGame.playerPosX, myLoadedGame.playerPosY, myLoadedGame.playerPosZ);
 		Quaternion playerSpawnRot = new Quaternion(myLoadedGame.playerRotX, myLoadedGame.playerRotY, myLoadedGame.playerRotZ, myLoadedGame.playerRotW);
 		Vector3 playerSpawnVel = new Vector3(myLoadedGame.playerVelX, myLoadedGame.playerVelY, myLoadedGame.playerVelZ);
@@ -87,14 +87,6 @@ public class LevelBehavior : MonoBehaviour
 	{
 		if (References.playerNRGTracker != null)
 			References.playerNRGTracker.SetNRGTrackerDisplay(References.currentEnergyCapsuleCount);
-	}
-
-	public void DestroyAllNRG()
-	{
-		for (int NRGs = thisLevelsNRG.Count - 1; NRGs >= 0; NRGs--)
-		{
-			Destroy(thisLevelsNRG[NRGs].gameObject);
-		}
 	}
 
 	public void SaveGame()

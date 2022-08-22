@@ -24,6 +24,7 @@ public class CharacterAnimationBehavior : MonoBehaviour
         if (!References.isPaused)
         {
 			SkatingOrRunning();
+			Aerial();
 			Running();
 			Thrust();
 		}
@@ -44,6 +45,37 @@ public class CharacterAnimationBehavior : MonoBehaviour
 		}
 	}
 
+	void Aerial()
+	{
+		//play jump and fall anims
+		if (!ourPlayer.GetBool("isGrounded"))
+		{
+			myAnimator.SetBool("isGrounded", false);
+			if (ourPlayer.velocity.y >= 0)
+				myAnimator.SetBool("isFalling", false);
+			else
+				myAnimator.SetBool("isFalling", true);
+		}
+
+		if (!ourPlayer.GetBool("isSkating"))
+		{
+			//play land anim
+			if (ourPlayer.GetBool("isGrounded") && !myAnimator.GetBool("isGrounded"))
+			{
+				myAnimator.Play("Running Land");
+				myAnimator.SetBool("isGrounded", true);
+			}
+		}
+		else
+		{
+			if (ourPlayer.GetBool("isGrounded") && !myAnimator.GetBool("isGrounded"))
+			{
+				myAnimator.Play("Skating Land");
+				myAnimator.SetBool("isGrounded", true);
+			}
+		}
+	}
+
 	void Running()
 	{
 		if (!ourPlayer.GetBool("isSkating"))
@@ -59,22 +91,7 @@ public class CharacterAnimationBehavior : MonoBehaviour
 				myAnimator.SetBool("isStill", true);
 			}
 
-			//play jump and fall anims
-			if (!ourPlayer.GetBool("isGrounded"))
-			{
-				myAnimator.SetBool("isGrounded", false);
-				if (ourPlayer.velocity.y >= 0)
-					myAnimator.SetBool("isFalling", false);
-				else
-					myAnimator.SetBool("isFalling", true);
-			}
 
-			//play land anim
-			if (ourPlayer.GetBool("isGrounded") && !myAnimator.GetBool("isGrounded"))
-			{
-				myAnimator.Play("Running Land");
-				myAnimator.SetBool("isGrounded", true);
-			}
 		}
 	}
 

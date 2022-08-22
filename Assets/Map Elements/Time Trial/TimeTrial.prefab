@@ -74,6 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 3143050187633079424}
     - target: {fileID: 2472931654412890952, guid: f8bb82584f42cfa45ac1e3072e60fd9e,
         type: 3}
+      propertyPath: objectOfMyName
+      value: 
+      objectReference: {fileID: 9159512300568149470}
+    - target: {fileID: 2472931654412890952, guid: f8bb82584f42cfa45ac1e3072e60fd9e,
+        type: 3}
       propertyPath: objectOfOurName
       value: 
       objectReference: {fileID: 9159512300568149470}

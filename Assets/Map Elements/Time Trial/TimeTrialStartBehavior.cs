@@ -29,7 +29,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 	public GameObject finishLineCube;
 	public GameObject blankNRGPrefab;
 	bool raceIsRunning = false;
-	public GameObject objectOfOurName;
+	public GameObject objectOfMyName;
 	bool levelJustLoaded = true;
 
 	//timing race stuff
@@ -73,7 +73,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 		if (raceTimeLimit == 0)
 		{
 			raceTimeLimit = 10;
-			Debug.Log("race has no time limit, setting to default: " + 10);
+			Debug.LogWarning("race has no time limit, setting to default: " + 10);
 		}
 	}
 
@@ -85,7 +85,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 			levelJustLoaded = false;
 			foreach(string trialName in References.theLevelLogic.timeTrialsCompletedThisSession)
 			{
-				if (trialName == objectOfOurName.name)
+				if (trialName == objectOfMyName.name)
 					FinishWithoutEffect();
 			}
 		}
@@ -169,7 +169,7 @@ public class TimeTrialStartBehavior : MonoBehaviour
 			Instantiate(blankNRGPrefab, finishLineOrb.position, Quaternion.identity);
 			
 			//give my name to the level logic for saving the game
-			References.theLevelLogic.timeTrialsCompletedThisSession.Add(objectOfOurName.name);
+			References.theLevelLogic.timeTrialsCompletedThisSession.Add(objectOfMyName.name);
 
 			Destroy(finishLineOrb.gameObject);
 			Destroy(finishLineCube.gameObject);
@@ -194,6 +194,8 @@ public class TimeTrialStartBehavior : MonoBehaviour
 
 		References.theLevelLogic.NRGCollect();
 		References.currentEnergyCapsuleCount--;
+
+		Debug.Log(objectOfMyName.name + References.currentEnergyCapsuleCount);
 
 		Destroy(myFinishLine);
 		Destroy(this);

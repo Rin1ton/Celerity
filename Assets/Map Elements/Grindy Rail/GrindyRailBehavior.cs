@@ -18,7 +18,7 @@ public class GrindyRailBehavior : MonoBehaviour
 	PlayerBehavior thePlayerBehavior;
 
 	//
-	readonly int segmentsPerMeter = 10;
+	readonly int segmentsPerMeter = 100;
 
 	int m_Segments;
 
@@ -78,10 +78,46 @@ public class GrindyRailBehavior : MonoBehaviour
 
 
 
+	private void OnCollisionStay(Collision collision)
+	{
+		if (collision.gameObject == References.thePlayer.gameObject)
+			thePlayerBehavior.SetCurrentRail(this, collision.relativeVelocity.magnitude);
+	}
+
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject == References.thePlayer.gameObject)
-			thePlayerBehavior.SetCurrentRail(this);
+		{
+			thePlayerBehavior.SetCurrentRail(this, collision.relativeVelocity.magnitude);
+		}
+
+	}
+
+	public Vector3 ClosestPoint(Vector3 queryPoint, out float newT)
+	{
+		float relevantPoint = 0;
+		float distanceToClosestPoint = Mathf.Infinity;
+		float currentDistance;
+		for (int currentPoint = 0; currentPoint < m_Points.Length; currentPoint++)
+		{
+			currentDistance = Vector3.Distance(m_Points[currentPoint], queryPoint);
+			if (currentDistance < distanceToClosestPoint)
+			{
+				distanceToClosestPoint = currentDistance;
+				relevantPoint = currentPoint;
+			}
+		}
+
+		/*float3 nearestPoint;
+		float T;
+		SplineUtility.GetNearestPoint(m_Spline, queryPoint, out nearestPoint , out T);
+
+		Vector3 myballse = nearestPoint;
+		return myballse + transform.position;*/
+
+		newT = (relevantPoint / (m_Segments - 1));
+
+		return m_Points[Mathf.FloorToInt(relevantPoint)];
 	}
 
 	public Vector3 ClosestPoint(Vector3 queryPoint)
@@ -98,6 +134,13 @@ public class GrindyRailBehavior : MonoBehaviour
 				relevantPoint = currentPoint;
 			}
 		}
+
+		/*float3 nearestPoint;
+		float T;
+		SplineUtility.GetNearestPoint(m_Spline, queryPoint, out nearestPoint , out T);
+
+		Vector3 myballse = nearestPoint;
+		return myballse + transform.position;*/
 
 		return m_Points[relevantPoint];
 	}
@@ -122,14 +165,22 @@ public class GrindyRailBehavior : MonoBehaviour
 
 	public Vector3 TangentAtPointOnSpline(Vector3 queryPoint)
 	{
-		Vector3 relevantPointOnSpline = ClosestPoint(queryPoint);
+		//Vector3 relevantPointOnSpline = ClosestPoint(queryPoint);
 		return m_Spline.EvaluateTangent(ClosestT(queryPoint) / (m_Segments - 1f));
 	}
 
-	public Vector3 GetPointAtLinearDistance(Vector3 queryPoint, float distance)
+	public Vector3 TangentAtPointOnSpline(float queryT)
 	{
-
-		return m_Spline.GetPointAtLinearDistance(ClosestT(queryPoint), distance, out distance);
+		return m_Spline.EvaluateTangent(queryT);
 	}
+
+	public Vector3 GetPointAtLinearDistance(float fromT, float distance, out float newT)
+	{
+		Vector3 output = m_Spline.GetPointAtLinearDistance(fromT, distance, out newT);
+		output += transform.position;
+		return output;
+	}
+
+	public bool closed => m_Spline.Closed;
 
 }

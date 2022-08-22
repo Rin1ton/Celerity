@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c6a6ce8260017a54b94b6d0624c68dcc
 ModelImporter:
-  serializedVersion: 20101
+  serializedVersion: 22103
   internalIDToNameTable:
   - first:
       74: -7953862542976960872
@@ -131,6 +131,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -1605,9 +1606,309 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Board
+        weight: 1
+      - path: Board/Board_end
+        weight: 1
+      - path: Board/Cube.007
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/FootIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L
+        weight: 1
+      - path: Root/FootIK_L/KneeIK_L/KneeIK_L_end
+        weight: 1
+      - path: Root/FootIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R
+        weight: 1
+      - path: Root/FootIK_R/KneeIK_R/KneeIK_R_end
+        weight: 1
+      - path: Root/HandIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L
+        weight: 0
+      - path: Root/HandIK_L/IndexIK_L/IndexIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L
+        weight: 0
+      - path: Root/HandIK_L/MiddleIK_L/MiddleIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L
+        weight: 0
+      - path: Root/HandIK_L/PinkieIK_L/PinkieIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L
+        weight: 0
+      - path: Root/HandIK_L/RingIK_L/RingIK_L_end
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L
+        weight: 0
+      - path: Root/HandIK_L/ThumbIK_L/ThumbIK_L_end
+        weight: 0
+      - path: Root/HandIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R
+        weight: 0
+      - path: Root/HandIK_R/IndexIK_R/IndexIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R
+        weight: 0
+      - path: Root/HandIK_R/MiddleIK_R/MiddleIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R
+        weight: 0
+      - path: Root/HandIK_R/PinkieIK_R/PinkieIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R
+        weight: 0
+      - path: Root/HandIK_R/RingIK_R/RingIK_R_end
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R
+        weight: 0
+      - path: Root/HandIK_R/ThumbIK_R/ThumbIK_R_end
+        weight: 0
+      - path: Root/HipIK
+        weight: 1
+      - path: Root/HipIK/Hip
+        weight: 1
+      - path: Root/HipIK/Hip/Cube.015
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/Cylinder.025
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Cylinder.026
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Cylinder.028
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Cube.009
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_L/LowerLeg_L/Foot_L/Toes_L/Toes_L_end
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/Cylinder.019
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Cylinder.021
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Cylinder.024
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Cube.008
+        weight: 1
+      - path: Root/HipIK/Hip/UpperLeg_R/LowerLeg_R/Foot_R/Toes_R/Toes_R_end
+        weight: 1
+      - path: Root/Spine
+        weight: 0
+      - path: Root/Spine/Cube
+        weight: 0
+      - path: Root/Spine/ElbowIK_L
+        weight: 0
+      - path: Root/Spine/ElbowIK_L/ElbowIK_L_end
+        weight: 0
+      - path: Root/Spine/ElbowIK_R
+        weight: 0
+      - path: Root/Spine/ElbowIK_R/ElbowIK_R_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Cylinder.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Hand_L.002/Hand_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Cylinder.029
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Cylinder.030
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Cube.014
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Index_L/Index_L.001/Index_L.002/Index_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Cylinder.023
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Cylinder.027
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Cube.013
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Middle_L/Middle_L.001/Middle_L.002/Middle_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Cylinder.006
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Cylinder.007
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Cube.010
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Pinkie_L/Pinkie_L.001/Pinkie_L.002/Pinkie_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Cylinder.020
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Cylinder.022
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Cube.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Ring_L/Ring_L.001/Ring_L.002/Ring_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Cylinder.008
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Cylinder.009
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Cube.011
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L/Hand_L/Thumb_L/Thumb_L.001/Thumb_L.002/Thumb_L.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/Cylinder.012
+        weight: 0
+      - path: Root/Spine/UpperArm_L/LowerArm_L.001/LowerArm_L.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_L/Sphere.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Cylinder.011
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Hand_R.002/Hand_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Cylinder.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Cylinder.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Cube.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Index_R/Index_R.001/Index_R.002/Index_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Cylinder.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Cylinder.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Cube.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Middle_R/Middle_R.001/Middle_R.002/Middle_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Cylinder.018
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Cylinder.017
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Cube.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Pinkie_R/Pinkie_R.001/Pinkie_R.002/Pinkie_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Cylinder.010
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Cylinder.005
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Cube.003
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Ring_R/Ring_R.001/Ring_R.002/Ring_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Cylinder.016
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Cylinder.015
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Cube.004
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R/Hand_R/Thumb_R/Thumb_R.001/Thumb_R.002/Thumb_R.002_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/Cylinder.014
+        weight: 0
+      - path: Root/Spine/UpperArm_R/LowerArm_R.001/LowerArm_R.001_end
+        weight: 0
+      - path: Root/Spine/UpperArm_R/Sphere.001
+        weight: 0
+      maskType: 1
+      maskSource: {fileID: 31900000, guid: 4d9f9ed9b16d0b542aef541d94ea3346, type: 2}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Player_Armature|LEGS Skating Idle
@@ -2791,6 +3092,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -2802,6 +3104,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -2812,6 +3115,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -2843,6 +3147,9 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
