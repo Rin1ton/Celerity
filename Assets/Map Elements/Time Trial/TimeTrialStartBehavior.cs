@@ -193,9 +193,6 @@ public class TimeTrialStartBehavior : MonoBehaviour
 		Destroy(finishLineCube.gameObject);
 
 		References.theLevelLogic.NRGCollect();
-		References.currentEnergyCapsuleCount--;
-
-		Debug.Log(objectOfMyName.name + References.currentEnergyCapsuleCount);
 
 		Destroy(myFinishLine);
 		Destroy(this);

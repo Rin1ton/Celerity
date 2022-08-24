@@ -7,7 +7,7 @@ public class NRGTrackerBehavior : MonoBehaviour
 {
 
 	TextMeshProUGUI myText;
-	int startingCaps = 0;
+	int currentCaps = 0;
 
 	private void Awake()
 	{
@@ -19,22 +19,18 @@ public class NRGTrackerBehavior : MonoBehaviour
     {
 		myText = gameObject.GetComponent<TextMeshProUGUI>();
 		myText.text = (References.startingEnergyCapsuleCount - References.currentEnergyCapsuleCount).ToString("D2") + "/" + References.startingEnergyCapsuleCount.ToString("D2");
+		currentCaps = References.startingEnergyCapsuleCount;
 	}
 
     // Update is called once per frame
     void Update()
     {
-		if (startingCaps == 0)
+		if (currentCaps != References.currentEnergyCapsuleCount)
 		{
 			myText.text = (References.startingEnergyCapsuleCount - References.currentEnergyCapsuleCount).ToString("D2") + "/" + References.startingEnergyCapsuleCount.ToString("D2");
-			startingCaps = References.startingEnergyCapsuleCount;
+			currentCaps = References.currentEnergyCapsuleCount;
 		}
-	}
 
-	public void SetNRGTrackerDisplay(int numberLeft)
-	{
-		int numberCollected = References.startingEnergyCapsuleCount - numberLeft;
-		myText.text = numberCollected.ToString("D2") + "/" + References.startingEnergyCapsuleCount.ToString("D2");
 	}
 
 	public void Disable()

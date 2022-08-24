@@ -18,6 +18,7 @@ public class PlayerSavedGame
 	public bool playerDiveReady;
 	public string[] NRGCollected;
 	public string[] TimeTrialsCompleted;
+	public string[] SpeedTrapsCompleted;
 
 	public PlayerSavedGame()
 	{
@@ -35,6 +36,7 @@ public class PlayerSavedGame
 		playerDiveReady = References.thePlayer.diveReady;
 		NRGCollected = new string[References.theLevelLogic.NRGCollectedThisSession.Count];
 		TimeTrialsCompleted = new string[References.theLevelLogic.timeTrialsCompletedThisSession.Count];
+		SpeedTrapsCompleted = new string[References.theLevelLogic.speedTrapsCompletedThisSession.Count];
 
 		//NRG directly collected
 		for(int NRG = 0; NRG < References.theLevelLogic.NRGCollectedThisSession.Count; NRG++)
@@ -45,6 +47,8 @@ public class PlayerSavedGame
 			TimeTrialsCompleted[timeTrial] = References.theLevelLogic.timeTrialsCompletedThisSession[timeTrial];
 
 		//NRG collected from speed traps
+		for (int speedTrap = 0; speedTrap < References.theLevelLogic.speedTrapsCompletedThisSession.Count; speedTrap++)
+			SpeedTrapsCompleted[speedTrap] = References.theLevelLogic.timeTrialsCompletedThisSession[speedTrap];
 	}
 
 	public PlayerSavedGame(Vector3 playerPosition, Quaternion playerRotation, Vector3 playerVelocity)

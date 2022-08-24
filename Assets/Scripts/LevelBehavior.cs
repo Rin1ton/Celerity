@@ -9,9 +9,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class LevelBehavior : MonoBehaviour
 {
-
+	//lists of 
 	public List<string> NRGCollectedThisSession;
 	public List<string> timeTrialsCompletedThisSession;
+	public List<string> speedTrapsCompletedThisSession;
 	bool levelJustLoaded = true;
 
 	//saving and loading and deleting
@@ -34,14 +35,13 @@ public class LevelBehavior : MonoBehaviour
 		PlayerSavedGame myLoadedGame = LoadPlayerGame();
 
 		foreach(string NRGname in myLoadedGame.NRGCollected)
-		{
 			NRGCollectedThisSession.Add(NRGname);
-		}
 
 		foreach(string timeTrialName in myLoadedGame.TimeTrialsCompleted)
-		{
 			timeTrialsCompletedThisSession.Add(timeTrialName);
-		}
+
+		/*foreach (string speedTrapName in myLoadedGame.SpeedTrapsCompleted)
+			speedTrapsCompletedThisSession.Add(speedTrapName);*/
 
 		//use the information from the player's saved game to spawn them in the last place they saved the game.
 		Vector3 playerSpawnPos = new Vector3(myLoadedGame.playerPosX, myLoadedGame.playerPosY, myLoadedGame.playerPosZ);
@@ -76,17 +76,15 @@ public class LevelBehavior : MonoBehaviour
 		return thePlayer.GetComponent<PlayerBehavior>();
 	}
 
-	public void NRGCollect(NRGCapsuleBehavior collectedNRG)
+	public void NRGCapCollect(NRGCapsuleBehavior collectedNRG)
 	{
-		if (References.playerNRGTracker != null)
-			References.playerNRGTracker.SetNRGTrackerDisplay(References.currentEnergyCapsuleCount);
 		NRGCollectedThisSession.Add(collectedNRG.name);
+		NRGCollect();
 	}
 
 	public void NRGCollect()
 	{
-		if (References.playerNRGTracker != null)
-			References.playerNRGTracker.SetNRGTrackerDisplay(References.currentEnergyCapsuleCount);
+		References.currentEnergyCapsuleCount--;
 	}
 
 	public void SaveGame()

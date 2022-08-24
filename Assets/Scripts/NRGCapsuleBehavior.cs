@@ -90,7 +90,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
 					//if we are spawned by a time trial, DO NOT pass our name to the game saving script.
 					//our time trial will keep track of our collected status.
 					if (!isAccountedForByChallenge)
-						References.theLevelLogic.NRGCollect(this);
+						References.theLevelLogic.NRGCapCollect(this);
 					else
 						References.theLevelLogic.NRGCollect();
 
@@ -108,7 +108,7 @@ public class NRGCapsuleBehavior : MonoBehaviour
 					//if we are spawned by a time trial, DO NOT pass our name to the game saving script.
 					//our time trial will keep track of our collected status.
 					if (!isAccountedForByChallenge)
-						References.theLevelLogic.NRGCollect(this);
+						References.theLevelLogic.NRGCapCollect(this);
 					else
 						References.theLevelLogic.NRGCollect();
 
@@ -135,7 +135,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
     {
 		//pull me from every list I'm apart of
 		gameObject.GetComponent<RemoveMeFromListBehavior>().RemoveMeFromAllYeetLists();
-		References.currentEnergyCapsuleCount--;
 
 		//do the Collecting effects
 		gameObject.GetComponent<Collider>().enabled = false;
@@ -158,7 +157,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
 
 	void CollectWithoutEffects()
 	{
-		References.currentEnergyCapsuleCount--;
 		References.theLevelLogic.NRGCollect();
 		Debug.Log(name + "has been collected");
 		Destroy(gameObject);

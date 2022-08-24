@@ -13,7 +13,7 @@ public class SpeedTrapBehavior : MonoBehaviour
 	TextMeshPro myText;
 	readonly Vector3 NRGSpawnOffset = new Vector3(0, 4.5f, 0);
 	readonly float trackingRange = 15;
-	readonly float captureRange = 5;
+	readonly float captureRange = 15;
 	readonly string decPlaces = "F1";
 	bool completed = false;
 	Vector3 idleRotation = new Vector3(0, 15, 0);
@@ -24,6 +24,8 @@ public class SpeedTrapBehavior : MonoBehaviour
 	//colors
 	Color deadColor = Color.gray;
 	Color activeColor = Color.cyan;
+
+	bool levelJustLoaded = true;
 
 
 	private void Awake()
@@ -43,11 +45,15 @@ public class SpeedTrapBehavior : MonoBehaviour
 		}
 
 		SetMyText(challengeSpeed);
+
+		Debug.Log(name);
 	}
 
 	// Start is called before the first frame update
 	void Start()
 	{
+		References.startingEnergyCapsuleCount++;
+
 		thePlayerCamera = References.thePlayer.myCamera;
 
 		SetMyColor(activeColor);
@@ -56,6 +62,15 @@ public class SpeedTrapBehavior : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (levelJustLoaded)
+		{
+			levelJustLoaded = false;
+			foreach (string speedTrapName in References.theLevelLogic.speedTrapsCompletedThisSession)
+			{
+				if (speedTrapName == name)
+					FinishWithoutEffect("IMPLIMENT SAVING SPEED");
+			}
+		}
 		LookAtObject(thePlayerCamera);
 		ChallengePlayer();
 	}
@@ -79,6 +94,8 @@ public class SpeedTrapBehavior : MonoBehaviour
 					Instantiate(NRGPrefab, transform.position + NRGSpawnOffset, transform.rotation);
 					completed = true;
 					SetMyColor(deadColor);
+					SetMyText(References.thePlayer.velocity.magnitude);
+					References.theLevelLogic.speedTrapsCompletedThisSession.Add(name);
 				}
 			}
 		}
@@ -99,6 +116,24 @@ public class SpeedTrapBehavior : MonoBehaviour
 	void SetMyText(float input)
 	{
 		myText.text = input.ToString(decPlaces);
+	}
+
+	void FinishWithoutEffect(string inputString)
+	{
+		SetMyColor(deadColor);
+		completed = true;
+		SetMyText(inputString);
+		References.theLevelLogic.NRGCollect();
+
+		/*SetMyColor(deadColor);
+
+		Destroy(finishLineOrb.gameObject);
+		Destroy(finishLineCube.gameObject);
+
+		References.theLevelLogic.NRGCollect();
+
+		Destroy(myFinishLine);
+		Destroy(this);*/
 	}
 
 }
