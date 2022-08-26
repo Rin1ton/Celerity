@@ -40,8 +40,12 @@ public class LevelBehavior : MonoBehaviour
 		foreach(string timeTrialName in myLoadedGame.TimeTrialsCompleted)
 			timeTrialsCompletedThisSession.Add(timeTrialName);
 
-		/*foreach (string speedTrapName in myLoadedGame.SpeedTrapsCompleted)
-			speedTrapsCompletedThisSession.Add(speedTrapName);*/
+		foreach (string 
+			speedTrapName 
+			in 
+			myLoadedGame.
+			SpeedTrapsCompleted)
+			speedTrapsCompletedThisSession.Add(speedTrapName);
 
 		//use the information from the player's saved game to spawn them in the last place they saved the game.
 		Vector3 playerSpawnPos = new Vector3(myLoadedGame.playerPosX, myLoadedGame.playerPosY, myLoadedGame.playerPosZ);

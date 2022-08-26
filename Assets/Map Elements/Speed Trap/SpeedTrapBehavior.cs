@@ -45,8 +45,7 @@ public class SpeedTrapBehavior : MonoBehaviour
 		}
 
 		SetMyText(challengeSpeed);
-
-		Debug.Log(name);
+		SetMyColor(activeColor);
 	}
 
 	// Start is called before the first frame update
@@ -55,8 +54,6 @@ public class SpeedTrapBehavior : MonoBehaviour
 		References.startingEnergyCapsuleCount++;
 
 		thePlayerCamera = References.thePlayer.myCamera;
-
-		SetMyColor(activeColor);
 	}
 
 	// Update is called once per frame

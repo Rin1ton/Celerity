@@ -48,7 +48,7 @@ public class PlayerSavedGame
 
 		//NRG collected from speed traps
 		for (int speedTrap = 0; speedTrap < References.theLevelLogic.speedTrapsCompletedThisSession.Count; speedTrap++)
-			SpeedTrapsCompleted[speedTrap] = References.theLevelLogic.timeTrialsCompletedThisSession[speedTrap];
+			SpeedTrapsCompleted[speedTrap] = References.theLevelLogic.speedTrapsCompletedThisSession[speedTrap];
 	}
 
 	public PlayerSavedGame(Vector3 playerPosition, Quaternion playerRotation, Vector3 playerVelocity)
@@ -66,6 +66,7 @@ public class PlayerSavedGame
 		playerDiveReady = false;
 		NRGCollected = new string[0];
 		TimeTrialsCompleted = new string[0];
+		SpeedTrapsCompleted = new string[0];
 	}
 }
 
