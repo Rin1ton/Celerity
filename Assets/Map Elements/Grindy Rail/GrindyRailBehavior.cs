@@ -22,13 +22,18 @@ public class GrindyRailBehavior : MonoBehaviour
 
 	int m_Segments;
 
+	//visual parameters:
+	public Material grindyRailMaterial;
+	readonly float radius = 0.15f;
+
 	void Awake()
 	{
 		m_Spline = GetComponent<SplineContainer>().Spline;
 		//m_Line = GetComponent<LineRenderer>();
 		m_Spline.changed += () => m_Dirty = true;
 		m_Segments = Mathf.RoundToInt(m_Spline.GetLength() * segmentsPerMeter);
-		
+
+
 	}
 
 	void Start()
@@ -71,6 +76,12 @@ public class GrindyRailBehavior : MonoBehaviour
 		//Debug.Log(m_Spline.GetLength() / m_Segments);
 
 		//m_Line.SetPositions(m_Points);
+
+		//add the stuff to our spline that makes it so we can see and interact with it.
+		SplineExtrude myExtrude = GetComponent<SplineExtrude>();
+		myExtrude.radius = radius;			//THIS CODE DOESN"T ACTUALLY WORK
+		MeshRenderer myMR = GetComponent<MeshRenderer>();
+		myMR.material = grindyRailMaterial;
 	}
 
 

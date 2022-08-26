@@ -158,7 +158,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
 	void CollectWithoutEffects()
 	{
 		References.theLevelLogic.NRGCollect();
-		Debug.Log(name + "has been collected");
 		Destroy(gameObject);
 	}
 
