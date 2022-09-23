@@ -24,17 +24,39 @@ public class LevelBehavior : MonoBehaviour
 	static Quaternion defaultPlayerRotation = new Quaternion(0, 1, 0, 0);
 	static bool isTryingToDeleteGame;
 
+	//checkpoint stuff
+	private List<CheckpointBehavior> Checkpoints = new List<CheckpointBehavior>();
+	int currentCheckpoint = -1;
+
 	private void Awake()
     {
-		//
 		saveGamePath = Application.persistentDataPath + "/PlayerSaveGame.cringe";
 
         References.theLevelLogic = this;
 		References.startingEnergyCapsuleCount = 0;
 
+
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+		Checkpoints = References.Checkpoints;
+
 		PlayerSavedGame myLoadedGame = LoadPlayerGame();
 
-		foreach(string NRGname in myLoadedGame.NRGCollected)
+		for (int i = 0; i < Checkpoints.Count; i++)
+		{
+			if (Checkpoints[i].Name == myLoadedGame.currentCheckpoint)
+				currentCheckpoint = i;
+		}
+
+		if (currentCheckpoint == -1)
+			Debug.LogError("NO CHECKPOINT DECIDED!!! NO CHECKPOINT IN LOADED GAME!!!");
+
+		Checkpoints[currentCheckpoint].Activate();
+
+		foreach (string NRGname in myLoadedGame.NRGCollected)
 			NRGCollectedThisSession.Add(NRGname);
 
 		foreach(string timeTrialName in myLoadedGame.TimeTrialsCompleted)
@@ -47,24 +69,42 @@ public class LevelBehavior : MonoBehaviour
 		Vector3 playerSpawnPos = new Vector3(myLoadedGame.playerPosX, myLoadedGame.playerPosY, myLoadedGame.playerPosZ);
 		Quaternion playerSpawnRot = new Quaternion(myLoadedGame.playerRotX, myLoadedGame.playerRotY, myLoadedGame.playerRotZ, myLoadedGame.playerRotW);
 		Vector3 playerSpawnVel = new Vector3(myLoadedGame.playerVelX, myLoadedGame.playerVelY, myLoadedGame.playerVelZ);
-
 		SpawnPlayer(playerSpawnPos, playerSpawnRot, playerSpawnVel).diveReady = myLoadedGame.playerDiveReady;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
 
     }
 
+	void AfterStart()
+	{
+		References.currentEnergyCapsuleCount = References.startingEnergyCapsuleCount + References.currentEnergyCapsuleCount;
+
+		//make sure we only have one default checkpoint, and make it active if there is no other checkpoint to be active
+		int defaultCheckpoints = 0;
+		int defaultIndex = 0;
+		foreach(CheckpointBehavior checkpoint in Checkpoints)
+		{
+			if (checkpoint.isDefaultCheckpoint)
+			{
+				defaultCheckpoints++;
+				defaultIndex = checkpoint.MyPlaceInList;
+			}
+		}
+		if (defaultCheckpoints != 1)
+			Debug.LogError("CANNOT DECIDE DEFAULT CHECKPOINT!!! NUMBER OF CANDIDATES: " + defaultCheckpoints);
+		if (currentCheckpoint == -1)
+		{
+			currentCheckpoint = defaultIndex;
+			Checkpoints[defaultIndex].Activate();
+		}
+
+		levelJustLoaded = false;
+	}
 
     // Update is called once per frame
     void Update()
     {
 		if (levelJustLoaded)
 		{
-			References.currentEnergyCapsuleCount = References.startingEnergyCapsuleCount + References.currentEnergyCapsuleCount;
-			levelJustLoaded = false;
+			AfterStart();
 		}
 		TryToDeleteGame();
 	}
@@ -141,9 +181,26 @@ public class LevelBehavior : MonoBehaviour
 		else
 		{
 			//if the save file does not exist, it should be generated
-			mySaveGame = new PlayerSavedGame(defaultPlayerPosition, defaultPlayerRotation, Vector3.zero);
+			mySaveGame = new PlayerSavedGame(References.defaultCheckpoint.spawnPoint.position, defaultPlayerRotation, Vector3.zero);
 		}
 			return mySaveGame;
 	}
+
+	public void SetCurrentCheckpoint(int newCheckpoint)
+	{
+		if (currentCheckpoint != -1)
+			Checkpoints[currentCheckpoint].Deactivate();
+		currentCheckpoint = newCheckpoint;
+		Checkpoints[currentCheckpoint].Activate();
+	}
+
+	public void RespawnPlayer()
+	{
+		References.thePlayer.gameObject.transform.position = Checkpoints[currentCheckpoint].spawnPoint.position;
+		References.thePlayer.velocity = Vector3.zero;
+		References.thePlayer.speedTrailRenderer.emitting = false;
+	}
+
+	public string CurrentCheckpointName => Checkpoints[currentCheckpoint].Name;
 
 }

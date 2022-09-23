@@ -19,6 +19,7 @@ public class PlayerSavedGame
 	public string[] NRGCollected;
 	public string[] TimeTrialsCompleted;
 	public string[] SpeedTrapsCompleted;
+	public string currentCheckpoint;
 
 	public PlayerSavedGame()
 	{
@@ -37,6 +38,8 @@ public class PlayerSavedGame
 		NRGCollected = new string[References.theLevelLogic.NRGCollectedThisSession.Count];
 		TimeTrialsCompleted = new string[References.theLevelLogic.timeTrialsCompletedThisSession.Count];
 		SpeedTrapsCompleted = new string[References.theLevelLogic.speedTrapsCompletedThisSession.Count];
+		//Checkpoint
+		currentCheckpoint = References.theLevelLogic.CurrentCheckpointName;
 
 		//NRG directly collected
 		for(int NRG = 0; NRG < References.theLevelLogic.NRGCollectedThisSession.Count; NRG++)
@@ -49,8 +52,11 @@ public class PlayerSavedGame
 		//NRG collected from speed traps
 		for (int speedTrap = 0; speedTrap < References.theLevelLogic.speedTrapsCompletedThisSession.Count; speedTrap++)
 			SpeedTrapsCompleted[speedTrap] = References.theLevelLogic.speedTrapsCompletedThisSession[speedTrap];
+
+
 	}
 
+	//this constructor called when creating a save game 
 	public PlayerSavedGame(Vector3 playerPosition, Quaternion playerRotation, Vector3 playerVelocity)
 	{
 		playerPosX = playerPosition.x;
@@ -67,6 +73,7 @@ public class PlayerSavedGame
 		NRGCollected = new string[0];
 		TimeTrialsCompleted = new string[0];
 		SpeedTrapsCompleted = new string[0];
+		currentCheckpoint = References.defaultCheckpoint.Name;
 	}
 }
 

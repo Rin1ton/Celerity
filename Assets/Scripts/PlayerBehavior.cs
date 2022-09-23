@@ -1499,5 +1499,13 @@ public class PlayerBehavior : MonoBehaviour
 		}
 	}
 
-	public Vector3 velocity => myImaginaryVel == Vector3.zero ? myRB.velocity : myRB.velocity;
+	//public Vector3 velocity => myImaginaryVel == Vector3.zero ? myRB.velocity : myRB.velocity;
+	public Vector3 velocity
+	{
+		get { return myImaginaryVel == Vector3.zero ? myRB.velocity : myRB.velocity; }
+		set
+		{
+			myRB.velocity = value;
+		}
+	}
 }

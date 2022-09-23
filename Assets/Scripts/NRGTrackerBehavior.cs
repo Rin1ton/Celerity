@@ -8,6 +8,7 @@ public class NRGTrackerBehavior : MonoBehaviour
 
 	TextMeshProUGUI myText;
 	int currentCaps = 0;
+	bool justLoaded = true;
 
 	private void Awake()
 	{
@@ -17,7 +18,13 @@ public class NRGTrackerBehavior : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
+		
+	}
+
+	void AfterStart()
+	{
 		myText = gameObject.GetComponent<TextMeshProUGUI>();
+		Debug.Log(References.startingEnergyCapsuleCount - References.currentEnergyCapsuleCount);
 		myText.text = (References.startingEnergyCapsuleCount - References.currentEnergyCapsuleCount).ToString("D2") + "/" + References.startingEnergyCapsuleCount.ToString("D2");
 		currentCaps = References.startingEnergyCapsuleCount;
 	}
@@ -25,6 +32,12 @@ public class NRGTrackerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (justLoaded)
+		{
+			AfterStart();
+			justLoaded = false;
+		}
+
 		if (currentCaps != References.currentEnergyCapsuleCount)
 		{
 			myText.text = (References.startingEnergyCapsuleCount - References.currentEnergyCapsuleCount).ToString("D2") + "/" + References.startingEnergyCapsuleCount.ToString("D2");

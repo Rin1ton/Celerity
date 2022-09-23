@@ -52,8 +52,6 @@ public class SpeedTrapBehavior : MonoBehaviour
 	void Start()
 	{
 		References.startingEnergyCapsuleCount++;
-
-		thePlayerCamera = References.thePlayer.myCamera;
 	}
 
 	// Update is called once per frame
@@ -67,8 +65,10 @@ public class SpeedTrapBehavior : MonoBehaviour
 				if (speedTrapName == name)
 					FinishWithoutEffect("IMPLIMENT SAVING SPEED");
 			}
+			thePlayerCamera = References.thePlayer.myCamera;
 		}
-		LookAtObject(thePlayerCamera);
+		if (!completed)
+			LookAtObject(thePlayerCamera);
 		ChallengePlayer();
 	}
 

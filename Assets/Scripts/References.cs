@@ -17,6 +17,13 @@ public static class References
 	public static TextMeshProUGUI mainMenuExitPrompt;
 	public static float yeeto = 0;
 	public static TimerBarBehavior theTimerBar;
+	public static CheckpointBehavior defaultCheckpoint;
+	public static List<CheckpointBehavior> Checkpoints = new List<CheckpointBehavior>();
+	public static int AddCheckpoint(CheckpointBehavior checkpoint)
+	{
+		Checkpoints.Add(checkpoint);
+		return Checkpoints.IndexOf(checkpoint);
+	}
 
 	public const string jump = "Jump";
 	public const string yeet = "Attack";

@@ -8,7 +8,6 @@ public class RebindButtonBehavior : MonoBehaviour
 {
 	[System.NonSerialized] public TextMeshProUGUI myTextObject;
 	public string myActionName;
-	PlayerBehavior myPlayer;
 
 	private void Awake()
 	{
