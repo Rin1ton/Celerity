@@ -104,9 +104,10 @@ public class PlayerBehavior : MonoBehaviour
 	float timeSinceWallRunStart = 0;
 	float timeSinceWallRunExit = 120;
 	
-	readonly float wallJumpAwayForce = 7;                   //force applied away from wall when player jumps off it
-	readonly float wallJumpForwardForce = 5;                //force applied in the moveInput direction when they jump off a wall
-	readonly float wallJumpMaxForce = 8;
+	readonly float wallJumpAwayForce = 5;                   //force applied away from wall when player jumps off it
+	readonly float wallJumpForwardForce = 7;                //force applied in the moveInput direction when they jump off a wall
+	readonly float wallJumpUpwardForce = 12;
+	readonly float wallJumpMaxForce = 10;
 	readonly float wallKickDuration = 0.1f;                 //friction isn't applied to the wall run until they've wall-ran for this long
 
 	//jump
@@ -235,6 +236,11 @@ public class PlayerBehavior : MonoBehaviour
 	void Awake()
 	{
 		References.thePlayer = this;
+
+		myArmRotationPoint.localPosition = 
+			new Vector3(myArmRotationPoint.transform.localPosition.x, 
+						myArmRotationPoint.transform.localPosition.y, 
+						-9.313229e-09f);
 	}
 
 	// Start is called before the first frame update
@@ -688,15 +694,15 @@ public class PlayerBehavior : MonoBehaviour
 		//flaten our wall plane; treat it as 90 degrees
 		Vector3 ourWall = Vector3.ProjectOnPlane(currentWall, Vector3.up);
 
-		//pulling off the wall nonsense
+		//PULLING OFF WALL NONSENSE
 		//check if the player is trying to use moveDir to pull off the wall
-		if (Vector3.Angle(moveDir, ourWall) <= wallPullOffAngle && moveDir != Vector3.zero)
+		/*if (Vector3.Angle(moveDir, ourWall) <= wallPullOffAngle && moveDir != Vector3.zero)
 			timeSinceStartedPullingOff += Time.deltaTime;
 		else
 			timeSinceStartedPullingOff = 0;
 		//if they've pulled off for a significant amount of time, let them pull off
 		if (timeSinceStartedPullingOff >= timeToPullOffWall)
-			currentWall = Vector3.zero;
+			currentWall = Vector3.zero;*/
 
 		//make sure the player can only move along the wall
 		moveDir = Vector3.ProjectOnPlane(moveDir, ourWall);
@@ -955,28 +961,24 @@ public class PlayerBehavior : MonoBehaviour
 		//perform double jump
 		if (Input.GetKeyDown(jumpButton) && doubleJumpReady && !isWallRunning && timeSinceGrounded > coyoteTime)
 		{
-			//create some temp objects for defining our double jump vector
-			Vector3 thisDoubleJumpVector = Vector3.zero;
-			float thisDoubleJumpSpeed = 0;
+			//speed should be half of max + (the other half * the portion of our top speed we're at)
+			float thisDoubleJumpSpeed = (doubleJumpLateralSpeed / 2) + (doubleJumpLateralSpeed / 2) * (velocity.magnitude / skatingMove.topSpeed);
+			if (thisDoubleJumpSpeed > doubleJumpLateralSpeed) thisDoubleJumpSpeed = doubleJumpLateralSpeed;
 
-			//decide what speed should be given to the player
-			thisDoubleJumpSpeed = doubleJumpLateralSpeed;
+			//here we're going to give the doublejump direction, as well as reduce it's magnitude
+			//depending on its direction and whether we're at our top speed.
+			Vector3 doubleJumpDir = moveInput;
+			if (velocity.magnitude > currentMove.topSpeed)
+				doubleJumpDir *= Vector3.Dot(moveInput, velocity) < 0 ? 1 : 1 - Vector3.Dot(moveInput, velocity);
 
-			//give our vector it's lateral direction
-			thisDoubleJumpVector = moveInput * thisDoubleJumpSpeed;
-
-			//if moveInput is 0, we should just use the lateralvelocity
-			if (thisDoubleJumpVector == Vector3.zero)
-				thisDoubleJumpVector = MyLateralVelocity();
-
-			//and give it it's vertical strength
-			thisDoubleJumpVector += new Vector3(0, thisDoubleJumpHeight, 0);
+			doubleJumpDir *= thisDoubleJumpSpeed;
 
 			//play my sound
 			mySounds.doubleJumpSound.Play();
 
 			//execute the double jump with the vector
-			myRB.velocity += thisDoubleJumpVector;
+			velocity = new Vector3(velocity.x, thisDoubleJumpHeight, velocity.y);
+			velocity += doubleJumpDir;
 			doubleJumpReady = false;
 		}
 	}
@@ -1318,7 +1320,7 @@ public class PlayerBehavior : MonoBehaviour
 			//jump off the wall
 			if (!Input.GetKey(jumpButton))                  //don't apply this force if the player pulled or fell off the wall
 			{
-				float thisJumpSpeed = myRB.velocity.y > 0 ? wallJumpMaxForce + myRB.velocity.y : wallJumpMaxForce;
+				float thisJumpSpeed = myRB.velocity.y > 0 ? wallJumpUpwardForce + myRB.velocity.y : wallJumpUpwardForce;
 				myRB.velocity = MyLateralVelocity() + new Vector3(0, thisJumpSpeed, 0);
 
 				//create the force vector with which we will jump off the wall
