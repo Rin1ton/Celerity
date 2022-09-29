@@ -24,7 +24,6 @@ public class NRGTrackerBehavior : MonoBehaviour
 	void AfterStart()
 	{
 		myText = gameObject.GetComponent<TextMeshProUGUI>();
-		Debug.Log(References.startingEnergyCapsuleCount - References.currentEnergyCapsuleCount);
 		myText.text = (References.startingEnergyCapsuleCount - References.currentEnergyCapsuleCount).ToString("D2") + "/" + References.startingEnergyCapsuleCount.ToString("D2");
 		currentCaps = References.startingEnergyCapsuleCount;
 	}

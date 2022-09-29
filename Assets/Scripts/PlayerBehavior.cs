@@ -90,13 +90,13 @@ public class PlayerBehavior : MonoBehaviour
 
 	readonly float wallRunMinAngle = 74;
 	readonly float wallRunMaxAngle = 106;
-	readonly float wallAngleDifferenceThreshold = 5;        //if 2 planes are within this many degrees of each other, treat them as the same wall
+	readonly float wallAngleDifferenceThreshold = 2;        //if 2 planes are within this many degrees of each other, treat them as the same wall
 	Vector3 currentWall;                                    //current wall we're running on, defined by the normal of a plane
 	Vector3 lastWall;                                       //last wall we ran on
 	float wallAngle = 0;                                    //angle of the current wall in relation to v3.up
 	bool isWallRunning = false;
 
-	readonly float wallRunDuration = 2;                     //duration of wall run, before the player falls off
+	readonly float wallRunDuration = 6;                     //duration of wall run, before the player falls off
 	readonly float wallRunGroundedBuffer = 0.1f;            //can't wallrun if we've been on the ground recently
 	readonly float wallPullOffAngle = 45;
 	readonly float timeToPullOffWall = 0.1f;
@@ -159,8 +159,8 @@ public class PlayerBehavior : MonoBehaviour
 
 	//double jump
 	readonly float timeToDoubleJumpAfterWallRun = 1.6f;
-	readonly float doubleJumpMinLateralSpeed = 12;
-	readonly float doubleJumpHeight = 10;
+	readonly float doubleJumpLateralSpeed = 12;
+	readonly float doubleJumpHeight = 5;
 	bool doubleJumpReady = false;
 
 	//grab
@@ -946,21 +946,21 @@ public class PlayerBehavior : MonoBehaviour
 	void DoubleJump()
 	{
 		//un-ready double jump if it's been too long since the wallrun
-		if (timeSinceWallRunExit > timeToDoubleJumpAfterWallRun || isGrounded)
-			doubleJumpReady = false;
+		//if (timeSinceWallRunExit > timeToDoubleJumpAfterWallRun || isGrounded)
+			//doubleJumpReady = false;
 
 		//determine our double jump height
 		float thisDoubleJumpHeight = myRB.velocity.y > 0 ? doubleJumpHeight + myRB.velocity.y : doubleJumpHeight;
 
 		//perform double jump
-		if (Input.GetKeyDown(jumpButton) && doubleJumpReady && !isWallRunning)
+		if (Input.GetKeyDown(jumpButton) && doubleJumpReady && !isWallRunning && timeSinceGrounded > coyoteTime)
 		{
 			//create some temp objects for defining our double jump vector
 			Vector3 thisDoubleJumpVector = Vector3.zero;
 			float thisDoubleJumpSpeed = 0;
 
 			//decide what speed should be given to the player
-			thisDoubleJumpSpeed = MyLateralVelocity().magnitude > doubleJumpMinLateralSpeed ? MyLateralVelocity().magnitude : doubleJumpMinLateralSpeed;
+			thisDoubleJumpSpeed = doubleJumpLateralSpeed;
 
 			//give our vector it's lateral direction
 			thisDoubleJumpVector = moveInput * thisDoubleJumpSpeed;
@@ -976,7 +976,7 @@ public class PlayerBehavior : MonoBehaviour
 			mySounds.doubleJumpSound.Play();
 
 			//execute the double jump with the vector
-			myRB.velocity = thisDoubleJumpVector;
+			myRB.velocity += thisDoubleJumpVector;
 			doubleJumpReady = false;
 		}
 	}
@@ -1256,6 +1256,7 @@ public class PlayerBehavior : MonoBehaviour
 		{
 			mySounds.landSound.Play();
 			jumpReady = true;
+			doubleJumpReady = true;
 			diveReady = true;
 			airKickReady = true;
 			spinSinceGrounded = 0;		//this is for airkick
@@ -1266,12 +1267,12 @@ public class PlayerBehavior : MonoBehaviour
 	{
 		Vector3 ourWall = Vector3.ProjectOnPlane(currentWall, Vector3.up);      //determine our wall run candidate and treat it as perfectly vertical
 
-		if (currentWall != Vector3.zero &&																				//if we're in contact with a viable wall
+		if (currentWall != Vector3.zero &&                                                                              //if we're in contact with a viable wall
 			!isSkating &&                                                                                               //can't wall run while skating
 			timeSinceGrounded > wallRunGroundedBuffer &&                                                                //have to be off the ground for a period of time before a wall run can be initiated
-			timeSinceLastJump > wallRunGroundedBuffer &&                                                                //jumping exits the wall run
+			Input.GetKey(jumpButton) &&																					//have to hold jump button to wallrun
 			(isWallRunning || !TwoWallsTooClose(lastWall, currentWall)) &&                                              //can't initiate a wall run on a wall that's too similar in angle to the last one
-			(!(Vector3.Angle(moveInput, ourWall) <= wallPullOffAngle) || moveInput == Vector3.zero || isWallRunning) && //don't start wall run if we're pulling away from the wall
+			//(!(Vector3.Angle(moveInput, ourWall) <= wallPullOffAngle) || moveInput == Vector3.zero || isWallRunning) && //don't start wall run if we're pulling away from the wall
 			(!isWallRunning || timeSinceWallRunStart < wallRunDuration))												//being on the wall for too long exits the wall run
 		{
 			//(this code runs once when the wall run starts) 
@@ -1315,8 +1316,11 @@ public class PlayerBehavior : MonoBehaviour
 			doubleJumpReady = true;
 
 			//jump off the wall
-			if (timeSinceLastJump < wallRunGroundedBuffer)                  //don't apply this force if the player pulled or fell off the wall
+			if (!Input.GetKey(jumpButton))                  //don't apply this force if the player pulled or fell off the wall
 			{
+				float thisJumpSpeed = myRB.velocity.y > 0 ? wallJumpMaxForce + myRB.velocity.y : wallJumpMaxForce;
+				myRB.velocity = MyLateralVelocity() + new Vector3(0, thisJumpSpeed, 0);
+
 				//create the force vector with which we will jump off the wall
 				Vector3 wallJumpForce = (wallJumpAwayForce * ourWall) + (moveInput * wallJumpForwardForce);
 				wallJumpForce = wallJumpForce.normalized * wallJumpMaxForce;

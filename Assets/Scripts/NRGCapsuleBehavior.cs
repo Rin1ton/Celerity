@@ -39,8 +39,6 @@ public class NRGCapsuleBehavior : MonoBehaviour
 		if (!isAccountedForByChallenge)
 			References.startingEnergyCapsuleCount++;
 
-        //get player
-		player = References.thePlayer.gameObject;
 
 		//get my sound system
 		mySounds = transform.Find("NRGSoundEmitter").GetComponent<NRGSoundEmitterBehavior>();
@@ -54,6 +52,9 @@ public class NRGCapsuleBehavior : MonoBehaviour
     {
 		if (levelJustLoaded)
 		{
+			//get player
+			player = References.thePlayer.gameObject;
+
 			foreach (string NRGName in References.theLevelLogic.NRGCollectedThisSession)
 			{
 				if (name == NRGName)

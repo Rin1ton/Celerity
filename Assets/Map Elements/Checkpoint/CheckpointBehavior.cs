@@ -21,12 +21,15 @@ public class CheckpointBehavior : MonoBehaviour
 		SetMyColor(inactiveColor);
 		if (isDefaultCheckpoint)
 			References.defaultCheckpoint = this;
+
+		//add me to the universal Checkpoint list
+        MyPlaceInList = References.AddCheckpoint(this);
 	}
 
 	// Start is called before the first frame update
 	void Start()
     {
-        MyPlaceInList = References.AddCheckpoint(this);
+
     }
 
     // Update is called once per frame
