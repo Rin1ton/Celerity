@@ -160,8 +160,8 @@ public class PlayerBehavior : MonoBehaviour
 
 	//double jump
 	readonly float timeToDoubleJumpAfterWallRun = 1.6f;
-	readonly float doubleJumpLateralSpeed = 12;
-	readonly float doubleJumpHeight = 5;
+	readonly float doubleJumpLateralSpeed = 16;
+	readonly float doubleJumpHeight = 12.5f;
 	bool doubleJumpReady = false;
 
 	//grab
@@ -241,6 +241,8 @@ public class PlayerBehavior : MonoBehaviour
 			new Vector3(myArmRotationPoint.transform.localPosition.x, 
 						myArmRotationPoint.transform.localPosition.y, 
 						-9.313229e-09f);
+
+		doubleJumpReady = true;
 	}
 
 	// Start is called before the first frame update
@@ -599,6 +601,9 @@ public class PlayerBehavior : MonoBehaviour
 			myLeftArm.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
 			myBoard.transform.RotateAround(myArmRotationPoint.position, myArmRotationPoint.right, myArmAndBoardRotation);
 		}
+
+		myRightArm.transform.localPosition = new Vector3(myRightArm.transform.localPosition.x, myRightArm.transform.localPosition.y, 0);
+		myLeftArm.transform.localPosition = new Vector3(myLeftArm.transform.localPosition.x, myLeftArm.transform.localPosition.y, 0);
 	}
 
 	//move the player laterally based on the keyboard and physics settings
@@ -962,22 +967,30 @@ public class PlayerBehavior : MonoBehaviour
 		if (Input.GetKeyDown(jumpButton) && doubleJumpReady && !isWallRunning && timeSinceGrounded > coyoteTime)
 		{
 			//speed should be half of max + (the other half * the portion of our top speed we're at)
-			float thisDoubleJumpSpeed = (doubleJumpLateralSpeed / 2) + (doubleJumpLateralSpeed / 2) * (velocity.magnitude / skatingMove.topSpeed);
-			if (thisDoubleJumpSpeed > doubleJumpLateralSpeed) thisDoubleJumpSpeed = doubleJumpLateralSpeed;
+			float thisDoubleJumpVertSpeed = (doubleJumpLateralSpeed / 2) + (doubleJumpLateralSpeed / 2) * (velocity.magnitude / skatingMove.topSpeed);
+			if (thisDoubleJumpVertSpeed > doubleJumpLateralSpeed) thisDoubleJumpVertSpeed = doubleJumpLateralSpeed;
 
 			//here we're going to give the doublejump direction, as well as reduce it's magnitude
 			//depending on its direction and whether we're at our top speed.
+
+			//
 			Vector3 doubleJumpDir = moveInput;
 			if (velocity.magnitude > currentMove.topSpeed)
-				doubleJumpDir *= Vector3.Dot(moveInput, velocity) < 0 ? 1 : 1 - Vector3.Dot(moveInput, velocity);
+				doubleJumpDir *= Vector3.Dot(moveInput, velocity.normalized) < 0 ? 1 : Mathf.Abs(1 - Vector3.Dot(moveInput, velocity.normalized));
 
-			doubleJumpDir *= thisDoubleJumpSpeed;
+			doubleJumpDir *= thisDoubleJumpVertSpeed;
 
 			//play my sound
 			mySounds.doubleJumpSound.Play();
 
 			//execute the double jump with the vector
-			velocity = new Vector3(velocity.x, thisDoubleJumpHeight, velocity.y);
+			//there is a penalty to speed for double jumping sideways
+			if (moveInput.magnitude != 0) velocity = velocity.normalized * (velocity.magnitude - (1 - Vector3.Dot(moveInput, velocity.normalized)) * doubleJumpLateralSpeed);
+
+			//apply vertical double jump speed
+			velocity = new Vector3(velocity.x, thisDoubleJumpHeight, velocity.z);
+
+			//apply lateral double jump velocity
 			velocity += doubleJumpDir;
 			doubleJumpReady = false;
 		}
