@@ -976,16 +976,16 @@ public class PlayerBehavior : MonoBehaviour
 			//
 			Vector3 doubleJumpDir = moveInput;
 			if (velocity.magnitude > currentMove.topSpeed)
-				doubleJumpDir *= Vector3.Dot(moveInput, velocity.normalized) < 0 ? 1 : Mathf.Abs(1 - Vector3.Dot(moveInput, velocity.normalized));
+				doubleJumpDir *= Vector3.Dot(moveInput, velocity.normalized) < 0 ? 1 : 1 - Vector3.Dot(moveInput, velocity.normalized);
 
-			doubleJumpDir *= thisDoubleJumpVertSpeed;
+			doubleJumpDir *= doubleJumpLateralSpeed;
 
 			//play my sound
 			mySounds.doubleJumpSound.Play();
 
 			//execute the double jump with the vector
 			//there is a penalty to speed for double jumping sideways
-			if (moveInput.magnitude != 0) velocity = velocity.normalized * (velocity.magnitude - (1 - Vector3.Dot(moveInput, velocity.normalized)) * doubleJumpLateralSpeed);
+			if (moveInput.magnitude != 0) velocity = velocity.normalized * (velocity.magnitude - (1 - Mathf.Abs(Vector3.Dot(moveInput, velocity.normalized))) * doubleJumpLateralSpeed);
 
 			//apply vertical double jump speed
 			velocity = new Vector3(velocity.x, thisDoubleJumpHeight, velocity.z);
