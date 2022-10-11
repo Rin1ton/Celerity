@@ -16,6 +16,7 @@ public class GrindyRailBehavior : MonoBehaviour
 	float segmentAvgLength = 0;
 	float segmentMaxLength = 0;
 	PlayerBehavior thePlayerBehavior;
+	bool levelJustLoaded = true;
 
 	//
 	readonly int segmentsPerMeter = 100;
@@ -39,7 +40,6 @@ public class GrindyRailBehavior : MonoBehaviour
 	void Start()
 	{
 		//
-		thePlayerBehavior = References.thePlayer;
 
 		// It's nice to be able to see resolution changes at runtime
 		if (m_Points?.Length != m_Segments)
@@ -82,6 +82,14 @@ public class GrindyRailBehavior : MonoBehaviour
 		myExtrude.radius = radius;			//THIS CODE DOESN"T ACTUALLY WORK
 		MeshRenderer myMR = GetComponent<MeshRenderer>();
 		myMR.material = grindyRailMaterial;
+	}
+
+	private void Update()
+	{
+		if (levelJustLoaded)
+		{
+			thePlayerBehavior = References.thePlayer;
+		}
 	}
 
 
