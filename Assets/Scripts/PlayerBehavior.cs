@@ -84,9 +84,9 @@ public class PlayerBehavior : MonoBehaviour
 
 	//wall running
 	readonly float wallRunFriction = 0.5f;
-	readonly float wallRunTopSpeed = 58;
+	readonly float wallRunTopSpeed = 38;
 	readonly float wallRunAirAcceleration = Mathf.Infinity;
-	readonly float wallRunGroundAcceleration = 0.6f;
+	readonly float wallRunGroundAcceleration = 3f;
 
 	readonly float wallRunMinAngle = 74;
 	readonly float wallRunMaxAngle = 106;
@@ -96,7 +96,7 @@ public class PlayerBehavior : MonoBehaviour
 	float wallAngle = 0;                                    //angle of the current wall in relation to v3.up
 	bool isWallRunning = false;
 
-	readonly float wallRunDuration = 6;                     //duration of wall run, before the player falls off
+	readonly float wallRunDuration = 2;                     //duration of wall run, before the player falls off
 	readonly float wallRunGroundedBuffer = 0.1f;            //can't wallrun if we've been on the ground recently
 	readonly float wallPullOffAngle = 45;
 	readonly float timeToPullOffWall = 0.1f;
@@ -106,7 +106,7 @@ public class PlayerBehavior : MonoBehaviour
 	
 	readonly float wallJumpAwayForce = 5;                   //force applied away from wall when player jumps off it
 	readonly float wallJumpForwardForce = 7;                //force applied in the moveInput direction when they jump off a wall
-	readonly float wallJumpUpwardForce = 12;
+	readonly float wallJumpUpwardForce = 3;
 	readonly float wallJumpMaxForce = 10;
 	readonly float wallKickDuration = 0.1f;                 //friction isn't applied to the wall run until they've wall-ran for this long
 
@@ -1285,9 +1285,9 @@ public class PlayerBehavior : MonoBehaviour
 		if (currentWall != Vector3.zero &&                                                                              //if we're in contact with a viable wall
 			!isSkating &&                                                                                               //can't wall run while skating
 			timeSinceGrounded > wallRunGroundedBuffer &&                                                                //have to be off the ground for a period of time before a wall run can be initiated
-			Input.GetKey(jumpButton) &&																					//have to hold jump button to wallrun
+			!Input.GetKey(jumpButton) &&																				//have to hold jump button to wallrun
 			(isWallRunning || !TwoWallsTooClose(lastWall, currentWall)) &&                                              //can't initiate a wall run on a wall that's too similar in angle to the last one
-			//(!(Vector3.Angle(moveInput, ourWall) <= wallPullOffAngle) || moveInput == Vector3.zero || isWallRunning) && //don't start wall run if we're pulling away from the wall
+			(!(Vector3.Angle(moveInput, ourWall) <= wallPullOffAngle) || moveInput == Vector3.zero || isWallRunning) && //don't start wall run if we're pulling away from the wall
 			(!isWallRunning || timeSinceWallRunStart < wallRunDuration))												//being on the wall for too long exits the wall run
 		{
 			//(this code runs once when the wall run starts) 
@@ -1331,7 +1331,7 @@ public class PlayerBehavior : MonoBehaviour
 			doubleJumpReady = true;
 
 			//jump off the wall
-			if (!Input.GetKey(jumpButton))                  //don't apply this force if the player pulled or fell off the wall
+			if (timeSinceLastJump < wallRunGroundedBuffer)                  //don't apply this force if the player pulled or fell off the wall
 			{
 				float thisJumpSpeed = myRB.velocity.y > 0 ? wallJumpUpwardForce + myRB.velocity.y : wallJumpUpwardForce;
 				myRB.velocity = MyLateralVelocity() + new Vector3(0, thisJumpSpeed, 0);
@@ -1340,7 +1340,7 @@ public class PlayerBehavior : MonoBehaviour
 				Vector3 wallJumpForce = (wallJumpAwayForce * ourWall) + (moveInput * wallJumpForwardForce);
 				wallJumpForce = wallJumpForce.normalized * wallJumpMaxForce;
 
-				myRB.AddForce(wallJumpForce, ForceMode.Impulse);
+				//myRB.AddForce(wallJumpForce, ForceMode.Impulse);
 			}
 
 		}
