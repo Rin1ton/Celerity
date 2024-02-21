@@ -47109,7 +47109,7 @@ GameObject:
   - component: {fileID: 2026580411}
   - component: {fileID: 2026580410}
   - component: {fileID: 2026580409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rail 2
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -47150,7 +47150,7 @@ MonoBehaviour:
   m_Sides: 8
   m_SegmentsPerUnit: 4
   m_Capped: 1
-  m_Radius: 0.25
+  m_Radius: 0.15
   m_Range: {x: 0, y: 1}
 --- !u!23 &2026580410
 MeshRenderer:
