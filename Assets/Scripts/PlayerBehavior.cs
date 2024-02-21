@@ -83,10 +83,10 @@ public class PlayerBehavior : MonoBehaviour
 	bool isSkating = false;
 
 	//wall running
-	readonly float wallRunFriction = 0.5f;
+	readonly float wallRunFriction = 0;
 	readonly float wallRunTopSpeed = 38;
 	readonly float wallRunAirAcceleration = Mathf.Infinity;
-	readonly float wallRunGroundAcceleration = 3f;
+	readonly float wallRunGroundAcceleration = 0.5f;
 
 	readonly float wallRunMinAngle = 74;
 	readonly float wallRunMaxAngle = 106;
@@ -436,6 +436,8 @@ public class PlayerBehavior : MonoBehaviour
 
 		if (timeSinceStoppedGrinding <= shortTimerStop)
 			timeSinceStoppedGrinding += Time.deltaTime;
+
+			
 	}
 
 	void HUD()
@@ -880,7 +882,7 @@ public class PlayerBehavior : MonoBehaviour
 	void Jump()
 	{
 		//can't jump while in the air
-		if (timeSinceGrounded > coyoteTime && !isWallRunning && currentRail == null)
+		if ((timeSinceGrounded > coyoteTime && timeSinceWallRunExit > coyoteTime) && !isWallRunning && currentRail == null)
 			jumpReady = false;
 
 		//jump if jumping, and we have a jump ready
@@ -964,7 +966,7 @@ public class PlayerBehavior : MonoBehaviour
 		float thisDoubleJumpHeight = myRB.velocity.y > 0 ? doubleJumpHeight + myRB.velocity.y : doubleJumpHeight;
 
 		//perform double jump
-		if (Input.GetKeyDown(jumpButton) && doubleJumpReady && !isWallRunning && timeSinceGrounded > coyoteTime)
+		if (Input.GetKeyDown(jumpButton) && doubleJumpReady && !isWallRunning && timeSinceGrounded > coyoteTime && timeSinceWallRunExit > coyoteTime)
 		{
 			//speed should be half of max + (the other half * the portion of our top speed we're at)
 			float thisDoubleJumpVertSpeed = (doubleJumpLateralSpeed / 2) + (doubleJumpLateralSpeed / 2) * (velocity.magnitude / skatingMove.topSpeed);
@@ -1283,12 +1285,13 @@ public class PlayerBehavior : MonoBehaviour
 		Vector3 ourWall = Vector3.ProjectOnPlane(currentWall, Vector3.up);      //determine our wall run candidate and treat it as perfectly vertical
 
 		if (currentWall != Vector3.zero &&                                                                              //if we're in contact with a viable wall
-			!isSkating &&                                                                                               //can't wall run while skating
+			isSkating &&                                                                                                //can't wall run without skating
 			timeSinceGrounded > wallRunGroundedBuffer &&                                                                //have to be off the ground for a period of time before a wall run can be initiated
 			!Input.GetKey(jumpButton) &&																				//have to hold jump button to wallrun
 			(isWallRunning || !TwoWallsTooClose(lastWall, currentWall)) &&                                              //can't initiate a wall run on a wall that's too similar in angle to the last one
 			(!(Vector3.Angle(moveInput, ourWall) <= wallPullOffAngle) || moveInput == Vector3.zero || isWallRunning) && //don't start wall run if we're pulling away from the wall
-			(!isWallRunning || timeSinceWallRunStart < wallRunDuration))												//being on the wall for too long exits the wall run
+			(!isWallRunning || timeSinceWallRunStart < wallRunDuration) &&												//being on the wall for too long exits the wall run
+			timeSinceStartedPullingOff < timeToPullOffWall)
 		{
 			//(this code runs once when the wall run starts) 
 			if (!isWallRunning)
@@ -1301,13 +1304,15 @@ public class PlayerBehavior : MonoBehaviour
 
 				//zero out my lateral velocity so we don't just bounce off the wall
 				Vector3 myProposedWallRunVelocity = Vector3.ProjectOnPlane(MyLateralVelocity(), ourWall).normalized;
-				myRB.velocity = myProposedWallRunVelocity * Vector3.Dot(myProposedWallRunVelocity, myRB.velocity);
+				myRB.velocity = myProposedWallRunVelocity * myRB.velocity.magnitude;
 
 				//stop superJump trail
 				superJumpTrailParticleSystem.Stop();
 			}
-			
+
 			//(this code runs continuously while wall running)
+			if (Vector3.Angle(moveInput, ourWall) <= wallPullOffAngle && moveInput != Vector3.zero)
+				timeSinceStartedPullingOff += Time.deltaTime;
 
 			//negate the force of gravity on the player while wall running
 			myRB.AddForce(-Physics.gravity * myRB.mass);
@@ -1323,6 +1328,7 @@ public class PlayerBehavior : MonoBehaviour
 			//tell every other function we've stopped wall running
 			isWallRunning = false;
 			timeSinceWallRunExit = 0;
+			timeSinceStartedPullingOff = 0;
 
 			//set this wall as the last wall we ran on
 			lastWall = ourWall;
