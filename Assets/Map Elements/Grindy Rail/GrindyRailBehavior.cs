@@ -30,7 +30,6 @@ public class GrindyRailBehavior : MonoBehaviour
 	void Awake()
 	{
 		m_Spline = GetComponent<SplineContainer>().Spline;
-		//m_Line = GetComponent<LineRenderer>();
 		m_Spline.changed += () => m_Dirty = true;
 		m_Segments = Mathf.RoundToInt(m_Spline.GetLength() * segmentsPerMeter);
 
@@ -46,8 +45,6 @@ public class GrindyRailBehavior : MonoBehaviour
 		{
 			m_Dirty = true;
 			m_Points = new Vector3[m_Segments];
-			//m_Line.loop = m_Spline.Closed;
-			//m_Line.positionCount = m_Segments;
 		}
 
 		if (!m_Dirty)
@@ -58,7 +55,6 @@ public class GrindyRailBehavior : MonoBehaviour
 		for (int i = 0; i < m_Segments; i++)
 		{
 			m_Points[i] = m_Spline.EvaluatePosition(i / (m_Segments - 1f));
-			//adjust by the transform of the spline, so we aren't at world origin
 			m_Points[i] += transform.position;
 
 			if (i > 0)
@@ -72,14 +68,9 @@ public class GrindyRailBehavior : MonoBehaviour
 
 		segmentAvgLength /= m_Segments;
 
-		//Debug.Log("AVG length: " + segmentAvgLength + " MAX length: " + segmentMaxLength);
-		//Debug.Log(m_Spline.GetLength() / m_Segments);
-
-		//m_Line.SetPositions(m_Points);
-
 		//add the stuff to our spline that makes it so we can see and interact with it.
 		SplineExtrude myExtrude = GetComponent<SplineExtrude>();
-		myExtrude.radius = radius;			//THIS CODE DOESN"T ACTUALLY WORK
+		myExtrude.radius = radius;
 		MeshRenderer myMR = GetComponent<MeshRenderer>();
 		myMR.material = grindyRailMaterial;
 	}
