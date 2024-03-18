@@ -46131,6 +46131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598f39b3673519f42b26f7fea9fdc7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyDrawPaths: 1
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 128
@@ -48976,7 +48977,7 @@ PrefabInstance:
     - target: {fileID: 8408348337667224336, guid: 52c5e45335f9afd4ca4c42c27c11dc29,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.197464
+      value: 49.16
       objectReference: {fileID: 0}
     - target: {fileID: 8408348337667224336, guid: 52c5e45335f9afd4ca4c42c27c11dc29,
         type: 3}
@@ -48986,7 +48987,7 @@ PrefabInstance:
     - target: {fileID: 8408348337667224336, guid: 52c5e45335f9afd4ca4c42c27c11dc29,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -53.239582
+      value: -41.8
       objectReference: {fileID: 0}
     - target: {fileID: 8408348337667224336, guid: 52c5e45335f9afd4ca4c42c27c11dc29,
         type: 3}
