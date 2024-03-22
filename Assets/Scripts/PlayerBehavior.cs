@@ -159,7 +159,6 @@ public class PlayerBehavior : MonoBehaviour
 	bool airKickReady = true;
 
 	//double jump
-	readonly float timeToDoubleJumpAfterWallRun = 1.6f;
 	readonly float doubleJumpLateralSpeed = 16;
 	readonly float doubleJumpHeight = 12.5f;
 	bool doubleJumpReady = false;

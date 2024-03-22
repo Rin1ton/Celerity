@@ -5,7 +5,7 @@ using UnityEngine;
 public class VillagerMovement : MonoBehaviour
 {
     public Transform target;
-    float speed = 5;
+    float movementSpeed = 10;
 	float acceptableWaypointDistance = .5f;
     Vector3[] path;
     int targetIndex;
@@ -47,7 +47,8 @@ public class VillagerMovement : MonoBehaviour
 				currentWaypoint = path[targetIndex];
 			}
 
-			
+			myRB.velocity = (currentWaypoint - transform.position).normalized * movementSpeed;
+			yield return null;
 
 		}
 	}
