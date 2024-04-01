@@ -4,22 +4,80 @@ using UnityEngine;
 
 public class VillagerMovement : MonoBehaviour
 {
-    public Transform target;
     float movementSpeed = 10;
-	float acceptableWaypointDistance = .5f;
+	float acceptableWaypointDistance = .125f;
     Vector3[] path;
     int targetIndex;
 	Rigidbody myRB;
+	VillagerDesires myDesires;
 
 	private void Awake()
 	{
 		myRB = GetComponent<Rigidbody>();
+		myDesires = GetComponent<VillagerDesires>();
 	}
 
-	private void Start()
+	public enum station
 	{
-		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+		store = 0,
+		barracks = 1,
+		theater = 2,
+		factory = 3
 	}
+
+	public void GoToStation(station targetStation)
+	{
+		Transform targetPosition;
+
+		switch(targetStation)
+		{
+			case station.store:
+				targetPosition = Grid.instance.store;
+				break;
+			case station.barracks:
+				targetPosition = Grid.instance.barracks;
+				break;
+			case station.theater:
+				targetPosition = Grid.instance.theater;
+				break;
+			case station.factory:
+				targetPosition = Grid.instance.factory;
+				break;
+			default:
+				targetPosition = null;
+				Debug.LogError($"NO SUCH STATION: {targetStation}!!!");
+				break;
+		}
+
+		PathRequestManager.RequestPath(transform.position, targetPosition.position, OnPathFound);
+	}
+
+	public void GoToStation(int targetStation)
+	{
+        Transform targetPosition;
+
+        switch (targetStation)
+        {
+            case 0:
+                targetPosition = Grid.instance.store;
+                break;
+            case 1:
+                targetPosition = Grid.instance.barracks;
+                break;
+            case 2:
+                targetPosition = Grid.instance.theater;
+                break;
+            case 3:
+                targetPosition = Grid.instance.factory;
+                break;
+            default:
+                targetPosition = null;
+                Debug.LogError($"NO SUCH STATION: {targetStation}!!!");
+                break;
+        }
+
+        PathRequestManager.RequestPath(transform.position, targetPosition.position, OnPathFound);
+    }
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
 	{
@@ -37,19 +95,46 @@ public class VillagerMovement : MonoBehaviour
 
 		while (true)
 		{
-			if (Vector3.Distance(transform.position, currentWaypoint) <= acceptableWaypointDistance)
+			if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(currentWaypoint.x, currentWaypoint.z)) <= acceptableWaypointDistance)
 			{
 				targetIndex++;
 				if (targetIndex >= path.Length)
 				{
+					myDesires.CurrentDesireFulfilled();
 					yield break;
 				}
 				currentWaypoint = path[targetIndex];
 			}
 
-			myRB.velocity = (currentWaypoint - transform.position).normalized * movementSpeed;
+			Vector3 newVelocity = new Vector3(
+				((currentWaypoint - transform.position).normalized * movementSpeed).x, 
+				0, 
+				((currentWaypoint - transform.position).normalized * movementSpeed).z);
+
+			myRB.velocity = newVelocity;
 			yield return null;
 
 		}
 	}
+
+    private void OnDrawGizmos()
+    {
+        if (path != null)
+		{
+			for (int i = targetIndex; i < path.Length; i++)
+			{
+				Gizmos.color = Color.green;
+				Gizmos.DrawSphere(path[i], .5f);
+
+				if (i == targetIndex)
+				{
+					Gizmos.DrawLine(transform.position, path[i]);
+				}
+				else
+				{
+					Gizmos.DrawLine(path[i - 1], path[i]);
+				}
+			}
+		}
+    }
 }

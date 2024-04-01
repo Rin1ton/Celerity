@@ -14,12 +14,20 @@ public class Grid : MonoBehaviour
 	float nodeDiameter;
 	int gridSizeX, gridSizeY;
 
+	[SerializeField] public Transform store;
+	[SerializeField] public Transform barracks;
+	[SerializeField] public Transform theater;
+	[SerializeField] public Transform factory;
+
+	public static Grid instance;
+
 	private void Awake()
 	{
 		nodeDiameter = nodeRadius * 2;
 		gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
 		gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
 		CreateGrid();
+		instance = this;
 	}
 
 	public int MaxSize => gridSizeX * gridSizeY;

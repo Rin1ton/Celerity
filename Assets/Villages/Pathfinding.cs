@@ -92,7 +92,12 @@ public class Pathfinding : MonoBehaviour
 		Vector3[] waypoints = SimplifyPath(path);
 		Array.Reverse(waypoints);
 
-		return waypoints;
+		//return waypoints;
+		path.Reverse();
+		Vector3[] thisPath = new Vector3[path.Count];
+		for (int thisNode = 0; thisNode < path.Count; thisNode++)
+			thisPath[thisNode] = path[thisNode].worldPosition;
+		return thisPath;
 	}
 
 	Vector3[] SimplifyPath(List<Node> path)
