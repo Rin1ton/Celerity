@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4953596687677942533}
   - component: {fileID: 6384979222803995088}
   - component: {fileID: 2724323738154293517}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Villager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7208972267853648407}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d0c77aa60c57f834bb4e0f50e63dcbe8, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aae8e48082ac6048b5d281fdc160059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &2724323738154293517
 MonoBehaviour:
   m_ObjectHideFlags: 0

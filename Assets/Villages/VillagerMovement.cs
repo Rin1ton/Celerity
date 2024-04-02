@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class VillagerMovement : MonoBehaviour
 {
-    float movementSpeed = 10;
+	public enum station
+	{
+		store = 0,
+		barracks = 1,
+		theater = 2,
+		factory = 3
+	}
+
+	readonly float movementForce = 12;
+	readonly float movementFriction = 12;
+	readonly float movementSpeed = 8;
+
 	float acceptableWaypointDistance = .125f;
-    Vector3[] path;
-    int targetIndex;
+	Vector3[] path;
+	Vector3 currentWaypoint = Vector3.zero;
+	int targetIndex;
 	Rigidbody myRB;
 	VillagerDesires myDesires;
 
@@ -17,12 +29,9 @@ public class VillagerMovement : MonoBehaviour
 		myDesires = GetComponent<VillagerDesires>();
 	}
 
-	public enum station
+	private void FixedUpdate()
 	{
-		store = 0,
-		barracks = 1,
-		theater = 2,
-		factory = 3
+		ApplyMovementForce();
 	}
 
 	public void GoToStation(station targetStation)
@@ -54,30 +63,30 @@ public class VillagerMovement : MonoBehaviour
 
 	public void GoToStation(int targetStation)
 	{
-        Transform targetPosition;
+		Transform targetPosition;
 
-        switch (targetStation)
-        {
-            case 0:
-                targetPosition = Grid.instance.store;
-                break;
-            case 1:
-                targetPosition = Grid.instance.barracks;
-                break;
-            case 2:
-                targetPosition = Grid.instance.theater;
-                break;
-            case 3:
-                targetPosition = Grid.instance.factory;
-                break;
-            default:
-                targetPosition = null;
-                Debug.LogError($"NO SUCH STATION: {targetStation}!!!");
-                break;
-        }
+		switch (targetStation)
+		{
+			case 0:
+				targetPosition = Grid.instance.store;
+				break;
+			case 1:
+				targetPosition = Grid.instance.barracks;
+				break;
+			case 2:
+				targetPosition = Grid.instance.theater;
+				break;
+			case 3:
+				targetPosition = Grid.instance.factory;
+				break;
+			default:
+				targetPosition = null;
+				Debug.LogError($"NO SUCH STATION: {targetStation}!!!");
+				break;
+		}
 
-        PathRequestManager.RequestPath(transform.position, targetPosition.position, OnPathFound);
-    }
+		PathRequestManager.RequestPath(transform.position, targetPosition.position, OnPathFound);
+	}
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
 	{
@@ -91,7 +100,8 @@ public class VillagerMovement : MonoBehaviour
 
 	IEnumerator FollowPath()
 	{
-		Vector3 currentWaypoint = path[0];
+		currentWaypoint = path[0];
+		targetIndex = 0;
 
 		while (true)
 		{
@@ -101,25 +111,75 @@ public class VillagerMovement : MonoBehaviour
 				if (targetIndex >= path.Length)
 				{
 					myDesires.CurrentDesireFulfilled();
+					path = null;
 					yield break;
 				}
 				currentWaypoint = path[targetIndex];
 			}
 
-			Vector3 newVelocity = new Vector3(
+			/*Vector3 newVelocity = new Vector3(
 				((currentWaypoint - transform.position).normalized * movementSpeed).x, 
 				0, 
 				((currentWaypoint - transform.position).normalized * movementSpeed).z);
 
-			myRB.velocity = newVelocity;
+			myRB.velocity = newVelocity;*/
 			yield return null;
 
 		}
 	}
 
-    private void OnDrawGizmos()
-    {
-        if (path != null)
+	Vector3 myLateralVelocity => new Vector3(myRB.velocity.x, 0, myRB.velocity.z);
+
+	void ApplyMovementForce()
+	{
+		float speed = myRB.velocity.magnitude;
+		float drop = 0;
+
+		float friction = movementFriction;
+
+		if (speed != 0)
+		{
+			float control = speed;
+
+			drop += control * friction * Time.deltaTime;
+
+			float newSpeed = speed - drop < 0 ? 0 : speed - drop;
+			newSpeed = speed != 0 ? newSpeed / speed : 0;
+
+			myRB.velocity *= newSpeed;
+		}
+		if (path != null)
+		{
+			Vector3 wishVector = new Vector3(
+				((currentWaypoint - transform.position).normalized * movementSpeed).x,
+				0,
+				((currentWaypoint - transform.position).normalized * movementSpeed).z).normalized;
+
+			float wishSpeed, addSpeed, accelSpeed;
+
+			wishSpeed = movementSpeed;
+
+			float currentSpeed = Vector3.Dot(myRB.velocity, wishVector);
+
+			addSpeed = wishSpeed - currentSpeed;
+
+			if (addSpeed <= 0)
+				addSpeed = 0;
+
+			accelSpeed = movementForce * Time.deltaTime * wishSpeed;
+
+			if (accelSpeed > addSpeed)
+				accelSpeed = addSpeed;
+
+			Vector3 newVelocity = myRB.velocity + wishVector * accelSpeed;
+
+			myRB.velocity = newVelocity;
+		}
+	}
+
+	private void OnDrawGizmos()
+	{
+		if (path != null)
 		{
 			for (int i = targetIndex; i < path.Length; i++)
 			{
@@ -136,5 +196,5 @@ public class VillagerMovement : MonoBehaviour
 				}
 			}
 		}
-    }
+	}
 }

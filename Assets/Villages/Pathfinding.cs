@@ -67,6 +67,8 @@ public class Pathfinding : MonoBehaviour
 						neighbor.parent = currentNode;
 						if (!openSet.Contains(neighbor))
 							openSet.Add(neighbor);
+						else
+							openSet.UpdateItem(neighbor);
 					}
 				}
 			}
@@ -92,12 +94,14 @@ public class Pathfinding : MonoBehaviour
 		Vector3[] waypoints = SimplifyPath(path);
 		Array.Reverse(waypoints);
 
-		//return waypoints;
+		//This is the code for requesting unsimplified paths:
 		path.Reverse();
 		Vector3[] thisPath = new Vector3[path.Count];
 		for (int thisNode = 0; thisNode < path.Count; thisNode++)
 			thisPath[thisNode] = path[thisNode].worldPosition;
 		return thisPath;
+
+		return waypoints;
 	}
 
 	Vector3[] SimplifyPath(List<Node> path)
