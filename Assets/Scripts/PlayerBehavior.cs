@@ -178,6 +178,10 @@ public class PlayerBehavior : MonoBehaviour
 	public CharacterAnimationBehavior myAnimaions;
 
 	//hud
+	readonly float defaultFOV = 120;
+	readonly float maxFOV = 150;
+	readonly float minFOVSpeed = 24;
+	readonly float maxFOVSpeed = 60;
 	public GameObject speedometerPrefab;
 	SpeedometerBehavior mySpeedometer;
 
@@ -865,6 +869,9 @@ public class PlayerBehavior : MonoBehaviour
 		int speedParticlesToGenerate = Mathf.RoundToInt(Mathf.Clamp(speedLineParticleMultiplier * (velocity.magnitude - skatingMove.topSpeed), 0, speedLineParticleMax));
 		var emission = speedLinesParticleSystem.emission;
 		emission.rateOverTime = speedParticlesToGenerate;
+
+		myCamera.GetComponent<Camera>().fieldOfView = 
+			Camera.HorizontalToVerticalFieldOfView(defaultFOV + Mathf.Clamp(Mathf.Clamp(myRB.velocity.magnitude - minFOVSpeed, 0, maxFOVSpeed) / (maxFOVSpeed - minFOVSpeed) * (maxFOV - defaultFOV), 0, maxFOV - defaultFOV), myCamera.GetComponent<Camera>().aspect);
 
 		//update our trail renderer
 		if (MyLateralVelocity().magnitude > skatingTopSpeed && !speedTrailRenderer.emitting)

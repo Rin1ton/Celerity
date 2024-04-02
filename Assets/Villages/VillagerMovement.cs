@@ -14,10 +14,10 @@ public class VillagerMovement : MonoBehaviour
 
 	readonly float movementForce = 12;
 	readonly float movementFriction = 12;
-	readonly float movementSpeed = 8;
-	readonly float stuckCheckInterval = 1;
-	readonly float stuckCheckTolerance = 0.1f;
-	readonly float shoveModifier = 0.15f;
+	readonly float movementSpeed = 6;
+	readonly float stuckCheckInterval = 0.1f;
+	readonly float stuckCheckTolerance = 0.03f;
+	readonly float shoveModifier = 1f;
 
 	float acceptableWaypointDistance = .125f;
 	Vector3[] path;
@@ -110,6 +110,8 @@ public class VillagerMovement : MonoBehaviour
 
 		while (true)
 		{
+			transform.LookAt(transform.position + myRB.velocity);
+
 			timeSinceCheckedIfStuck += Time.deltaTime;
 			if (timeSinceCheckedIfStuck >= stuckCheckInterval)
 			{
