@@ -19,11 +19,12 @@ public class VillagerDesires : MonoBehaviour
 		conscientiousness,
 		extraversion,
 		agreeableness,
-		neuroticism
+		neuroticism,
+		strength
 	}
 
 	float[] myDesires = new float[4];
-	int[] myTraits = new int[5];
+	int[] myTraits = new int[6];
 	int currentDesire = 0;
 
 	VillagerMovement myMovement;
@@ -43,6 +44,7 @@ public class VillagerDesires : MonoBehaviour
 		for (int thisTrait = 0; thisTrait < myTraits.Length; thisTrait++)
 		{
 			myTraits[thisTrait] = Random.Range(0, 100);
+			if (thisTrait == (int)traits.strength) myTraits[thisTrait] = Random.Range(50, 100);
 		}
 
 		myMovement.GoToStation(GetNextDesire());
@@ -81,7 +83,7 @@ public class VillagerDesires : MonoBehaviour
 	public float TryToShove()
 	{
 		float thisTry = Random.Range(0f, 99f) + myDesires[(int)desires.hunger];
-		return Mathf.Clamp(thisTry - myTraits[(int)traits.agreeableness], 0, Mathf.Infinity);
+		return Mathf.Clamp(thisTry - myTraits[(int)traits.agreeableness], 0, (int)traits.strength);
 	}
 
 }

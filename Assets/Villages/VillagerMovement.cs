@@ -15,6 +15,9 @@ public class VillagerMovement : MonoBehaviour
 	readonly float movementForce = 12;
 	readonly float movementFriction = 12;
 	readonly float movementSpeed = 8;
+	readonly float stuckCheckInterval = 1;
+	readonly float stuckCheckTolerance = 0.1f;
+	readonly float shoveModifier = 0.15f;
 
 	float acceptableWaypointDistance = .125f;
 	Vector3[] path;
@@ -102,9 +105,30 @@ public class VillagerMovement : MonoBehaviour
 	{
 		currentWaypoint = path[0];
 		targetIndex = 0;
+		Vector3 oldPosition = transform.position;
+		float timeSinceCheckedIfStuck = 0;
 
 		while (true)
 		{
+			timeSinceCheckedIfStuck += Time.deltaTime;
+			if (timeSinceCheckedIfStuck >= stuckCheckInterval)
+			{
+				if (Vector3.Distance(oldPosition, transform.position) <= stuckCheckTolerance)
+				{
+					Vector3 thisShove = new Vector3(
+					((currentWaypoint - transform.position).normalized * movementSpeed).x,
+					0,
+					((currentWaypoint - transform.position).normalized * movementSpeed).z) * myDesires.TryToShove() * shoveModifier;
+					if (thisShove.magnitude != 0)
+						myRB.AddForce(thisShove, ForceMode.Impulse);
+				}
+				else
+				{
+					oldPosition = transform.position;
+					timeSinceCheckedIfStuck = 0;
+				}
+			}
+
 			if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(currentWaypoint.x, currentWaypoint.z)) <= acceptableWaypointDistance)
 			{
 				targetIndex++;
@@ -127,8 +151,6 @@ public class VillagerMovement : MonoBehaviour
 
 		}
 	}
-
-	Vector3 myLateralVelocity => new Vector3(myRB.velocity.x, 0, myRB.velocity.z);
 
 	void ApplyMovementForce()
 	{
